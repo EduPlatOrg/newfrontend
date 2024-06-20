@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useForm } from 'react-hook-form';
 
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 
 import { IoEyeOffOutline, IoEyeOutline } from 'react-icons/io5';
@@ -224,20 +224,24 @@ const RegisterModal = () => {
               )}
             </div>
             <div>
-              <label
-                htmlFor='email'
-                className='flex items-center  gap-4 text-sm font-medium  text-gray-900'>
-                <div>
-                  <input
-                    id='terms'
-                    name='terms'
-                    type='checkbox'
-                    required
-                    onChange={(e) => setChecked(e.target.checked)}
-                  />
-                </div>{' '}
-                Accept terms and conditions
-              </label>
+              <div className='flex items-center gap-3'>
+                <input
+                  id='terms'
+                  name='terms'
+                  type='checkbox'
+                  required
+                  onChange={(e) => setChecked(e.target.checked)}
+                />{' '}
+                <Link
+                  to='/terms-and-conditions'
+                  className='text-indigo-600 underline md:text-md text-sm hover:text-indigo-500'
+                  onClick={() => {
+                    onClose();
+                  }}>
+                  {' '}
+                  Accept terms and conditions
+                </Link>
+              </div>{' '}
             </div>
 
             <div>
