@@ -52,7 +52,7 @@ const TermsAndConditions = () => {
       <p>
         LEA CON DETENIMIENTO NUESTRAS CONDICIONES DE USO
         <br />
-        &nbsp;CONSTITUYEN UN ACUERDO LEGAL ENTRE EL USUARIO Y EDUPLAT
+        CONSTITUYEN UN ACUERDO LEGAL ENTRE EL USUARIO Y EDUPLAT
       </p>
       <p>CONSULTE TAMBI&Eacute;N LA POL&Iacute;TICA DE PRIVACIDAD</p>
       <p>
@@ -308,7 +308,9 @@ const TermsAndConditions = () => {
         siguientes condiciones, declinando realizar cualquier reclamaci&oacute;n
         sobre las mismas:
       </p>
-      <ol start='1'>
+      <ol
+        start='1'
+        className='ml-2'>
         <li>
           a) El uso de esta web est&aacute; dirigido a personas mayores de edad.
         </li>
