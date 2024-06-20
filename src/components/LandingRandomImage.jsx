@@ -1,12 +1,13 @@
-import i18next from 'i18next';
+//import i18next from 'i18next';
 const LandingRandomImage = () => {
-  const getRandomImageUrl = () => {
-    const num = Math.floor(Math.random() * 7) + 1;
-    const url = 'url(/images/background' + num.toString() + '.jpg)';
-    return url;
-  };
+  // const getRandomImageUrl = () => {
+  //   const num = Math.floor(Math.random() * 7) + 1;
+  //   const url = '/images/background' + num.toString() + '.jpg';
+  //   return url;
+  // };
   return (
-    <div
+    <>
+      {/* <div
       className='w-full absolute flex items-center  '
       style={{
         backgroundImage: getRandomImageUrl(),
@@ -34,8 +35,16 @@ const LandingRandomImage = () => {
           {' '}
           {i18next.t('can collaborate by sharing resources.')}
         </p>
+      </div> 
+    </div>*/}
+      <div className='w-full'>
+        <img
+          src='/cabecerahome.webp'
+          className='w-full h-auto max-h-[500px] aspect-video object-cover'
+          alt='image random landing page'
+        />
       </div>
-    </div>
+    </>
   );
 };
 
