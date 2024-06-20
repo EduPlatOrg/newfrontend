@@ -4,6 +4,7 @@ import HomePage from './pages/HomePage';
 import { ModalProvider } from './providers/modal-provider';
 import Navbar from './components/Navbar';
 import { Toaster } from 'sonner';
+import TermsAndConditions from './pages/TermsAndConditions';
 
 function App() {
   return (
@@ -19,6 +20,10 @@ function App() {
           <Route
             path='/'
             element={<HomePage />}
+          />
+          <Route
+            path='/terms-and-conditions'
+            element={<TermsAndConditions />}
           />
         </Routes>
       </UserProvider>{' '}

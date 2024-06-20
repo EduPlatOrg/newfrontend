@@ -9,7 +9,6 @@ import {
   LinkedinShareButton,
   TwitterShareButton,
   WhatsappShareButton,
-  InstapaperShareButton,
 } from 'react-share';
 const ShareSocials = () => {
   const shareUrl = 'https://eduplat.org';
