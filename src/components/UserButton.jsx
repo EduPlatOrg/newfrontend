@@ -63,7 +63,7 @@ const UserButton = () => {
               User Panel
             </button>
           </Link>
-          {user.isAdmin && (
+          {user.isBoss && (
             <Link
               to='/admin-panel'
               className='w-full'>
