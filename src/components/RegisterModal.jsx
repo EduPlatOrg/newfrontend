@@ -40,7 +40,6 @@ const RegisterModal = () => {
     if (response.status === 200) {
       onClose();
       reset();
-      onOpen('login-form');
     }
   });
 

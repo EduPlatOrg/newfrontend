@@ -7,6 +7,7 @@ import { Toaster } from 'sonner';
 import TermsAndConditions from './pages/TermsAndConditions';
 import Footer from './components/Footer';
 import ComoColaborar from './pages/ComoColaborar';
+import VerifyEmailPage from './components/VerifyEmailPage';
 
 function App() {
   return (
@@ -15,7 +16,7 @@ function App() {
         <Navbar />
         <ModalProvider />
         <Toaster
-          position='top-right'
+          position='bottom-right'
           richColors
         />
         <body className='min-h-[calc(100vh-220px)]'>
@@ -31,6 +32,10 @@ function App() {
             <Route
               path='/como-colaborar'
               element={<ComoColaborar />}
+            />
+            <Route
+              path='/verify/:token'
+              element={<VerifyEmailPage />}
             />
           </Routes>
         </body>

@@ -15,8 +15,8 @@ export const sendLoginUserRequest = (data) => axios.post('/user/login', data);
 
 export const getAllUsersRequest = () => axios.get('/user/getAllUsers');
 
-export const editPasswordRequest = (email) =>
+export const resetPasswordRequest = (email) =>
   axios.post(`/user/forgotPassword`, email);
 
-export const resetPasswordRequest = (password) =>
-  axios.patch(`/user/resetPassword}`, { password });
+export const editPasswordRequest = (password) =>
+  axios.patch(`/user/resetPassword`, { password });

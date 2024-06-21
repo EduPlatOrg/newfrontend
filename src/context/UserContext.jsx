@@ -64,7 +64,13 @@ export const UserProvider = ({ children }) => {
   };
 
   const verifyTokenRequest = async (token) => {
-    sendTokenToServer(token);
+    try {
+      const response = sendTokenToServer(token);
+      console.log(response.data, '<-- response.data en verifyTokenRequest');
+      return response;
+    } catch (error) {
+      console.log(error, '<-- error en verifyTokenRequest');
+    }
   };
 
   const logOutUser = async () => {

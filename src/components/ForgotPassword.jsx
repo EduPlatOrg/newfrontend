@@ -19,7 +19,7 @@ const ForgotPasswordModal = () => {
     reset,
     formState: { errors },
   } = useForm();
-  const { errors: formsErrors, isAuthenticated, editPassword } = useUser();
+  const { errors: formsErrors, isAuthenticated, resetPassword } = useUser();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -28,7 +28,7 @@ const ForgotPasswordModal = () => {
 
   const handleChangePassword = handleSubmit(async (data) => {
     console.log(data, 'data');
-    const response = await editPassword(data);
+    const response = await resetPassword(data);
     if (response.status === 200) {
       reset();
       onClose();
