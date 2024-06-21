@@ -21,11 +21,11 @@ const LoginModal = () => {
     reset,
     formState: { errors },
   } = useForm();
-  const { logIn, errors: formsErrors, isAuthenticated } = useUser();
+  const { loginUserRequest, errors: formsErrors, isAuthenticated } = useUser();
   const navigate = useNavigate();
 
   const onSubmitLogin = handleSubmit((data) => {
-    logIn(data);
+    loginUserRequest(data);
     reset();
     onClose();
   });

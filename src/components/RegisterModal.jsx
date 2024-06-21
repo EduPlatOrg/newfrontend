@@ -26,12 +26,17 @@ const RegisterModal = () => {
     reset,
     formState: { errors },
   } = useForm();
-  const { errors: formsErrors, isAuthenticated, singIn } = useUser();
+  const {
+    errors: formsErrors,
+    isAuthenticated,
+    registerUserRequest,
+  } = useUser();
   const navigate = useNavigate();
 
   const onSubmit = handleSubmit(async (data) => {
     console.log(data, 'data');
-    const response = await singIn(data);
+    const response = await registerUserRequest(data);
+    console.log(response, '<-- response');
     if (response.status === 200) {
       onClose();
       reset();

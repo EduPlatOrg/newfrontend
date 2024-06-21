@@ -8,7 +8,7 @@ import { useUser } from '../context/UserContext';
 
 const UserButton = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const { user, logOut } = useUser();
+  const { user, logOutUser } = useUser();
   const [initials, setInitials] = useState('');
   const navigate = useNavigate();
 
@@ -79,7 +79,7 @@ const UserButton = () => {
           )}
           <button
             onClick={() => {
-              logOut();
+              logOutUser();
               setIsOpen(false);
               navigate('/');
             }}
@@ -105,7 +105,7 @@ const UserButton = () => {
           )}
           <button
             onClick={() => {
-              logOut();
+              logOutUser();
               setIsOpen(false);
               navigate('/');
             }}

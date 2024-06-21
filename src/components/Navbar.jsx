@@ -10,7 +10,8 @@ import { useUser } from '../context/UserContext';
 
 const Navbar = () => {
   //TODO: Add the name and surname of user in the navbar
-  const { isAuthenticated, logOut, user } = useUser();
+  const { isAuthenticated, logOutUser, user } = useUser();
+  console.log(user, '<-- user en Navbar');
   const { onOpen } = useModal();
   const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false); // Estado para el menú desplegable móvil
@@ -61,7 +62,7 @@ const Navbar = () => {
               <>
                 {' '}
                 <p className='text-sm text-gray-200'>
-                  Bienvenido: <em> {user.name}</em>
+                  Bienvenido: <em> {user?.firstname}</em>
                 </p>
                 <UserButton />
               </>
@@ -275,7 +276,7 @@ const Navbar = () => {
 
                 <button
                   onClick={() => {
-                    logOut();
+                    logOutUser();
                     toggleMenu();
                     navigate('/');
                   }}

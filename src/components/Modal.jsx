@@ -31,7 +31,7 @@ export const Modal = ({ isOpen, onClose, children }) => {
           />
         </Transition.Child>
 
-        <div className='fixed inset-0 z-10 overflow-y-auto max-h-[80%] mt-20 ml-3 mr-3'>
+        <div className='fixed inset-0 z-10 overflow-y-auto max-h-[90%] mt-20 ml-3 mr-3'>
           <div
             className='
               flex 

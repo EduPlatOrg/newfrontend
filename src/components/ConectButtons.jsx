@@ -19,7 +19,7 @@ const ConectButtons = () => {
         <FaFolderOpen size={20} /> Feria de Recursos Educativos
       </Link>
       <Link
-        to='/'
+        to='/como-colaborar'
         className='bg-blue-500 hover:bg-gray-400 
         py-4 px-6 rounded-full text-white min-w-[273px] 
         flex items-center justify-center whitespace-nowrap transition-all duration-200 cursor-pointer gap-2 text-xs'>
