@@ -17,7 +17,7 @@ const ShareSocials = () => {
   );
   const handleInstagram = () => {};
   return (
-    <div className='w-full flex flex-col items-center justify-center gap-2 gap-x-4 mt-20'>
+    <div className='w-full flex flex-col items-center justify-center gap-2 gap-x-4 mt-6'>
       <p className='text-xl font-medium'>Comparte</p>
       <div className='flex items-center gap-6'>
         <FacebookShareButton

@@ -2,16 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-.scrollbar {
-  scrollbar-width: thin;
-
-  scrollbar-color: gray transparent;
-}
-.scrollbar2 {
-  scrollbar-width: thin;
-
-  scrollbar-color: #0d8de8 transparent;
-}
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -83,4 +73,37 @@
   body {
     @apply bg-background text-foreground;
   }
+}
+.first-link:hover {
+  background-color: rgb(
+    75,
+    75,
+    229
+  ); /* Asegúrate de que este color esté definido correctamente */
+}
+.scrollbar {
+  scrollbar-width: thin;
+
+  scrollbar-color: gray transparent;
+}
+.scrollbar2 {
+  scrollbar-width: thin;
+
+  scrollbar-color: #0d8de8 transparent;
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+
+    scale: 0;
+  }
+  to {
+    opacity: 1;
+
+    scale: 1;
+  }
+}
+
+.fadeIn {
+  animation: fadeIn 1s ease-out forwards;
 }

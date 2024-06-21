@@ -1,9 +1,7 @@
 const TermsAndConditions = () => {
   return (
-    <div
-      className='container
-    '>
-      <h3>Responsable</h3>
+    <div className='container'>
+      <h3 className=''>Responsable</h3>
       <p>
         -Denominaci&oacute;n Social : Bienesdar.org
         <br /> -CIF / NIF : G99525594

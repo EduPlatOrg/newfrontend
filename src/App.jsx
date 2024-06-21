@@ -5,6 +5,7 @@ import { ModalProvider } from './providers/modal-provider';
 import Navbar from './components/Navbar';
 import { Toaster } from 'sonner';
 import TermsAndConditions from './pages/TermsAndConditions';
+import Footer from './components/Footer';
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
             element={<TermsAndConditions />}
           />
         </Routes>
+        <Footer />
       </UserProvider>{' '}
     </Router>
   );
