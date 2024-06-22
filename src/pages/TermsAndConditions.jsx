@@ -1,8 +1,11 @@
 const TermsAndConditions = () => {
   return (
     <div className='container'>
-      <h3 className=''>Responsable</h3>
-      <p>
+
+      <h1 className='text-4xl font-bold my-8 text-center'>Términos y condiciones</h1>
+      
+      <h3 className='text-2xl font-semibold my-4'>Responsable</h3>
+      <p className='text-lg leading-relaxed my-4'>
         -Denominaci&oacute;n Social : Bienesdar.org
         <br /> -CIF / NIF : G99525594
         <br />
@@ -12,8 +15,9 @@ const TermsAndConditions = () => {
           Alvaro Serra
         </a>
       </p>
-      <h3>Contacto</h3>
-      <p>
+      
+      <h3 className='text-2xl font-semibold my-4'>Contacto</h3>
+      <p className='text-lg leading-relaxed my-4'>
         &nbsp;-Email: [email protected]
         <br />
         -Formulario de contacto online:&nbsp;https://eduplat.org/contact/
@@ -28,12 +32,13 @@ const TermsAndConditions = () => {
         </a>
         &nbsp;Instagram
       </p>
-      <h3>Registros:</h3>
-      <p>
+      
+      <h3 className='text-2xl font-semibold my-4'>Registros</h3>
+      <p className='text-lg leading-relaxed my-4'>
         -Registro: registro nacional de asociaciones (Ministerio del Interior)
         el 25/04/2018 en el GRUPO 1, SECCI&Oacute;N 1, N&ordm; 615536.
-      </p>
-      <p>
+      {/* </p>
+      <p className=''> */}
         - Registro EU: Registrada en la
         <a href='https://www.google.com/url?q=https://webgate.ec.europa.eu/&amp;sa=D&amp;source=editors&amp;ust=1681918848836133&amp;usg=AOvVaw1l6BuXMQXrL962TwuzXsBd'>
           Comisi&oacute;n Europea
@@ -47,13 +52,15 @@ const TermsAndConditions = () => {
         <br />
         -Nombre de dominio (sitio web):&nbsp;https://Eduplat.com
       </p>
-      <p>
+      <p className='text-lg leading-relaxed my-4 font-semibold'>
         LEA CON DETENIMIENTO NUESTRAS CONDICIONES DE USO
         <br />
         CONSTITUYEN UN ACUERDO LEGAL ENTRE EL USUARIO Y EDUPLAT
+      {/* </p>
+      <p> */}
+        CONSULTE TAMBI&Eacute;N LA POL&Iacute;TICA DE PRIVACIDAD
       </p>
-      <p>CONSULTE TAMBI&Eacute;N LA POL&Iacute;TICA DE PRIVACIDAD</p>
-      <p>
+      <p className='text-lg leading-relaxed my-4'>
         El sitio Web http://eduplat.org, y cualquiera de los subdominios de este
         (cualquiera de ellos referido como &ldquo;Sitio&rdquo;) es propiedad de
         Bienesdar. (&ldquo;Eduplat&rdquo;), que se encarga de su funcionamiento;
@@ -72,7 +79,7 @@ const TermsAndConditions = () => {
         ejemplos que, en ning&uacute;n caso, limitan ni excluyen otros
         supuestos.
       </p>
-      <p>
+      <p className='text-lg leading-relaxed my-4'>
         Eduplat se reserva el derecho de enmendar y modificar estas CDU y de
         alterar o cambiar en todo o en parte el Sitio en cualquier momento y
         ocasionalmente, cambios que ser&aacute;n efectivos, en cada caso, cuando
@@ -80,7 +87,7 @@ const TermsAndConditions = () => {
         CDU con frecuencia para estar al tanto de las CDU que se aplican en su
         caso..
       </p>
-      <p>
+      <p className='text-lg leading-relaxed my-4'>
         Se le otorga un derecho y una licencia intransferibles, limitados y no
         exclusivos de acceder, usar y mostrar privadamente el Sitio
         exclusivamente para su uso personal, siempre sujeto al cumplimiento de
@@ -100,7 +107,7 @@ const TermsAndConditions = () => {
         &ldquo;texto oculto&rdquo; con el nombre o las marcas comerciales de
         Eduplat sin su consentimiento expreso y por escrito.
       </p>
-      <p>
+      <p className='text-lg leading-relaxed my-4'> 
         Como condici&oacute;n para usar este Sitio, manifiesta y garantiza que
         no usar&aacute; el Sitio para fines il&iacute;citos o prohibidos por
         estas CDU. Si vulnera cualquiera de estas CDU, se cancelar&aacute;
@@ -108,7 +115,7 @@ const TermsAndConditions = () => {
         usar este Sitio y podr&iacute;a ser objeto de sanciones civiles y
         penales.
       </p>
-      <p>
+      <p className='text-lg leading-relaxed my-4'>
         Contenido y Software.&nbsp;Tanto el Sitio como todo lo que se muestra o
         se pone a su disposici&oacute;n en relaci&oacute;n con el Sitio es
         propiedad de Eduplat, sus subsidiarias, filiales, distribuidores,
@@ -133,7 +140,7 @@ const TermsAndConditions = () => {
         incluye tambi&eacute;n todos los derechos de propiedad intelectual y de
         &iacute;ndole similar aplicables al Contenido.
       </p>
-      <p>
+      <p className='text-lg leading-relaxed my-4'>
         S&oacute;lo podr&aacute; usar el contenido seg&uacute;n las directrices
         incluidas en estas CDU, en cualquier licencia de usuario final aplicable
         al Software o de cualquier otro modo al que hayamos accedido por
@@ -148,7 +155,7 @@ const TermsAndConditions = () => {
         sublicencias respecto a &eacute;l. Si infringe estas CDU, puede incurrir
         en responsabilidad civil y ser objeto de sanciones civiles y penales.
       </p>
-      <p>
+      <p className='text-lg leading-relaxed my-4'>
         Si obtiene Software de Eduplat (a trav&eacute;s de este Sitio, en un
         establecimiento de venta minorista o de cualquier otro modo),Eduplat le
         otorga una licencia con arreglo a las condiciones del contrato de
@@ -177,7 +184,7 @@ const TermsAndConditions = () => {
         estas CDU, el contrato de licencia aplicable o en cualquier otro escrito
         realizado expresamente por Eduplat.
       </p>
-      <p>
+      <p className='text-lg leading-relaxed my-4'>
         Sin limitaci&oacute;n, todas las marcas comerciales, marcas de servicio,
         nombres, marcas, logotipos e identificaci&oacute;n distintiva, incluidas
         Eduplat, La Cinetera, Talentorama, Aula Eduplat, son propiedad de
@@ -185,7 +192,7 @@ const TermsAndConditions = () => {
         propietarios de contenido o anunciantes, y no tiene ning&uacute;n
         derecho en absoluto a utilizarlas para ning&uacute;n fin.
       </p>
-      <p>
+      <p className='text-lg leading-relaxed my-4'>
         Productos y compras. Aunque Eduplat trata de que las descripciones de
         los productos en su Sitio se ajusten a la realidad tanto como sea
         posible, Eduplat no garantiza que las descripciones de los productos o
@@ -198,13 +205,13 @@ const TermsAndConditions = () => {
         devolver el producto sin usar y obtener el reembolso completo del precio
         de la compra.
       </p>
-      <p>
+      <h3 className='text-2xl font-semibold my-4'>
         Pol&iacute;tica de privacidad.{' '}
         <a href='https://www.google.com/url?q=https://whitehat-school.com/privacy-policy&amp;sa=D&amp;source=editors&amp;ust=1681918848838012&amp;usg=AOvVaw0YpZSSUVn3CBRgyc1JbUz1'>
           NUEVA ADAPTACI&Oacute;N A LA GDPR
         </a>
-      </p>
-      <p>
+      </h3>
+      <p className='text-lg leading-relaxed my-4'>
         Env&iacute;os no solicitados. No nos env&iacute;e ninguna idea creativa
         original, sugerencia, contenido ni material con la intenci&oacute;n de
         que lo miremos o evaluemos para nuestro uso ni el de terceros.
@@ -220,7 +227,7 @@ const TermsAndConditions = () => {
         &iacute;ndole similar a la persona que env&iacute;o el material ni a
         ninguna otra.
       </p>
-      <p>
+      <p className='text-lg leading-relaxed my-4'>
         Renuncia de garant&iacute;as. EDUPLAT NO GARANTIZA QUE EL USO DEL SITIO
         PUEDA REALIZARSE SIN INTERRUPCIONES NI ERRORES, NI QUE EL SITIO
         FUNCIONAR&Aacute; DE UN MODO EN PARTICULAR, NI QUE EL SITIO O EL
@@ -234,7 +241,7 @@ const TermsAndConditions = () => {
         COMERCIABILIDAD, ADECUACI&Oacute;N PARA UN FIN O CARGO PARTICULAR Y NO
         INFRACCI&Oacute;N DE DERECHOS DE PROPIEDAD.
       </p>
-      <p>
+      <p className='text-lg leading-relaxed my-4'>
         NO SE RECOMIENDA QUE PASE A DEPENDER DE NING&Uacute;N CONTENIDO DEL
         SITIO, NI DE LAS COMUNICACIONES CON EL SITIO, YA SEAN ENTRANTES O
         SALIENTES, Y Eduplat NO GARANTIZA QUE EL CONTENIDO, LAS FUNCIONES O
@@ -244,7 +251,7 @@ const TermsAndConditions = () => {
         NING&Uacute;N COSTE O DA&Ntilde;O QUE PUEDA SURGIR DIRECTA O
         INDIRECTAMENTE DEL USO QUE REALICE DEL SITIO O DEL CONTENIDO.
       </p>
-      <p>
+      <p className='text-lg leading-relaxed my-4'>
         BIENESDAR, SU MATRIZ EDUPLAT, SUBSIDIARIAS, FILIALES, DISTRIBUTORES Y
         OTORGANTES DE LICENCIA RENUNCIAN A TODA RESPONSABILIDAD ANTE CUALQUIER
         DA&Ntilde;O DIRECTO, INDIRECTO, FORTUITO, DERIVADO, ESPECIAL, EJEMPLAR,
@@ -255,7 +262,7 @@ const TermsAndConditions = () => {
         RECLAMACI&Oacute;N E INCLUSO SI SE LE HA NOTIFICADO DE LA POSIBILIDAD DE
         DICHOS DA&Ntilde;OS.
       </p>
-      <p>
+      <p className='text-lg leading-relaxed my-4'>
         COMO &Uacute;NICA REPARACI&Oacute;N EN CASO DE INSATISFACCI&Oacute;N,
         PUEDE DEJAR DE USAR EL SITIO, EL CONTENIDO, LOS PRODUCTOS Y SERVICIOS
         IMPLICADOS.
@@ -265,7 +272,7 @@ const TermsAndConditions = () => {
         LIMITACIONES PUEDEN NO APLICARSE A SU PERSONA; SI ES EL CASO
         CONTAR&Aacute; CON M&Aacute;S DERECHOS.
       </p>
-      <p>
+      <p className='text-lg leading-relaxed my-4'>
         Rescisi&oacute;n. Eduplat se reserva el derecho a cancelar el acceso a
         este Sitio y a cualquier contenido, en todo o en parte, con o sin motivo
         para ello y con o sin que medie aviso previo en cualquier momento. No
@@ -273,17 +280,21 @@ const TermsAndConditions = () => {
         un a&ntilde;o de la fecha en que apareci&oacute; por primera vez la
         causa de acci&oacute;n.
       </p>
-      <p>
+      <p className='text-lg leading-relaxed font-semibold'>
         Aviso de copyright
-        <br />
+      </p>
+      <p className='text-lg leading-relaxed'>
         &nbsp;Si considera que cualquier contenido infringe sus derechos de
         copyright o los de otra persona, siga los procedimientos e instrucciones
         que indicamos en nuestra secci&oacute;n de avisos y procedimientos para
         interponer reclamaciones por infracci&oacute;n de copyright con objeto
         de notificarlo a nuestro agente de copyright.
       </p>
-      <p>
-        Acuerdo total. Estas CDU, incluida la pol&iacute;tica de privacidad,
+      <p className='text-lg leading-relaxed font-semibold mt-4'>
+        Acuerdo total. 
+      </p>
+      <p className='text-lg leading-relaxed'>
+        Estas CDU, incluida la pol&iacute;tica de privacidad,
         constituyen el acuerdo total entre el usuario y Eduplat en
         relaci&oacute;n con el contenido, con prioridad sobre cualquier
         interpretaci&oacute;n anterior, contradictoria o de otra &iacute;ndole
@@ -292,23 +303,26 @@ const TermsAndConditions = () => {
         enmiendas o modificaciones a las CDU, ya sea por l&iacute;nea de
         comportamiento o de cualquier otro modo.
       </p>
-      <h2>Condiciones de Uso</h2>
-      <p>
+
+      <h3 className='text-2xl font-semibold my-4'>Condiciones de Uso</h3>
+      <p className='text-lg leading-relaxed my-4'>
         Este Sitio Web contiene textos elaborados con fines meramente
         informativos o divulgativos, que pueden no reflejar el estado actual de
         la legislaci&oacute;n o la jurisprudencia, y que se refieren a
         situaciones generales, por lo que su contenido no debe ser aplicado
         necesariamente por el usuario a casos concretos.
       </p>
-      <p>
+      <p className='text-lg leading-relaxed my-4'>
         En esta web se detallan los servicios ofrecidos por
         &ldquo;Eduplat&rdquo;. Su uso implica la aceptaci&oacute;n de las
         siguientes condiciones, declinando realizar cualquier reclamaci&oacute;n
         sobre las mismas:
       </p>
+
       <ol
         start='1'
-        className='ml-2'>
+        // className='ml-2'>
+        className='text-lg leading-relaxed my-4'>
         <li>
           a) El uso de esta web est&aacute; dirigido a personas mayores de edad.
         </li>
@@ -405,7 +419,8 @@ const TermsAndConditions = () => {
           previamente al correspondiente asesoramiento profesional.
         </li>
       </ol>
-      <p>
+
+      <p className='text-lg leading-relaxed my-4 mb-12'>
         En definitiva, el usuario es el &uacute;nico responsable del uso que
         realice de los servicios, contenidos y enlaces incluidos esta web. Estas
         CDU se modificaron por &uacute;ltima vez e 27 de Diciembre de 2018 y
