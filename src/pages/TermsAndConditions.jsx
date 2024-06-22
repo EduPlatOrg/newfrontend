@@ -1,6 +1,8 @@
 const TermsAndConditions = () => {
   return (
     <div className='container'>
+
+      <h1 className='text-4xl font-bold my-8 text-center'>Términos y condiciones</h1>
       
       <h3 className='text-2xl font-semibold my-4'>Responsable</h3>
       <p className='text-lg leading-relaxed my-4'>

@@ -17,6 +17,7 @@ import AdminUserManagment from './components/admin/AdminUserManagment';
 import AdminManageResources from './components/admin/AdminManageResources';
 import AdminManageEvents from './components/admin/AdminManageEvents';
 
+
 function App() {
   return (
     <Router>
@@ -80,6 +81,7 @@ function App() {
           </Routes>
         </body>
         <Footer />
+
       </UserProvider>{' '}
     </Router>
   );
