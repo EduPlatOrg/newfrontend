@@ -17,14 +17,14 @@ const EditPassword = ({ isOpen, onClose }) => {
     formState: { errors },
     watch,
   } = useForm();
-  const { errors: formsErrors, user, resetPassword } = useUser();
+  const { errors: formsErrors, editPassword } = useUser();
 
   const password = watch('password');
 
   const onSubmit = handleSubmit(async (data) => {
-    console.log(data, user?.id);
+    console.log(data);
     try {
-      const response = await resetPassword(password, user?.id);
+      const response = await editPassword(data.password);
       console.log(response, 'response');
       if (response.status !== 200) {
         toast.error('Error al cambiar la contraseña');
