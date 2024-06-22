@@ -17,7 +17,6 @@ import AdminUserManagment from './components/admin/AdminUserManagment';
 import AdminManageResources from './components/admin/AdminManageResources';
 import AdminManageEvents from './components/admin/AdminManageEvents';
 
-
 function App() {
   return (
     <Router>
@@ -28,7 +27,7 @@ function App() {
           position='bottom-right'
           richColors
         />
-        <body className='min-h-[calc(100vh-220px)]'>
+        <section className='min-h-[calc(100vh-220px)]'>
           <Routes>
             <Route
               path='/'
@@ -79,9 +78,8 @@ function App() {
               />
             </Route>
           </Routes>
-        </body>
+        </section>
         <Footer />
-
       </UserProvider>{' '}
     </Router>
   );

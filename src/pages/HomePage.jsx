@@ -7,16 +7,13 @@ import { useEffect } from 'react';
 
 const HomePage = () => {
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('fadeIn');
-          }
-        });
-      },
-      { threshold: 0.5 } // Ajusta este valor según necesites que la animación se dispare antes o después de que el elemento esté en el viewport.
-    );
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('fadeIn');
+        }
+      });
+    });
 
     const animatedElements = document.querySelectorAll('.animate-on-scroll');
     animatedElements.forEach((el) => observer.observe(el));
@@ -52,7 +49,7 @@ const HomePage = () => {
             alt=''
           />
         </div>
-        <p className='relative top-0 right-0 p-10 mt-28 text-center text-2xl md:text-4xl lg:text-5xl animate-on-scroll'>
+        <p className='relative top-0 right-0 p-10 mt-28 text-center text-2xl md:text-2xl lg:text-4xl animate-on-scroll w-full'>
           Invitamos a profesores 👩🏻‍🏫👨🏻‍🏫🎓 a compartir 📚Recursos educativos y
           prácticas.
         </p>
@@ -69,7 +66,7 @@ const HomePage = () => {
             alt=''
           />
         </div>
-        <div className=' relative top-0 right-0 p-10 mt-28 text-center text-2xl md:text-4xl lg:text-5xl'>
+        <div className=' relative top-0 right-0 p-10 mt-28 text-center text-2xl md:text-2xl lg:text-4xl w-full'>
           <p className='h-fit animate-on-scroll'>
             Aprende, colabora, comparte y enseña
           </p>

@@ -24,11 +24,11 @@ const AdminPanelPage = () => {
         }}>
         <SideNavDashboard />
       </div>
-      <main
+      <section
         className='flex items-start w-full justify-center overflow-auto ml-[50px] md:ml-[80px]'
         style={{}}>
         <Outlet />
-      </main>
+      </section>
     </div>
   );
 };

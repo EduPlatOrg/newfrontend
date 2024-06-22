@@ -8,7 +8,9 @@ import { getBrowserLocales } from './utils/locales';
 
 var lang = getBrowserLocales();
 console.log('LENGUAJE NAVEGADOR DETECTADO:', lang);
-
+const root = ReactDOM.createRoot(document.getElementById('root')).render(
+  <App />
+);
 if (!i18next.isInitialized) {
   i18next
     .init({
@@ -35,7 +37,3 @@ if (!i18next.isInitialized) {
     i18next.changeLanguage(lang);
   }
 }
-
-const root = ReactDOM.createRoot(document.getElementById('root')).render(
-  <App />
-);
