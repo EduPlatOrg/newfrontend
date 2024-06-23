@@ -54,7 +54,7 @@ const HomePage = () => {
           prácticas.
         </p>
       </div>
-      <div className=' mt-6 '>
+      <div className=' mt-6 p-10 '>
         <ConectButtons />
       </div>
 

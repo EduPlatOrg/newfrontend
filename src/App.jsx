@@ -44,7 +44,7 @@ function App() {
               element={<ComoColaborar />}
             />
             <Route
-              path='recursos-educativos'
+              path='/recursos-educativos'
               element={<RecursosEducativos />}
             />
             <Route

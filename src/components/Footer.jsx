@@ -11,7 +11,6 @@ import { Link } from 'react-router-dom';
 const Footer = () => {
   return (
     <div className='flex flex-col items-center'>
-
       <div className='flex m-auto min-h-[150px] bg-[#6366F1] px-4 justify-center'>
         <div className='flex-1 my-4 text-xl flex justify-center items-center px-20'>
           <Link to='/'>
@@ -81,7 +80,7 @@ const Footer = () => {
           <h3 className='text-center my-4 text-xl text-bold'>Recursos</h3>
           <hr className='w-1/2 mx-auto h-0.5 bg-white'></hr>
           <Link
-            to='/terms-and-conditions'
+            to='/recursos-educativos'
             className='my-1 text-lg block text-center hover:text-[#EEEDF0]'>
             Plataforma educativa.
           </Link>
@@ -110,11 +109,10 @@ const Footer = () => {
         </div>
       </div>
 
-      <div className='w-full text-center py-4 text-white bg-[#262626]'
-       >
-        BienesDar.org © {new Date().getFullYear()}. Todos los derechos reservados.
+      <div className='w-full text-center py-4 text-white bg-[#262626]'>
+        BienesDar.org © {new Date().getFullYear()}. Todos los derechos
+        reservados.
       </div>
-      
     </div>
   );
 };
