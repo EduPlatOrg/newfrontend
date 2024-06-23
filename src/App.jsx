@@ -17,6 +17,8 @@ import AdminUserManagment from './components/admin/AdminUserManagment';
 import AdminManageResources from './components/admin/AdminManageResources';
 import AdminManageEvents from './components/admin/AdminManageEvents';
 
+import { RecursosEducativos } from './pages/RecursosEducativos';
+
 function App() {
   return (
     <Router>
@@ -40,6 +42,10 @@ function App() {
             <Route
               path='/como-colaborar'
               element={<ComoColaborar />}
+            />
+            <Route
+              path='recursos-educativos'
+              element={<RecursosEducativos />}
             />
             <Route
               path='/verify/:token'
