@@ -40,7 +40,7 @@ const Navbar = () => {
           </Link>
         </div>
         <div className='flex flex-col items-center justify-center gap-3 z-20'>
-          <div className='flex items-center justify-end gap-3 w-full'>
+          <div className='flex items-center justify-end gap-3 w-full mr-8'>
             {!isAuthenticated ? (
               <>
                 <button onClick={() => onOpen('login-form')}>
@@ -266,7 +266,7 @@ const Navbar = () => {
             {isAuthenticated && (
               <>
                 <Link
-                  to='/'
+                  to='/profile-panel'
                   className='text-gray-200 block px-3 py-2 rounded-md text-base
                   font-medium'
                   onClick={() => setIsOpen(!isOpen)}>

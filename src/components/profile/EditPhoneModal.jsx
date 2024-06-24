@@ -5,7 +5,7 @@ import { Modal } from '../Modal';
 import { toast } from 'sonner';
 import { useUser } from '../../context/UserContext';
 
-const EditPhoneModal = ({ isOpen, onClose }) => {
+const EditPhoneModal = ({ isOpen, onClose, phone }) => {
   const {
     register,
     handleSubmit,

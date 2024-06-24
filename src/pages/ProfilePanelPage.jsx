@@ -13,7 +13,7 @@ const ProfilePanelPage = () => {
     }
   }, [user]);
   return (
-    <div className='flex overflow-hidden'>
+    <div className='flex overflow-hidden min-w-[100vw]'>
       <div
         style={{
           position: 'fixed ',
@@ -23,7 +23,7 @@ const ProfilePanelPage = () => {
         <SideNavDashbordUser />
       </div>
       <section
-        className='flex items-start w-full justify-center overflow-auto ml-[50px] md:ml-[80px]'
+        className='flex items-start w-full justify-center overflow-auto ml-[50px] md:ml-[80px] '
         style={{}}>
         <Outlet />
       </section>
