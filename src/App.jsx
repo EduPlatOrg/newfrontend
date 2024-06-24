@@ -18,6 +18,7 @@ import AdminManageResources from './components/admin/AdminManageResources';
 import AdminManageEvents from './components/admin/AdminManageEvents';
 
 import { RecursosEducativos } from './pages/RecursosEducativos';
+import { FAQ } from './pages/FAQ';
 
 function App() {
   return (
@@ -46,6 +47,10 @@ function App() {
             <Route
               path='/recursos-educativos'
               element={<RecursosEducativos />}
+            />
+            <Route
+              path='/faq'
+              element={<FAQ />}
             />
             <Route
               path='/verify/:token'
