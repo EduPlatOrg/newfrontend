@@ -38,7 +38,7 @@ const EditPhoneModal = ({ isOpen, onClose, phone }) => {
     ];
 
     try {
-      const response = await editUserById(user?._id, newPhoneData);
+      const response = await editUserById(user?._id, { phones: newPhoneData });
       console.log(response, 'response');
       if (response.status !== 200) {
         toast.error('Error al cambiar la Telefono');

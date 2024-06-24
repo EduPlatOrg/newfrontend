@@ -22,4 +22,4 @@ export const editPasswordRequest = (password) =>
   axios.patch(`/user/resetPassword`, { password });
 
 export const editUserByIdRequest = (id, data) =>
-  axios.patch(`/users/edit-user/${id}`, data);
+  axios.patch(`/user/edit-user/${id}`, data);
