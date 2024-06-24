@@ -7,7 +7,7 @@ import { LiaCloudUploadAltSolid } from 'react-icons/lia';
 import { Loader2 } from 'lucide-react';
 import { uploadFile } from '../../api/services';
 
-const EditPhoneModal = ({ isOpen, onClose }) => {
+const EditPictureModal = ({ isOpen, onClose }) => {
   const { user, setUser, editUserById } = useUser();
   const [loading, setLoading] = useState(false);
   console.log(user, 'user');
@@ -26,7 +26,8 @@ const EditPhoneModal = ({ isOpen, onClose }) => {
     setLoading(false);
   };
 
-  const onSubmit = async () => {
+  const onSubmit = async (e) => {
+    e.preventDefault();
     setLoading(true);
     try {
       const response = await editUserById(user?._id, {
@@ -128,4 +129,4 @@ const EditPhoneModal = ({ isOpen, onClose }) => {
   );
 };
 
-export default EditPhoneModal;
+export default EditPictureModal;
