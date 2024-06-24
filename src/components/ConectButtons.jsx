@@ -8,21 +8,24 @@ const ConectButtons = () => {
         to='/'
         className='bg-red-400 py-4 px-6 
         rounded-full text-white min-w-[273px]
-        flex items-center justify-center hover:bg-blue-500 transition-all duration-200 cursor-pointer gap-2 text-xs whitespace-nowrap md:text-lg md:min-w-[352px]'>
+        flex items-center justify-center hover:bg-blue-500 transition-all duration-200 
+        cursor-pointer gap-2 text-xs whitespace-nowrap md:text-lg md:min-w-[352px]'>
         <FaFolder size={20} /> Plataforma de Recursos Educativos
       </Link>
       <Link
         to='/'
         className='bg-[#FE9A00] py-4 
         px-6 rounded-full text-white min-w-[273px] 
-        flex items-center justify-center hover:bg-blue-500 transition-all duration-200 cursor-pointer gap-2 text-xs md:text-lg md:min-w-[352px]'>
+        flex items-center justify-center hover:bg-blue-500 transition-all duration-200 
+        cursor-pointer gap-2 text-xs md:text-lg md:min-w-[352px]'>
         <FaFolderOpen size={20} /> Feria de Recursos Educativos
       </Link>
       <Link
         to='/como-colaborar'
         className='bg-blue-500 hover:bg-gray-400 
         py-4 px-6 rounded-full text-white min-w-[273px] 
-        flex items-center justify-center whitespace-nowrap transition-all duration-200 cursor-pointer gap-2 text-xs md:text-lg md:min-w-[352px]'>
+        flex items-center justify-center whitespace-nowrap transition-all duration-200 
+        cursor-pointer gap-2 text-xs md:text-lg md:min-w-[352px]'>
         <FaFolderPlus size={20} />
         Como Colaborar
       </Link>
