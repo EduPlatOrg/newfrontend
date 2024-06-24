@@ -6,7 +6,10 @@ export const uploadFile = async (file) => {
   formData.append('file', file);
   formData.append('upload_preset', 'ml_default');
   try {
-    const response = await axios.post(import.meta.env.VITE_COUDINARY, formData);
+    const response = await axios.post(
+      'https://api.cloudinary.com/v1_1/dk2uakyub/auto/upload',
+      formData
+    );
     //devuelve toda la data del archivo.
     const uploadedData = response.data;
     return uploadedData;

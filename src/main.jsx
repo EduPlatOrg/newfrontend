@@ -4,6 +4,7 @@ import App from './App.jsx';
 import './index.css';
 import './i18n';
 import i18next from 'i18next';
+
 import { getBrowserLocales } from './utils/locales';
 
 var lang = getBrowserLocales();

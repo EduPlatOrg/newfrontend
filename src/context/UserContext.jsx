@@ -11,6 +11,7 @@ import {
   getAllUsersRequest,
   resetPasswordRequest,
   editPasswordRequest,
+  editUserByIdRequest,
 } from '../api/user';
 
 import { useNavigate } from 'react-router-dom';
@@ -141,6 +142,17 @@ export const UserProvider = ({ children }) => {
       setUserError([error.response.data]);
     }
   };
+
+  const editUserById = async (id, data) => {
+    try {
+      const response = await editUserByIdRequest(id, data);
+      console.log(response.data, 'response .data del editCurrentUser');
+      return response;
+    } catch (error) {
+      console.log(error.response.data);
+      setUserError([error.response.data]);
+    }
+  };
   return (
     <UserContext.Provider
       value={{
@@ -160,6 +172,7 @@ export const UserProvider = ({ children }) => {
         setSelectedUser,
         editPassword,
         resetPassword,
+        editUserById,
 
         // <-- van todas las funciones del los grupos para exportarlas
       }}>
