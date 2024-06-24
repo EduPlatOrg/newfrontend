@@ -151,21 +151,39 @@ const MyProfileDashboard = () => {
                         </dd>
                       </>
                     ) : (
-                      user?.phones.map((phone, index) => (
-                        <div
-                          key={index}
-                          className='flex items-center gap-4'>
+                      <div className=''>
+                        {user?.phones.map((phone, index) => (
+                          <div
+                            key={index}
+                            className='flex items-center gap-4'>
+                            <dd className='mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2'>
+                              {phone.phoneDescription}:{phone.phoneNumber}
+                            </dd>
+                            <dd className='mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2'>
+                              <CiEdit
+                                size={20}
+                                onClick={() => handleEditPhone(phone)}
+                              />
+                            </dd>
+                          </div>
+                        ))}
+                        <div className='flex items-center justify-start gap-2 '>
                           <dd className='mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2'>
-                            {phone.phoneDescription}:{phone.phoneNumber}
+                            Agrega un Telefono
                           </dd>
                           <dd className='mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2'>
                             <CiEdit
                               size={20}
-                              onClick={() => handleEditPhone(phone)}
+                              onClick={() =>
+                                handleEditPhone({
+                                  phoneNumber: '',
+                                  phoneDescription: '',
+                                })
+                              }
                             />
                           </dd>
                         </div>
-                      ))
+                      </div>
                     )}
                   </div>
                 </div>

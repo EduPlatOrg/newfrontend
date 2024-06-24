@@ -30,12 +30,15 @@ const EditPhoneModal = ({ isOpen, onClose, phone }) => {
     const newFilteredPhoneData = user?.phones.filter((phone) => {
       return phone.phoneNumber !== phoneToEdit.phoneNumber;
     });
+    console.log(newFilteredPhoneData, 'newFilteredPhoneData');
     const newPhoneData = [
+      ...newFilteredPhoneData,
       {
-        ...newFilteredPhoneData,
-        ...data,
+        phoneNumber: data.phoneNumber,
+        phoneDescription: data.phoneDescription,
       },
     ];
+    console.log(newPhoneData, 'newPhoneData');
 
     try {
       const response = await editUserById(user?._id, { phones: newPhoneData });
