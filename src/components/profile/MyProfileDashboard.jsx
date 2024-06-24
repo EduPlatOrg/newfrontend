@@ -45,7 +45,10 @@ const MyProfileDashboard = () => {
         toast.error('Error al cambiar la visibilidad');
         return;
       }
-      setUser(...user, { publicData: newPublicData });
+      setUser((currentUser) => ({
+        ...currentUser,
+        publicData: newPublicData,
+      }));
       toast.success('Visibilidad cambiada con éxito');
     } catch (error) {
       console.log(error);
@@ -129,41 +132,41 @@ const MyProfileDashboard = () => {
                     Teléfonos
                   </dt>
                   <div className='flex items-center gap-4'>
-                    {user?.phone === '' ||
-                      (!user?.phone ? (
-                        <>
+                    {user?.phones?.length === 1 &&
+                    user.phones[0].phoneNumber === '' ? (
+                      <>
+                        <dd className='mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2'>
+                          Agrega un Telefono
+                        </dd>
+                        <dd className='mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2'>
+                          <CiEdit
+                            size={20}
+                            onClick={() =>
+                              handleEditPhone({
+                                phoneNumber: '',
+                                phoneDescription: '',
+                              })
+                            }
+                          />
+                        </dd>
+                      </>
+                    ) : (
+                      user?.phones.map((phone, index) => (
+                        <div
+                          key={index}
+                          className='flex items-center gap-4'>
                           <dd className='mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2'>
-                            Agrega un Telefono
+                            {phone.phoneDescription}:{phone.phoneNumber}
                           </dd>
                           <dd className='mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2'>
                             <CiEdit
                               size={20}
-                              onClick={() =>
-                                handleEditPhone({
-                                  phoneNumber: '',
-                                  phoneDescription: '',
-                                })
-                              }
+                              onClick={() => handleEditPhone(phone)}
                             />
                           </dd>
-                        </>
-                      ) : (
-                        user?.phones.map((phone, index) => (
-                          <div
-                            key={index}
-                            className='flex items-center gap-4'>
-                            <dd className='mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2'>
-                              {phone.phoneDescription}:{phone.phoneNumber}
-                            </dd>
-                            <dd className='mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2'>
-                              <CiEdit
-                                size={20}
-                                onClick={() => handleEditPhone(phone)}
-                              />
-                            </dd>
-                          </div>
-                        ))
-                      ))}
+                        </div>
+                      ))
+                    )}
                   </div>
                 </div>
                 <div className='bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6'>
