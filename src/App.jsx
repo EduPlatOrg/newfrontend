@@ -18,6 +18,7 @@ import AdminManageResources from './components/admin/AdminManageResources';
 import AdminManageEvents from './components/admin/AdminManageEvents';
 
 import { RecursosEducativos } from './pages/RecursosEducativos';
+import Colaboradores from './pages/Colaboradores';
 
 function App() {
   return (
@@ -43,6 +44,10 @@ function App() {
               path='/como-colaborar'
               element={<ComoColaborar />}
             />
+            <Route
+            path='/colaboradores'
+            element={<Colaboradores />}
+          />
             <Route
               path='/recursos-educativos'
               element={<RecursosEducativos />}
