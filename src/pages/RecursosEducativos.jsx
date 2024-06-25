@@ -4,15 +4,13 @@ import { FaTriangleExclamation } from 'react-icons/fa6';
 export const RecursosEducativos = () => {
   return (
     <div className='flex flex-col items-center w-full'>
-      <div className='flex-1 text-xl flex justify-center items-center p-4'>
-        <Link to='/'>
-          <img
-            src='/cabecerahome.webp' // IMAGEN PROVISIONAL
-            className=''
-            alt='Logo Eduplat'
-          />
-        </Link>
-      </div>
+        <div className='flex-1 text-xl flex justify-center items-center p-4'>
+            <img
+            src='/public/images/recursos-edu.PNG' 
+            className='w-full'
+            alt='FAQ'
+            />
+        </div>
 
       <div className='flex flex-col m-auto min-h-[150px] bg-[#ffffff] px-4 justify-center items-center w-[60%]'>
         <div className='flex-1 text-black my-8'>

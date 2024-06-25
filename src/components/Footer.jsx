@@ -10,15 +10,19 @@ import { Link } from 'react-router-dom';
 
 const Footer = () => {
   return (
-    <div className='flex flex-col items-center'>
+    <div className=''>
+      
       <div className='flex m-auto min-h-[150px] bg-[#6366F1] px-4 justify-center'>
+        
         <div className='flex-1 my-4 text-xl flex justify-center items-center px-20'>
-          <Link to='/'>
-            <img
-              src='/images/LOGO-Eduplat-W.png'
-              className=' w-1/2'
-              alt='Logo Eduplat'
-            />
+        <Link to='/'>
+            <div className='flex-1 items-center justify-center'>
+              <img
+                className=''
+                src='/images/LOGO-Eduplat-W.png'
+                alt='LOGO'
+              />
+            </div>
           </Link>
         </div>
 
@@ -92,7 +96,7 @@ const Footer = () => {
           <Link
             to='/como-colaborar'
             className='my-1 text-lg block text-center hover:text-[#EEEDF0]'>
-            Colabora, participa y difunde.
+            <p>Colabora, participa y difunde.</p>
           </Link>
         </div>
 
