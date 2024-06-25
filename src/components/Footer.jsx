@@ -14,7 +14,7 @@ const Footer = () => {
       
       <div className='flex m-auto min-h-[150px] bg-[#6366F1] px-4 justify-center'>
         
-        <div className='flex-1 my-4 text-xl flex justify-center items-center px-20'>
+        <div className='flex-1 my-4 flex justify-center items-center px-20'>
         <Link to='/'>
             <div className='flex-1 items-center justify-center'>
               <img
