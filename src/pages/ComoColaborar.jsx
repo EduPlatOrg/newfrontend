@@ -77,7 +77,7 @@ const ComoColaborar = () => {
           Ahora es posible entrar en el equipo de colaboradores:
         </p>
         <Link
-          to='/'
+          to='/colaborar-form'
           className='bg-blue-500 hover:bg-gray-400 
           py-4 px-6 rounded-lg text-white w-fit 
           flex justify-center whitespace-nowrap transition-all duration-200 cursor-pointer gap-2 text-xs mt-6 items-start'>

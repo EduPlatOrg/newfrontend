@@ -19,6 +19,7 @@ import AdminManageEvents from './components/admin/AdminManageEvents';
 
 import { RecursosEducativos } from './pages/RecursosEducativos';
 import { FAQ } from './pages/FAQ';
+import QuieroColaborarPage from './pages/QuieroColaborarPage';
 
 function App() {
   return (
@@ -37,6 +38,10 @@ function App() {
               element={<HomePage />}
             />
             <Route
+              path='/colaborar-form'
+              element={<QuieroColaborarPage />}
+            />
+            <Route
               path='/terms-and-conditions'
               element={<TermsAndConditions />}
             />
@@ -52,7 +57,6 @@ function App() {
               path='/faq'
               element={<FAQ />}
             />
-
             <Route
               path='/verify/:token'
               element={<VerifyEmailPage />}
