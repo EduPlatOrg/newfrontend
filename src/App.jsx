@@ -52,6 +52,7 @@ function App() {
               path='/faq'
               element={<FAQ />}
             />
+
             <Route
               path='/verify/:token'
               element={<VerifyEmailPage />}

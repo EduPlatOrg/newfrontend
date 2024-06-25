@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-
+import Acordeon from '../components/Acordion';
+import { FaPlus } from 'react-icons/fa';
 
 export const FAQ = () => {
   return (
@@ -28,9 +29,61 @@ export const FAQ = () => {
             </div>
         </div>
 
-        <div>
-            AQUÍ LISTA DESPLEGABLE DE PREGUNTAS FRECUENTES
-            {/* PREGUNTAS FRECUENTES */}
+        <div className='pl-10 pr-10 w-[90%]'>
+            <div className='w-full bg-gray-100 mb-10'>
+                <Acordeon
+                    className={'flex items-center gap-2 font-bold'}
+                    iconClassName={'text-blue-400'}
+                    titulo={'¿Qué problema concreto intenta resolver #EduPlat? ¿Cómo?'}
+                    Icon={FaPlus}>
+                    <p className='base mb-2 font-bold'>
+                        Limitaciones en el acceso a recursos educativos
+                    </p>
+                    <p className='base mb-2'>
+                        Tiempo limitado. Falta de valoración.
+                        Soluciones:
+                    </p>
+                    <p className='base mb-2 font-bold'>
+                        - A corto plazo:
+                    </p>
+                    <p className='base mb-2'>
+                        Facilitar la búsqueda y difusión de Recusos Educativos a través de las Redes Sociales.
+                    </p>
+                    <p className='base mb-2 font-bold'>
+                        - A medio plazo:
+                    </p>
+                    <p className='base mb-2'>
+                        Posibilitar la búsqueda rápida de recursos asincrónicos específicos entre los muchos recursos educativos disponibles online mediante un directorio y motor de búsqueda entre un repositorio de sugerencias según palabras clave y campos específicos (autor, tipo de recurso, asignaturas, temas, niveles, cursos, duración, etc.).
+                    </p>
+                    <p className='base mb-2'>
+                        - A largo plazo. Facilitar una colaboración entre todos los interesados en el mundo educativo, valorando las aportaciones de todos de forma positiva. Búsqueda de trabajo/RRHH. Congresos, comunicaciones investigaciones, Premios, WikiBooks, MultiProyectos, etc. Facilitar su integración como intranet LMS (Learning Management System) /CMS (Content Management System) para centros educativos de manera gratuita. Auto-correctores, rúbricas y valoraciones alumnado. Posibilitar también desarrollos específicos premium y formación que permitan la sostenibilidad de la plataforma y su expansión. 
+                    </p>
+                </Acordeon>
+            </div>
+
+            <div className='w-full bg-gray-100 mb-10  '>
+                <Acordeon 
+                    className={'flex items-center gap-2 font-bold'}
+                    iconClassName={'text-blue-400'}
+                    titulo={'¿A qué público va dirigido?'}
+                    Icon={FaPlus}>
+                    <p className='base mb-2'>
+                        Estudiantes, familias, escuelas, profesores y otros profesionales de la educación. En #EduPlat podran encontrar recursos, colaborar y ser valorados . Ver más detalle en EduPlat.org/usuarios
+                    </p>
+                </Acordeon>
+            </div>
+            <div className='w-full bg-gray-100 mb-10  '>
+
+                <Acordeon 
+                    className={'flex items-center gap-2 font-bold'}
+                    iconClassName={'text-blue-400'}
+                    titulo={'¿Existen otras soluciones parecidas a #EduPlat?'}
+                    Icon={FaPlus}>
+                    <p className='base mb-2'>
+                        Si, son muy numerosas las plataformas que resuelven algunas de las necesidades, pero no hemos encontrado ninguna que integre a todas.  Hemos hecho un estudio muy extenso sobre ello. Aquí se puede ver un resumen de las conclusiones: eduplat.org/otras.
+                    </p>
+                </Acordeon>
+            </div>
         </div>
 
         <div>
