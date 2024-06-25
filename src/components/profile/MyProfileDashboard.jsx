@@ -14,6 +14,7 @@ import { MdEditLocationAlt } from 'react-icons/md';
 import { MdOutlineAddLocationAlt } from 'react-icons/md';
 import { GoPlus } from 'react-icons/go';
 import { toast } from 'sonner';
+import DeletePhoneModal from './DeletePhoneModal';
 
 const MyProfileDashboard = () => {
   const navigate = useNavigate();
@@ -21,6 +22,7 @@ const MyProfileDashboard = () => {
   const [editPhone, setEditPhone] = useState(false);
   const [editPicture, setEditPicture] = useState(false);
   const [phoneToEdit, setPhoneToEdit] = useState(null);
+  const [deletePhone, setDeletePhone] = useState(false);
 
   const { user, isAuthenticated, setUser, editUserById } = useUser();
 
@@ -55,6 +57,10 @@ const MyProfileDashboard = () => {
       toast.error('Algo salió mal');
     }
   };
+  const handleDeletePhone = async (e) => {
+    e.preventDefault();
+    setDeletePhone(true);
+  };
   return (
     <div className='flex flex-col items-center justify-center gap-2 w-full'>
       {editPassword && (
@@ -67,6 +73,13 @@ const MyProfileDashboard = () => {
         <EditPhoneModal
           isOpen={editPhone}
           onClose={() => setEditPhone(false)}
+          phone={phoneToEdit}
+        />
+      )}
+      {deletePhone && (
+        <DeletePhoneModal
+          isOpen={deletePhone}
+          onClose={() => setDeletePhone(false)}
           phone={phoneToEdit}
         />
       )}
@@ -163,6 +176,15 @@ const MyProfileDashboard = () => {
                               <CiEdit
                                 size={20}
                                 onClick={() => handleEditPhone(phone)}
+                              />
+                            </dd>
+                            <dd className='mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2'>
+                              <RxCross1
+                                size={20}
+                                onClick={(e) => {
+                                  setPhoneToEdit(phone);
+                                  handleDeletePhone(e);
+                                }}
                               />
                             </dd>
                           </div>
