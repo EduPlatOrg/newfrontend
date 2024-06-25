@@ -26,14 +26,14 @@ const Footer = () => {
           </Link>
         </div>
 
-        <div className='flex-1 text-white my-4'>
-          <h3 className='text-center my-4 text-xl text-bold'>Síguenos</h3>
+        <div className='flex-1 text-white my-4 mx-4'>
+          <h3 className='text-center my-4 text-xs sm:text-lg md:text-xl'>Síguenos</h3>
           <hr className='w-1/2 mx-auto h-0.5 bg-white my-4 '></hr>
           <div className='social-icons flex space-x-2 justify-center'>
             <a
               href='https://www.facebook.com/EduPlat.org/'
               aria-label='Facebook'
-              className='text-white hover:text-[#EEEDF0]'
+              className='text-white hover:text-[#EEEDF0] text-xs sm:text-lg md:text-xl'
               target='_blank'>
               <FontAwesomeIcon
                 icon={faFacebook}
@@ -43,14 +43,14 @@ const Footer = () => {
             <a
               href='https://x.com/eduplat_es/'
               aria-label='Twitter'
-              className='text-white hover:text-[#EEEDF0]'
+              className='text-white hover:text-[#EEEDF0] text-xs sm:text-lg md:text-xl'
               target='_blank'>
               <FaSquareXTwitter size={32} />
             </a>
             <a
               href='https://www.instagram.com/eduplat_org/'
               aria-label='Instagram'
-              className='text-white hover:text-[#EEEDF0]'
+              className='text-white hover:text-[#EEEDF0] text-xs sm:text-lg md:text-xl'
               target='_blank'>
               <FontAwesomeIcon
                 icon={faInstagram}
@@ -60,7 +60,7 @@ const Footer = () => {
             <a
               href='https://www.whatsapp.com/'
               aria-label='WhatsApp'
-              className='text-white hover:text-[#EEEDF0]'
+              className='text-white hover:text-[#EEEDF0] text-xs sm:text-lg md:text-xl'
               target='_blank'>
               <FontAwesomeIcon
                 icon={faWhatsapp}
@@ -70,7 +70,7 @@ const Footer = () => {
             <a
               href='https://www.linkedin.com/company/eduplat/'
               aria-label='LinkedIn'
-              className='text-white hover:text-[#EEEDF0]'
+              className='text-white hover:text-[#EEEDF0] text-xs sm:text-lg md:text-xl'
               target='_blank'>
               <FontAwesomeIcon
                 icon={faLinkedin}
@@ -80,34 +80,34 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className='flex-1 text-white mt-4 mb-8'>
-          <h3 className='text-center my-4 text-xl text-bold'>Recursos</h3>
+        <div className='flex-1 text-white mt-4 mb-8 mx-4'>
+          <h3 className='text-center my-4 text-xs sm:text-lg md:text-xl'>Recursos</h3>
           <hr className='w-1/2 mx-auto h-0.5 bg-white'></hr>
           <Link
             to='/recursos-educativos'
-            className='my-1 text-lg block text-center hover:text-[#EEEDF0]'>
+            className='my-1 block text-center hover:text-[#EEEDF0 text-xs sm:text-lg md:text-xl'>
             Plataforma educativa.
           </Link>
           <Link
             to='/terms-and-conditions'
-            className='my-1 text-lg block text-center hover:text-[#EEEDF0]'>
+            className='my-1 block text-center hover:text-[#EEEDF0] text-xs sm:text-lg md:text-xl'>
             Ferias y otros eventos.
           </Link>
           <Link
             to='/como-colaborar'
-            className='my-1 text-lg block text-center hover:text-[#EEEDF0]'>
+            className='my-1 block text-center hover:text-[#EEEDF0] text-xs sm:text-lg md:text-xl'>
             <p>Colabora, participa y difunde.</p>
           </Link>
         </div>
 
-        <div className='flex-1 text-white my-4'>
-          <h3 className='text-center my-4 text-xl text-bold'>
+        <div className='flex-1 text-white my-4 ml-4 mr-8'>
+          <h3 className='text-center my-4 text-xs sm:text-lg md:text-xl'>
             Términos y condiciones
           </h3>
           <hr className='w-1/2 mx-auto h-0.5 bg-white'></hr>
           <Link
             to='/terms-and-conditions'
-            className='my-1 text-lg block text-center hover:text-[#EEEDF0]'>
+            className='my-1 block text-center hover:text-[#EEEDF0] text-xs sm:text-lg md:text-xl'>
             Política de privacidad.
           </Link>
         </div>
