@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from 'react';
 
@@ -15,14 +16,33 @@ import { MdOutlineAddLocationAlt } from 'react-icons/md';
 import { GoPlus } from 'react-icons/go';
 import { toast } from 'sonner';
 import DeletePhoneModal from './DeletePhoneModal';
+import EditJobModal from './EditJobModal';
+import AddEditMailModal from './AddEditMailModal';
+import DeleteEmailModal from './DeletEmailModal';
+import AddEditAddressModal from './AddEditAddressModal';
+import DeleteAddressModal from './DeletAddressModal';
+import EditSocialModal from './EditSocialModal';
+import { set } from 'react-hook-form';
+import DeleteSocialModal from './DeleteSocialModal';
 
 const MyProfileDashboard = () => {
   const navigate = useNavigate();
   const [editPassword, setEditPassword] = useState(false);
+  const [deleteEmail, setDeleteEmail] = useState(false);
   const [editPhone, setEditPhone] = useState(false);
   const [editPicture, setEditPicture] = useState(false);
   const [phoneToEdit, setPhoneToEdit] = useState(null);
   const [deletePhone, setDeletePhone] = useState(false);
+  const [editJob, setEditJob] = useState(false);
+  const [addEditMail, setAddEditMail] = useState(false);
+  const [emailToEdit, setEmailToEdit] = useState(null);
+  const [sendIndex, setSendIndex] = useState(null);
+  const [editAddress, setEditAddress] = useState(false);
+  const [addressToEdit, setAddressToEdit] = useState(null);
+  const [deleteAddress, setDeleteAddress] = useState(false);
+  const [editSocial, setEditSocial] = useState(false);
+  const [socialToEdit, setSocialToEdit] = useState(null);
+  const [deleteSocial, setDeleteSocial] = useState(false);
 
   const { user, isAuthenticated, setUser, editUserById } = useUser();
 
@@ -89,8 +109,62 @@ const MyProfileDashboard = () => {
           onClose={() => setEditPicture(false)}
         />
       )}
+      {editJob && (
+        <EditJobModal
+          isOpen={editJob}
+          onClose={() => setEditJob(false)}
+        />
+      )}
+      {addEditMail && (
+        <AddEditMailModal
+          isOpen={addEditMail}
+          onClose={() => setAddEditMail(false)}
+          email={emailToEdit}
+          index={sendIndex}
+        />
+      )}
+      {deleteEmail && (
+        <DeleteEmailModal
+          isOpen={deleteEmail}
+          onClose={() => setDeleteEmail(false)}
+          email={emailToEdit}
+          index={sendIndex}
+        />
+      )}
+      {editAddress && (
+        <AddEditAddressModal
+          isOpen={editAddress}
+          onClose={() => setEditAddress(false)}
+          index={sendIndex}
+          location={addressToEdit}
+        />
+      )}
+      {deleteAddress && (
+        <DeleteAddressModal
+          isOpen={deleteAddress}
+          onClose={() => setDeleteAddress(false)}
+          location={addressToEdit}
+          index={sendIndex}
+        />
+      )}
+      {editSocial && (
+        <EditSocialModal
+          isOpen={editSocial}
+          onClose={() => setEditSocial(false)}
+          index={sendIndex}
+          social={socialToEdit}
+        />
+      )}
+      {deleteSocial && (
+        <DeleteSocialModal
+          isOpen={deleteSocial}
+          onClose={() => setDeleteSocial(false)}
+          index={sendIndex}
+          social={socialToEdit}
+        />
+      )}
       <>
-        <div className='md:w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8'>
+        <div className='md:w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 w-full'>
           <div className='bg-white shadow overflow-hidden sm:rounded-lg my-6'>
             <div className='px-4 py-5 sm:px-6'>
               <h3 className='text-lg leading-6 font-medium text-gray-900'>
@@ -231,18 +305,25 @@ const MyProfileDashboard = () => {
                     <dd className='mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2'>
                       {user?.job?.position !== 'enter position' &&
                       user?.job?.workplace !== 'enter workplace' ? (
-                        <p className=''>
-                          <span>{user?.job?.workplace}</span>
-                          <span>{user?.job?.position}</span>
-                        </p>
+                        <div className=''>
+                          <p>
+                            <span className='font-bold'>Empresa:</span>{' '}
+                            {user?.job?.workplace}
+                          </p>
+                          <p>
+                            {' '}
+                            <span className='font-bold'>Puesto:</span>{' '}
+                            {user?.job?.position}
+                          </p>
+                        </div>
                       ) : (
                         'Agrega un Trabajo'
                       )}
                     </dd>
-                    <dd className='mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2 cursor-pointer'>
+                    <dd className='mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2 cursor-pointer self-end'>
                       <CiEdit
                         size={20}
-                        onClick={() => setEditPassword(true)}
+                        onClick={() => setEditJob(true)}
                       />
                     </dd>
                   </div>
@@ -280,8 +361,6 @@ const MyProfileDashboard = () => {
                                   ...user?.publicData,
                                   [key]: e.target.checked,
                                 };
-
-                                console.log(newPublicData);
                                 handleEditPublicData(newPublicData);
                               }}
                               className='mr-2'
@@ -327,22 +406,30 @@ const MyProfileDashboard = () => {
                             </span>
                             <span className='mt-1 p-2 text-gray-900'></span>
                           </div>
-                          <dd className='mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2 cursor-pointer'>
-                            <CiEdit
-                              size={20}
-                              onClick={() => {
-                                /* Modal para editar este email debe estar relleno con los datos anteriores. */
-                              }}
-                            />
-                          </dd>
-                          <dd className='mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2 cursor-pointer'>
-                            <RxCross1
-                              size={20}
-                              onClick={() => {
-                                /* Modal para preguntar si esta seguro de eliminar este email */
-                              }}
-                            />
-                          </dd>
+                          {index !== 0 && (
+                            <>
+                              <dd className='mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2 cursor-pointer'>
+                                <CiEdit
+                                  size={20}
+                                  onClick={() => {
+                                    setEmailToEdit(email);
+                                    setAddEditMail(true);
+                                    setSendIndex(index);
+                                  }}
+                                />
+                              </dd>
+                              <dd className='mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2 cursor-pointer'>
+                                <RxCross1
+                                  size={20}
+                                  onClick={() => {
+                                    setEmailToEdit(email);
+                                    setSendIndex(index);
+                                    setDeleteEmail(true);
+                                  }}
+                                />
+                              </dd>{' '}
+                            </>
+                          )}
                         </div>
                       ))}
                       <dd className='w-full text-end'>
@@ -350,9 +437,7 @@ const MyProfileDashboard = () => {
                           Agregar Email{' '}
                           <LuMailPlus
                             size={20}
-                            onClick={() => {
-                              /* Modal para preguntar si esta seguro de eliminar este email */
-                            }}
+                            onClick={() => setAddEditMail(true)}
                           />{' '}
                         </div>
                       </dd>
@@ -361,56 +446,77 @@ const MyProfileDashboard = () => {
                 </div>
                 <div className='bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6'>
                   <dt className='text-sm font-medium text-gray-500'>
-                    Mis Direcciones
+                    Mi Direccion
                   </dt>
                   <div className='flex items-center gap-4'>
                     <dd className='mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2'>
                       {user?.address.length === 1 &&
                       Object.values(user.address[0]).every(
                         (value) => value === ''
-                      )
-                        ? null
-                        : user?.address.map((address, index) => (
-                            <div
-                              key={index}
-                              className='bg-white flex items-center gap-4'>
-                              <div className='flex flex-col sm:col-span-2'>
-                                <span className='text-sm font-medium text-gray-900'>
-                                  Dirección: {address.streetAddress}, Ciudad:{' '}
-                                  {address.city}, Provincia: {address.state},{' '}
-                                  CP: {address.postalCode}, {address.country}
-                                </span>
-                                <span className='mt-1 p-2 text-gray-900'></span>
-                              </div>
-                              <dd className='mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2 cursor-pointer'>
-                                <MdEditLocationAlt
-                                  size={20}
-                                  onClick={() => {
-                                    // Lógica para editar esta dirección
-                                  }}
-                                />
-                              </dd>
-                              <dd className='mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2 cursor-pointer'>
-                                <MdOutlineWrongLocation
-                                  size={20}
-                                  onClick={() => {
-                                    // Lógica para confirmar la eliminación de esta dirección
-                                  }}
-                                />
-                              </dd>
+                      ) ? (
+                        <dd className='w-full text-end'>
+                          <div className='flex items-center gap-2 justify-end w-full'>
+                            Agregar Dirección{' '}
+                            <MdOutlineAddLocationAlt
+                              className='cursor-pointer'
+                              size={20}
+                              onClick={() => {
+                                setEditAddress(true);
+                              }}
+                            />
+                          </div>
+                        </dd>
+                      ) : (
+                        user?.address.map((address, index) => (
+                          <div
+                            key={index}
+                            className='bg-white flex items-center gap-4 w-full'>
+                            <div className='flex flex-col sm:col-span-2'>
+                              <p className='text-sm font-medium text-gray-900'>
+                                <span className='font-bold'>Dirección:</span>{' '}
+                                {address.streetaddress}{' '}
+                              </p>
+                              <p className=''>
+                                <span className='font-bold'>Ciudad:</span>{' '}
+                                {address.city}
+                              </p>
+                              <p className=''>
+                                <span className='font-bold'>Provincia:</span>{' '}
+                                {address.state}
+                              </p>
+                              <p className=''>
+                                <span className='font-bold'>CP:</span>{' '}
+                                {address.postalCode}
+                              </p>
+                              <p className=''>{address.country}</p>
+
+                              <span className='mt-1 p-2 text-gray-900'></span>
                             </div>
-                          ))}
-                      <dd className='w-full text-end'>
-                        <div className='flex items-center gap-2 justify-end w-full'>
-                          Agregar Dirección{' '}
-                          <MdOutlineAddLocationAlt
-                            size={20}
-                            onClick={() => {
-                              // Lógica para agregar una nueva dirección
-                            }}
-                          />
-                        </div>
-                      </dd>
+                            <dd className='mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2 cursor-pointer self-end'>
+                              <MdEditLocationAlt
+                                size={20}
+                                onClick={() => {
+                                  setAddressToEdit(address);
+                                  setSendIndex(index);
+                                  setEditAddress(true);
+                                }}
+                              />
+                            </dd>
+                            <dd className='mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2 cursor-pointer self-end'>
+                              <MdOutlineWrongLocation
+                                size={20}
+                                onClick={() => {
+                                  setAddressToEdit(address);
+                                  setSendIndex(index);
+                                  setDeleteAddress(true);
+
+                                  // Lógica para confirmar la eliminación de esta dirección
+                                }}
+                              />
+                            </dd>
+                          </div>
+                        ))
+                      )}
                     </dd>
                   </div>
                 </div>
@@ -425,29 +531,37 @@ const MyProfileDashboard = () => {
                         : user?.social.map((social, index) => (
                             <div
                               key={index}
-                              className='bg-white flex items-center gap-4'>
+                              className='bg-gray-50 flex items-center gap-4 w-full mb-3'>
                               <div className='flex flex-col sm:col-span-2'>
                                 <span className='text-sm font-medium text-gray-900'>
                                   {social.media}: {social.user}
                                 </span>
                                 <span className='mt-1 p-2 text-gray-900'></span>
+                                <div className='flex items-center  gap-3 w-full'>
+                                  <dd className='mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2 cursor-pointer '>
+                                    <CiEdit
+                                      size={20}
+                                      onClick={() => {
+                                        // Lógica para editar esta red social
+                                        setSocialToEdit(social);
+                                        setSendIndex(index);
+                                        setEditSocial(true);
+                                      }}
+                                    />
+                                  </dd>
+                                  <dd className='mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2 cursor-pointer '>
+                                    <RxCross1
+                                      size={20}
+                                      onClick={() => {
+                                        // Lógica para confirmar la eliminación de esta red social
+                                        setSocialToEdit(social);
+                                        setSendIndex(index);
+                                        setDeleteSocial(true);
+                                      }}
+                                    />
+                                  </dd>{' '}
+                                </div>
                               </div>
-                              <dd className='mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2 cursor-pointer'>
-                                <CiEdit
-                                  size={20}
-                                  onClick={() => {
-                                    // Lógica para editar esta red social
-                                  }}
-                                />
-                              </dd>
-                              <dd className='mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2 cursor-pointer'>
-                                <GoPlus
-                                  size={20}
-                                  onClick={() => {
-                                    // Lógica para confirmar la eliminación de esta red social
-                                  }}
-                                />
-                              </dd>
                             </div>
                           ))}
                       <dd className='w-full text-end'>
@@ -456,7 +570,7 @@ const MyProfileDashboard = () => {
                           <GoPlus
                             size={20}
                             onClick={() => {
-                              // Lógica para agregar una nueva red social
+                              setEditSocial(true);
                             }}
                           />
                         </div>
