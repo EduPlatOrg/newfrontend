@@ -1,25 +1,25 @@
+import NavbarLinks from "../components/NavbarLinks";
 
 const Colaboradores = () => {
   return (
     <div className="w-full flex flex-col items-center ">
       <div className=" w-full bg-blue-100 ">
         <img
-          className="object-contain h-48 w-full"
+          className="object-contain h-28 md:h-48 w-full"
           src="/images/Eduplat-feria.webp"
           alt=""
         />
       </div>
 
       {/* Navbar */}
-          {/* TODO: el componente navbar es similar pero no aparecen los elementos */}
-          <div className="w-4/5 h-16 border border-black">
-              AQUÍ IRÍA EL NAVBAR???
-          </div>
+      <div className="w-screen  md:w-4/5 ">
+        <NavbarLinks />
+      </div>
 
       {/* Contenedor dos columnas 60/40 */}
-      <div className="w-4/5 mt-10 h-auto flex flex-row">
+      <div className="w-full  md:w-4/5 mt-5 md:mt-10 h-auto flex flex-col md:flex-row">
         {/* Columna 60% */}
-        <div className=" flex flex-col w-4/6">
+        <div className=" flex flex-col p-3 md:w-4/6">
           <p className="p-2 w-full text-xl text-justify ">
             Invitamos a escuelas, institutos y otras entidades educativas 🏫🚌📚
             a hacer la inscripción como entidades colaboradoras para que
@@ -74,28 +74,29 @@ const Colaboradores = () => {
         <button className="mt-4 bg-blue-500 hover:bg-[#FE9A00] text-white py-4 px-6 rounded-lg text-l transition-all duration-200 tracking-wider">
           COLABORAR
         </button>
+        {/* TODO: funcionalidad del botón */}
       </div>
 
       {/* Pie organismos involucrados*/}
 
-      <div className=" m-6 w-full text-xl text-black flex flex-row items-center justify-around ">
-        <div className="flex flex-col max-h-32	">
+      <div className="m-2 md:m-6 w-full  md:text-xl text-black flex flex-col md:flex-row items-center justify-around ">
+        <div className="flex flex-col max-h-32	mb-4">
           <p className="  text-center  ">COORDINA</p>
           <img
-            className="object-contain max-h-24	"
+            className="object-contain max-h-24"
             src="/logo-bienesdar-horizontal.webp"
             alt=""
           />
         </div>
-        <div className="flex flex-col max-h-32	">
+        <div className="flex flex-col max-h-32	mb-4">
           <p className="  text-center  ">PROMOCIONA</p>
           <img
-            className="object-contain max-h-24	"
+            className="object-contain max-h-24 mb-4"
             src="/images/colaborador2.webp"
             alt=""
           />
         </div>
-        <div className="flex flex-col max-h-32	">
+        <div className="flex flex-col max-h-32	mb-4">
           <p className="  text-center  ">SUBVENCIONA</p>
           <img
             className="object-contain  max-h-24	"
