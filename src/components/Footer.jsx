@@ -11,11 +11,9 @@ import { Link } from 'react-router-dom';
 const Footer = () => {
   return (
     <div className=''>
-      
       <div className='flex m-auto min-h-[150px] bg-[#6366F1] px-4 justify-center'>
-        
         <div className='flex-1 my-4 flex justify-center items-center px-20'>
-        <Link to='/'>
+          <Link to='/'>
             <div className='flex-1 items-center justify-center'>
               <img
                 className=''
@@ -109,6 +107,11 @@ const Footer = () => {
             to='/terms-and-conditions'
             className='my-1 text-lg block text-center hover:text-[#EEEDF0]'>
             Política de privacidad.
+          </Link>
+          <Link
+            to='/FAQ'
+            className='my-1 text-lg block text-center hover:text-[#EEEDF0]'>
+            FAQ.
           </Link>
         </div>
       </div>
