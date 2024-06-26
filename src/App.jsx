@@ -1,32 +1,34 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { UserProvider } from './context/UserContext';
-import HomePage from './pages/HomePage';
 import { ModalProvider } from './providers/modal-provider';
-import Navbar from './components/Navbar';
 import { Toaster } from 'sonner';
-import TermsAndConditions from './pages/TermsAndConditions';
+
+import AdminManageEvents from './components/admin/AdminManageEvents';
+import AdminManageResources from './components/admin/AdminManageResources';
+import AdminUserManagment from './components/admin/AdminUserManagment';
 import Footer from './components/Footer';
-import ComoColaborar from './pages/ComoColaborar';
-import VerifyEmailPage from './components/VerifyEmailPage';
-import ProfilePanelPage from './pages/ProfilePanelPage';
+import MainDashboard from './components/admin/MainDashboard';
 import MyProfileDashboard from './components/profile/MyProfileDashboard';
 import MyResources from './components/profile/MyResources';
-import MainDashboard from './components/admin/MainDashboard';
-import AdminPanelPage from './pages/AdminPanelPage';
-import AdminUserManagment from './components/admin/AdminUserManagment';
-import AdminManageResources from './components/admin/AdminManageResources';
-import AdminManageEvents from './components/admin/AdminManageEvents';
-
-import { RecursosEducativos } from './pages/RecursosEducativos';
-
-import Colaboradores from './pages/Colaboradores';
+import Navbar from './components/Navbar';
+import VerifyEmailPage from './components/VerifyEmailPage';
 
 import { FAQ } from './pages/FAQ';
-import QuieroColaborarPage from './pages/QuieroColaborarPage';
+import { RecursosEducativos } from './pages/RecursosEducativos';
+import AdminPanelPage from './pages/AdminPanelPage';
+import Colaboradores from './pages/Colaboradores';
+import ComoColaborar from './pages/ComoColaborar';
 import ContactPage from './pages/ContactPage';
-import QuienesSomosPage from './pages/QuienesSomosPage';
+import ErasmusCofinanciado from './pages/ErasmusCofinanciadoPage';
+import HomePage from './pages/HomePage';
 import Objetivos from './pages/Objetivos';
 import Patrocinadores from './pages/Patrocinadores';
+import ProfilePanelPage from './pages/ProfilePanelPage';
+import QuienesSomosPage from './pages/QuienesSomosPage';
+import QuieroColaborarPage from './pages/QuieroColaborarPage';
+import TermsAndConditions from './pages/TermsAndConditions';
+
+
 
 function App() {
   return (
@@ -79,6 +81,10 @@ function App() {
             <Route
               path='/objetivos'
               element={<Objetivos />}
+            />
+            <Route
+            path='/erasmus-cofinanciado'
+            element={<ErasmusCofinanciado />}
             />
             <Route
               path='/about'
