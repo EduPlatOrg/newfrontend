@@ -95,6 +95,14 @@ const Navbar = () => {
                         <li
                           className='px-4 py-2 hover:bg-gray-100'
                           onClick={() => {
+                            navigate('/FRREE');
+                            toggleDropdown();
+                          }}>
+                          FRREE
+                        </li>
+                        <li
+                          className='px-4 py-2 hover:bg-gray-100'
+                          onClick={() => {
                             navigate('/objetivos');
                             toggleDropdown();
                           }}>
@@ -127,7 +135,7 @@ const Navbar = () => {
                         <li
                           className='px-4 py-2 hover:bg-gray-100'
                           onClick={() => {
-                            navigate('/');
+                            navigate('/inscripciones');
                             toggleDropdown();
                           }}>
                           Inscripciones
@@ -219,6 +227,15 @@ const Navbar = () => {
                   onClick={() => {
                     toggleMenu();
                     toggleDropdown();
+                    navigate('/FRREE');
+                  }}>
+                  FRREE
+                </li>
+                <li
+                  className='px-4 py-2 hover:bg-gray-100 text-gray-200'
+                  onClick={() => {
+                    toggleMenu();
+                    toggleDropdown();
                     navigate('/objetivos');
                   }}>
                   Objetivos
@@ -255,7 +272,7 @@ const Navbar = () => {
                   onClick={() => {
                     toggleMenu();
                     toggleDropdown();
-                    navigate('/');
+                    navigate('/inscripciones');
                   }}>
                   Inscripciones
                 </li>
