@@ -26,6 +26,7 @@ import QuieroColaborarPage from './pages/QuieroColaborarPage';
 import ContactPage from './pages/ContactPage';
 import QuienesSomosPage from './pages/QuienesSomosPage';
 import Objetivos from './pages/Objetivos';
+import Patrocinadores from './pages/Patrocinadores';
 
 function App() {
   return (
@@ -70,6 +71,10 @@ function App() {
             <Route
               path='/faq'
               element={<FAQ />}
+            />
+            <Route
+              path='/patrocinadores'
+              element={<Patrocinadores />}
             />
             <Route
               path='/objetivos'

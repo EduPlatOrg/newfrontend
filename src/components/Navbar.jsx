@@ -119,7 +119,7 @@ const Navbar = () => {
                         <li
                           className='px-4 py-2 hover:bg-gray-100'
                           onClick={() => {
-                            navigate('/');
+                            navigate('/patrocinadores');
                             toggleDropdown();
                           }}>
                           Patrocinadores
@@ -246,7 +246,7 @@ const Navbar = () => {
                   onClick={() => {
                     toggleMenu();
                     toggleDropdown();
-                    navigate('/');
+                    navigate('/patrocinadores');
                   }}>
                   Patrocinadores
                 </li>
