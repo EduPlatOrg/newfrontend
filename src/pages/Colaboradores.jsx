@@ -1,6 +1,8 @@
 import NavbarLinks from '../components/NavbarLinks';
+import { useModal } from '../hooks/use-modal-store';
 
 const Colaboradores = () => {
+  const { onOpen } = useModal();
   return (
     <div className='w-full flex flex-col items-center '>
       <div className=' w-full bg-blue-100 '>
@@ -71,7 +73,10 @@ const Colaboradores = () => {
           ¿Quieres colaborar en la{' '}
           <span className='font-semibold'> #FRREE?</span>
         </p>
-        <button className='mt-4 bg-blue-500 hover:bg-[#FE9A00] text-white py-4 px-6 rounded-lg text-l transition-all duration-200 tracking-wider'>
+        <button
+          onClick={() => onOpen('quiero-colaborar')}
+          className='mt-4
+         bg-blue-500 hover:bg-[#FE9A00] text-white py-4 px-6 rounded-lg text-l transition-all duration-200 tracking-wider'>
           COLABORAR
         </button>
         {/* TODO: funcionalidad del botón */}
