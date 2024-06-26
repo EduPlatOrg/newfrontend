@@ -43,9 +43,16 @@ const Footer = () => {
             <a
               href='https://x.com/eduplat_es/'
               aria-label='Twitter'
-              className='text-white hover:text-[#EEEDF0] text-xs md:text-lg'
+              className='text-white hidden md:block hover:text-[#EEEDF0] text-xs md:text-lg'
               target='_blank'>
               <FaSquareXTwitter size={36} />
+            </a>
+            <a
+              href='https://x.com/eduplat_es/'
+              aria-label='Twitter'
+              className='text-white md:hidden hover:text-[#EEEDF0] text-xs md:text-lg'
+              target='_blank'>
+              <FaSquareXTwitter size={26} />
             </a>
             <a
               href='https://www.instagram.com/eduplat_org/'
