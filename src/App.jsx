@@ -23,7 +23,7 @@ import Colaboradores from './pages/Colaboradores';
 
 import { FAQ } from './pages/FAQ';
 import QuieroColaborarPage from './pages/QuieroColaborarPage';
-
+import ContactPage from './pages/ContactPage';
 
 function App() {
   return (
@@ -54,9 +54,13 @@ function App() {
               element={<ComoColaborar />}
             />
             <Route
-            path='/colaboradores'
-            element={<Colaboradores />}
-          />
+              path='/colaboradores'
+              element={<Colaboradores />}
+            />
+            <Route
+              path='/contact'
+              element={<ContactPage />}
+            />
             <Route
               path='/recursos-educativos'
               element={<RecursosEducativos />}
