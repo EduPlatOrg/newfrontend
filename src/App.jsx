@@ -22,6 +22,7 @@ import { RecursosEducativos } from './pages/RecursosEducativos';
 import Colaboradores from './pages/Colaboradores';
 
 import { FAQ } from './pages/FAQ';
+import QuieroColaborarPage from './pages/QuieroColaborarPage';
 
 
 function App() {
@@ -39,6 +40,10 @@ function App() {
             <Route
               path='/'
               element={<HomePage />}
+            />
+            <Route
+              path='/colaborar-form'
+              element={<QuieroColaborarPage />}
             />
             <Route
               path='/terms-and-conditions'
@@ -60,7 +65,6 @@ function App() {
               path='/faq'
               element={<FAQ />}
             />
-
             <Route
               path='/verify/:token'
               element={<VerifyEmailPage />}
