@@ -10,10 +10,8 @@ import { Link } from 'react-router-dom';
 
 const Footer = () => {
   return (
-    
-    <div className=''>
-      
-      <div className='flex flex-col md:flex-row m-auto min-h-[150px] bg-[#6366F1] px-2 md:px-4 justify-center'>
+    <div className='w-full flex flex-col items-center justify-center'>
+      <div className='flex flex-col md:flex-row m-auto pl-10 md:pl-0 bg-[#6366F1] px-2 md:px-4 justify-center w-full'>
         <div className='flex-1 my-4 flex justify-center items-center px-20'>
           <Link to='/'>
             <div className='flex-1 items-center justify-center'>
@@ -27,7 +25,9 @@ const Footer = () => {
         </div>
 
         <div className='flex-1 text-white md:my-4 md:mx-4'>
-          <h3 className='text-center my-4 text-xs sm:text-lg md:text-xl'>Síguenos</h3>
+          <h3 className='text-center my-4 text-xs sm:text-lg md:text-xl'>
+            Síguenos
+          </h3>
           <hr className='w-1/2 mx-auto h-0.5 bg-white my-4 '></hr>
           <div className='social-icons flex space-x-2 justify-center'>
             <a
@@ -45,7 +45,7 @@ const Footer = () => {
               aria-label='Twitter'
               className='text-white hover:text-[#EEEDF0] text-xs md:text-lg'
               target='_blank'>
-              <FaSquareXTwitter size={32} />
+              <FaSquareXTwitter size={36} />
             </a>
             <a
               href='https://www.instagram.com/eduplat_org/'
@@ -70,7 +70,7 @@ const Footer = () => {
             <a
               href='https://www.linkedin.com/company/eduplat/'
               aria-label='LinkedIn'
-              className='text-white hover:text-[#EEEDF0] text-xs md:text-lg md:text-lg'
+              className='text-white hover:text-[#EEEDF0] text-xs md:text-lg '
               target='_blank'>
               <FontAwesomeIcon
                 icon={faLinkedin}
@@ -81,7 +81,9 @@ const Footer = () => {
         </div>
 
         <div className='flex-1 text-white mt-4 mb-8 mx-4'>
-          <h3 className='text-center my-4 text-xs sm:text-lg md:text-xl'>Recursos</h3>
+          <h3 className='text-center my-4 text-xs sm:text-lg md:text-xl'>
+            Recursos
+          </h3>
           <hr className='w-1/2 mx-auto h-0.5 bg-white'></hr>
           <Link
             to='/recursos-educativos'
@@ -118,7 +120,7 @@ const Footer = () => {
         </div>
       </div>
 
-      <div className='w-full text-center py-4 text-white bg-[#262626]'>
+      <div className='w-full text-xs pl-10 text-center py-4 text-white bg-[#262626]'>
         BienesDar.org © {new Date().getFullYear()}. Todos los derechos
         reservados.
       </div>
