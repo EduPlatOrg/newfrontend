@@ -25,6 +25,7 @@ import { FAQ } from './pages/FAQ';
 import QuieroColaborarPage from './pages/QuieroColaborarPage';
 import ContactPage from './pages/ContactPage';
 import QuienesSomosPage from './pages/QuienesSomosPage';
+import Objetivos from './pages/Objetivos';
 
 function App() {
   return (
@@ -69,6 +70,10 @@ function App() {
             <Route
               path='/faq'
               element={<FAQ />}
+            />
+            <Route
+              path='/objetivos'
+              element={<Objetivos />}
             />
             <Route
               path='/about'
