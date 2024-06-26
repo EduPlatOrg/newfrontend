@@ -27,6 +27,7 @@ import ContactPage from './pages/ContactPage';
 import QuienesSomosPage from './pages/QuienesSomosPage';
 import Objetivos from './pages/Objetivos';
 import Patrocinadores from './pages/Patrocinadores';
+import FRREEPage from './pages/FRREEPage';
 
 function App() {
   return (
@@ -59,6 +60,10 @@ function App() {
             <Route
               path='/colaboradores'
               element={<Colaboradores />}
+            />
+            <Route
+              path='/FRREE'
+              element={<FRREEPage />}
             />
             <Route
               path='/contact'
