@@ -94,27 +94,42 @@ const Navbar = () => {
                       <ul className='absolute bg-white shadow-md rounded-md mt-2 py-1 w-48 text-gray-700 top-[86px] -right-4'>
                         <li
                           className='px-4 py-2 hover:bg-gray-100'
-                          onClick={() => navigate('/')}>
+                          onClick={() => {
+                            navigate('/objetivos');
+                            toggleDropdown();
+                          }}>
                           Objetivos
                         </li>
                         <li
                           className='px-4 py-2 hover:bg-gray-100'
-                          onClick={() => navigate('/')}>
+                          onClick={() => {
+                            navigate('/');
+                            toggleDropdown();
+                          }}>
                           Programa Eventos
                         </li>
                         <li
                           className='px-4 py-2 hover:bg-gray-100'
-                          onClick={() => navigate('/colaboradores')}>
+                          onClick={() => {
+                            navigate('/colaboradores');
+                            toggleDropdown();
+                          }}>
                           Colaboradores
                         </li>
                         <li
                           className='px-4 py-2 hover:bg-gray-100'
-                          onClick={() => navigate('/')}>
+                          onClick={() => {
+                            navigate('/');
+                            toggleDropdown();
+                          }}>
                           Patrocinadores
                         </li>
                         <li
                           className='px-4 py-2 hover:bg-gray-100'
-                          onClick={() => navigate('/')}>
+                          onClick={() => {
+                            navigate('/');
+                            toggleDropdown();
+                          }}>
                           Inscripciones
                         </li>
                       </ul>
@@ -204,7 +219,7 @@ const Navbar = () => {
                   onClick={() => {
                     toggleMenu();
                     toggleDropdown();
-                    navigate('/');
+                    navigate('/objetivos');
                   }}>
                   Objetivos
                 </li>
