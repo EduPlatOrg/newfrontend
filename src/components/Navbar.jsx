@@ -42,22 +42,101 @@ const Navbar = () => {
         <div className='flex flex-col items-center justify-center gap-3 z-20'>
           <div className='flex items-center justify-end gap-3 w-full mr-8'>
             {!isAuthenticated ? (
-              <>
-                <button onClick={() => onOpen('login-form')}>
-                  <p
-                    className='text-gray-200  text-sm py-1 px-2 rounded-md 
+              <div className='flex flex-col '>
+                <div className='flex items-center justify-end mr-1'>
+                  <button onClick={() => onOpen('login-form')}>
+                    <p
+                      className='text-gray-200  text-sm py-1 px-2 rounded-md 
                  hover:bg-gray-300 hover:text-gray-800 shadow-sm '>
-                    SignIn
-                  </p>
-                </button>
-                <button onClick={() => onOpen('register-form')}>
-                  <p
-                    className='text-gray-200  text-sm py-1 px-2 rounded-md 
+                      SignIn
+                    </p>
+                  </button>
+                  <button onClick={() => onOpen('register-form')}>
+                    <p
+                      className='text-gray-200  text-sm py-1 px-2 rounded-md 
                  hover:bg-gray-300 hover:text-gray-800 shadow-sm '>
-                    SignUp
-                  </p>
-                </button>
-              </>
+                      SignUp
+                    </p>
+                  </button>
+                </div>
+                <div className='text-gray-200'>
+                  <div className='hidden  md:flex w-full items-center justify-end'>
+                    {/* Espacios adicionales aquí para links visibles siempre excepto en móvil */}
+                    <Link
+                      to='/'
+                      className='text-gray-200 px-3 py-2 rounded-md text-sm font-medium'>
+                      Home
+                    </Link>
+                    <Link
+                      to='/about'
+                      className='text-gray-200 px-3 py-2 rounded-md text-sm font-medium'>
+                      Acerca de Nosotros
+                    </Link>
+                    <Link
+                      to='/contact'
+                      className='text-gray-200 px-3 py-2 rounded-md text-sm font-medium'>
+                      Contactar
+                    </Link>
+                    <button
+                      onClick={toggleDropdown}
+                      className='text-gray-200 px-3 py-2 rounded-md text-sm font-medium relative'>
+                      Ferias y Eventos
+                    </button>
+                    {isDropdownOpen && (
+                      <ul className='absolute bg-white shadow-md rounded-md mt-2 py-1 w-48 text-gray-700 top-[86px] -right-4'>
+                        <li
+                          className='px-4 py-2 hover:bg-gray-100'
+                          onClick={() => {
+                            navigate('/FRREE');
+                            toggleDropdown();
+                          }}>
+                          FRREE
+                        </li>
+                        <li
+                          className='px-4 py-2 hover:bg-gray-100'
+                          onClick={() => {
+                            navigate('/objetivos');
+                            toggleDropdown();
+                          }}>
+                          Objetivos
+                        </li>
+                        <li
+                          className='px-4 py-2 hover:bg-gray-100'
+                          onClick={() => {
+                            navigate('/');
+                            toggleDropdown();
+                          }}>
+                          Programa Eventos
+                        </li>
+                        <li
+                          className='px-4 py-2 hover:bg-gray-100'
+                          onClick={() => {
+                            navigate('/colaboradores');
+                            toggleDropdown();
+                          }}>
+                          Colaboradores
+                        </li>
+                        <li
+                          className='px-4 py-2 hover:bg-gray-100'
+                          onClick={() => {
+                            navigate('/patrocinadores');
+                            toggleDropdown();
+                          }}>
+                          Patrocinadores
+                        </li>
+                        <li
+                          className='px-4 py-2 hover:bg-gray-100'
+                          onClick={() => {
+                            navigate('/inscripciones');
+                            toggleDropdown();
+                          }}>
+                          Inscripciones
+                        </li>
+                      </ul>
+                    )}
+                  </div>
+                </div>
+              </div>
             ) : (
               <div className='flex flex-col w-full  '>
                 <div className='flex items-center gap-2 justify-end'>

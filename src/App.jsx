@@ -23,11 +23,13 @@ import ErasmusCofinanciado from './pages/ErasmusCofinanciadoPage';
 import HomePage from './pages/HomePage';
 import Objetivos from './pages/Objetivos';
 import Patrocinadores from './pages/Patrocinadores';
+
 import ProfilePanelPage from './pages/ProfilePanelPage';
 import QuienesSomosPage from './pages/QuienesSomosPage';
 import QuieroColaborarPage from './pages/QuieroColaborarPage';
 import TermsAndConditions from './pages/TermsAndConditions';
 
+import FRREEPage from './pages/FRREEPage';
 
 
 function App() {
@@ -61,6 +63,10 @@ function App() {
             <Route
               path='/colaboradores'
               element={<Colaboradores />}
+            />
+            <Route
+              path='/FRREE'
+              element={<FRREEPage />}
             />
             <Route
               path='/contact'

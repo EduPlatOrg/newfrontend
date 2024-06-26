@@ -36,7 +36,7 @@ const UserButton = () => {
 
   return (
     <div
-      className='relative group'
+      className='relative group z-[9999999]'
       ref={node}>
       <div
         className='bg-gray-200 rounded-full h-8 w-8 flex items-center justify-center cursor-pointer'
