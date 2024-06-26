@@ -114,3 +114,20 @@ section {
 .fadeIn {
   animation: fadeIn 1s ease-out forwards;
 }
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+
+    translatey: 1rem;
+  }
+  to {
+    opacity: 1;
+
+    translatey: 0;
+  }
+}
+
+.slideIn {
+  animation: slideIn 1s ease-out forwards;
+}
