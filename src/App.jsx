@@ -24,6 +24,7 @@ import Colaboradores from './pages/Colaboradores';
 import { FAQ } from './pages/FAQ';
 import QuieroColaborarPage from './pages/QuieroColaborarPage';
 import ContactPage from './pages/ContactPage';
+import QuienesSomosPage from './pages/QuienesSomosPage';
 
 function App() {
   return (
@@ -68,6 +69,10 @@ function App() {
             <Route
               path='/faq'
               element={<FAQ />}
+            />
+            <Route
+              path='/about'
+              element={<QuienesSomosPage />}
             />
             <Route
               path='/verify/:token'
