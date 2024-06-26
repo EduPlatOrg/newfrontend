@@ -59,13 +59,84 @@ const Navbar = () => {
                 </button>
               </>
             ) : (
-              <>
-                {' '}
-                <p className='text-sm text-gray-200'>
-                  Bienvenido: <em> {user?.firstname}</em>
-                </p>
-                <UserButton />
-              </>
+              <div className='flex flex-col w-full  '>
+                <div className='flex items-center gap-2 justify-end'>
+                  {' '}
+                  <p className='text-sm text-gray-200'>
+                    Bienvenido: <em> {user?.firstname}</em>
+                  </p>
+                  <UserButton />
+                </div>
+                <div className='text-gray-200'>
+                  <div className='hidden  md:flex w-full items-center justify-end'>
+                    {/* Espacios adicionales aquí para links visibles siempre excepto en móvil */}
+                    <Link
+                      to='/'
+                      className='text-gray-200 px-3 py-2 rounded-md text-sm font-medium'>
+                      Home
+                    </Link>
+                    <Link
+                      to='/about'
+                      className='text-gray-200 px-3 py-2 rounded-md text-sm font-medium'>
+                      Acerca de Nosotros
+                    </Link>
+                    <Link
+                      to='/contact'
+                      className='text-gray-200 px-3 py-2 rounded-md text-sm font-medium'>
+                      Contactar
+                    </Link>
+                    <button
+                      onClick={toggleDropdown}
+                      className='text-gray-200 px-3 py-2 rounded-md text-sm font-medium relative'>
+                      Ferias y Eventos
+                    </button>
+                    {isDropdownOpen && (
+                      <ul className='absolute bg-white shadow-md rounded-md mt-2 py-1 w-48 text-gray-700 top-[86px] -right-4'>
+                        <li
+                          className='px-4 py-2 hover:bg-gray-100'
+                          onClick={() => {
+                            navigate('/objetivos');
+                            toggleDropdown();
+                          }}>
+                          Objetivos
+                        </li>
+                        <li
+                          className='px-4 py-2 hover:bg-gray-100'
+                          onClick={() => {
+                            navigate('/');
+                            toggleDropdown();
+                          }}>
+                          Programa Eventos
+                        </li>
+                        <li
+                          className='px-4 py-2 hover:bg-gray-100'
+                          onClick={() => {
+                            navigate('/colaboradores');
+                            toggleDropdown();
+                          }}>
+                          Colaboradores
+                        </li>
+                        <li
+                          className='px-4 py-2 hover:bg-gray-100'
+                          onClick={() => {
+                            navigate('/patrocinadores');
+                            toggleDropdown();
+                          }}>
+                          Patrocinadores
+                        </li>
+                        <li
+                          className='px-4 py-2 hover:bg-gray-100'
+                          onClick={() => {
+                            navigate('/');
+                            toggleDropdown();
+                          }}>
+                          Inscripciones
+                        </li>
+                      </ul>
+                    )}
+                  </div>
+                </div>
+              </div>
             )}
           </div>
         </div>
@@ -84,60 +155,6 @@ const Navbar = () => {
                     alt='LOGO'
                   />
                 </Link>
-              </div>
-              <div className=' sm:block sm:ml-6'>
-                <div className='hidden  md:flex space-x-4'>
-                  {/* Espacios adicionales aquí para links visibles siempre excepto en móvil */}
-                  <Link
-                    to='/'
-                    className='text-gray-800 px-3 py-2 rounded-md text-sm font-medium'>
-                    Home
-                  </Link>
-                  <Link
-                    to='/about'
-                    className='text-gray-800 px-3 py-2 rounded-md text-sm font-medium'>
-                    Acerca de Nosotros
-                  </Link>
-                  <Link
-                    to='/contact'
-                    className='text-gray-800 px-3 py-2 rounded-md text-sm font-medium'>
-                    Contactar
-                  </Link>
-                  <button
-                    onClick={toggleDropdown}
-                    className='text-gray-800 px-3 py-2 rounded-md text-sm font-medium'>
-                    Ferias y Eventos
-                  </button>
-                  {isDropdownOpen && (
-                    <ul className='absolute bg-white shadow-md rounded-md mt-2 py-1 w-48'>
-                      <li
-                        className='px-4 py-2 hover:bg-gray-100'
-                        onClick={() => navigate('/')}>
-                        Objetivos
-                      </li>
-                      <li
-                        className='px-4 py-2 hover:bg-gray-100'
-                        onClick={() => navigate('/')}>
-                        Programa Eventos
-                      </li>
-                      <li
-                        className='px-4 py-2 hover:bg-gray-100'
-                        onClick={() => navigate('/')}>
-                        Colaboradores
-                      </li>
-                      <li
-                        className='px-4 py-2 hover:bg-gray-100'
-                        onClick={() => navigate('/')}>
-                        Patrocinadores
-                      </li>
-                      <li
-                        className='px-4 py-2 hover:bg-gray-100'
-                        onClick={() => navigate('/')}>
-                        Inscripciones
-                      </li>
-                    </ul>
-                  )}
-                </div>
               </div>
             </div>
             <div className='flex items-center'>
@@ -202,7 +219,7 @@ const Navbar = () => {
                   onClick={() => {
                     toggleMenu();
                     toggleDropdown();
-                    navigate('/');
+                    navigate('/objetivos');
                   }}>
                   Objetivos
                 </li>
@@ -220,7 +237,7 @@ const Navbar = () => {
                   onClick={() => {
                     toggleMenu();
                     toggleDropdown();
-                    navigate('/');
+                    navigate('/colaboradores');
                   }}>
                   Colaboradores
                 </li>
@@ -229,7 +246,7 @@ const Navbar = () => {
                   onClick={() => {
                     toggleMenu();
                     toggleDropdown();
-                    navigate('/');
+                    navigate('/patrocinadores');
                   }}>
                   Patrocinadores
                 </li>

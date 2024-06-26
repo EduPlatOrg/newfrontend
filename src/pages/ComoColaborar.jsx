@@ -4,10 +4,17 @@ import { FaHandsHelping } from 'react-icons/fa';
 import { HiMiniSpeakerWave } from 'react-icons/hi2';
 import { GiPencilBrush } from 'react-icons/gi';
 import { MdComputer } from 'react-icons/md';
-import { Link } from 'react-router-dom';
+
 import Acordeon from '../components/Acordion';
 import { FaPlus } from 'react-icons/fa';
+import { useEffect } from 'react';
+import { useModal } from '../hooks/use-modal-store';
 const ComoColaborar = () => {
+  const { onOpen } = useModal();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <div className='w-full flex flex-col items-center '>
       <div className='relative w-full block h-[400px]'>
@@ -76,14 +83,14 @@ const ComoColaborar = () => {
         <p className=' font-light text-xl text-start w-full '>
           Ahora es posible entrar en el equipo de colaboradores:
         </p>
-        <Link
-          to='/'
+        <button
+          onClick={() => onOpen('quiero-colaborar')}
           className='bg-blue-500 hover:bg-gray-400 
           py-4 px-6 rounded-lg text-white w-fit 
           flex justify-center whitespace-nowrap transition-all duration-200 cursor-pointer gap-2 text-xs mt-6 items-start'>
           <FaHandsHelping size={20} />
           QUIERO COLABORAR
-        </Link>
+        </button>
       </div>
       <div className='pl-10 pr-10 w-[90%]'>
         <div className='w-full bg-gray-100 mb-10  '>

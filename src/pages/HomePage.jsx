@@ -10,7 +10,7 @@ const HomePage = () => {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          entry.target.classList.add('fadeIn');
+          entry.target.classList.add('slideIn');
         }
       });
     });

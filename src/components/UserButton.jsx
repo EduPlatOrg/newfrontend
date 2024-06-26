@@ -9,7 +9,6 @@ import { useUser } from '../context/UserContext';
 const UserButton = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { user, logOutUser } = useUser();
-  const [initials, setInitials] = useState('');
   const navigate = useNavigate();
 
   const node = useRef();
@@ -30,10 +29,6 @@ const UserButton = () => {
       document.removeEventListener('mousedown', handleClickOutside);
     }
 
-    setInitials(
-      user?.firstname?.charAt(0).toUpperCase() +
-        user?.lastname?.charAt(0).toUpperCase()
-    );
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
@@ -44,9 +39,13 @@ const UserButton = () => {
       className='relative group'
       ref={node}>
       <div
-        className='bg-gray-200 rounded-full h-8 w-8 p-3 flex items-center justify-center cursor-pointer'
+        className='bg-gray-200 rounded-full h-8 w-8 flex items-center justify-center cursor-pointer'
         onClick={() => setIsOpen(!isOpen)}>
-        {initials}
+        <img
+          src={user?.picture}
+          alt='user image'
+          className='rounded-full h-8 w-8 object-cover'
+        />
       </div>
       {isOpen ? (
         <div

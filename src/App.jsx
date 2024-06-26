@@ -18,7 +18,15 @@ import AdminManageResources from './components/admin/AdminManageResources';
 import AdminManageEvents from './components/admin/AdminManageEvents';
 
 import { RecursosEducativos } from './pages/RecursosEducativos';
+
+import Colaboradores from './pages/Colaboradores';
+
 import { FAQ } from './pages/FAQ';
+import QuieroColaborarPage from './pages/QuieroColaborarPage';
+import ContactPage from './pages/ContactPage';
+import QuienesSomosPage from './pages/QuienesSomosPage';
+import Objetivos from './pages/Objetivos';
+import Patrocinadores from './pages/Patrocinadores';
 
 function App() {
   return (
@@ -37,12 +45,24 @@ function App() {
               element={<HomePage />}
             />
             <Route
+              path='/colaborar-form'
+              element={<QuieroColaborarPage />}
+            />
+            <Route
               path='/terms-and-conditions'
               element={<TermsAndConditions />}
             />
             <Route
               path='/como-colaborar'
               element={<ComoColaborar />}
+            />
+            <Route
+              path='/colaboradores'
+              element={<Colaboradores />}
+            />
+            <Route
+              path='/contact'
+              element={<ContactPage />}
             />
             <Route
               path='/recursos-educativos'
@@ -52,7 +72,18 @@ function App() {
               path='/faq'
               element={<FAQ />}
             />
-
+            <Route
+              path='/patrocinadores'
+              element={<Patrocinadores />}
+            />
+            <Route
+              path='/objetivos'
+              element={<Objetivos />}
+            />
+            <Route
+              path='/about'
+              element={<QuienesSomosPage />}
+            />
             <Route
               path='/verify/:token'
               element={<VerifyEmailPage />}
