@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import LoginModal from '../components/LoginModal';
 import RegisterModal from '../components/RegisterModal';
 import ForgotPasswordModal from '../components/ForgotPassword';
+import QuieroColaborarModal from '../components/QuieroColaborarModal';
 
 export const ModalProvider = () => {
   const [isMounted, setIsMounted] = useState(false);
@@ -18,6 +19,7 @@ export const ModalProvider = () => {
       <LoginModal />
       <RegisterModal />
       <ForgotPasswordModal />
+      <QuieroColaborarModal />
     </>
   );
 };

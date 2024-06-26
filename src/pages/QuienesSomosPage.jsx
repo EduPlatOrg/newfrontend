@@ -1,7 +1,13 @@
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { useModal } from '../hooks/use-modal-store';
 
 const QuienesSomosPage = () => {
+  const { onOpen } = useModal();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
@@ -412,11 +418,12 @@ const QuienesSomosPage = () => {
           <p className='h-fit animate-on-scroll'>
             Ahora es posible entrar en el equipo de colaboradores
           </p>
-          <Link to='/colaborar-form'>
-            <button className='mt-6 bg-blue-500 hover:bg-[#FE9A00] text-white py-4 px-6 rounded-lg text-xs transition-all duration-200'>
-              QUIERO COLABORAR
-            </button>
-          </Link>
+
+          <button
+            className='mt-6 bg-blue-500 hover:bg-[#FE9A00] text-white py-4 px-6 rounded-lg text-xs transition-all duration-200'
+            onClick={() => onOpen('quiero-colaborar')}>
+            QUIERO COLABORAR
+          </button>
         </div>
       </div>
     </div>
