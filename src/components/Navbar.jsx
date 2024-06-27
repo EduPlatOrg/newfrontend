@@ -294,6 +294,7 @@ const Navbar = () => {
                  focus:ring-2 focus:ring-inset focus:ring-gray-500 md:hidden'>
                   <span className='sr-only'>Open main menu</span>
                   {/* Icono de menú hamburguesa */}
+                  {!isAuthenticated ? (
                   <svg
                     className='block h-6 w-6 text-gray-200'
                     xmlns='http://www.w3.org/2000/svg'
@@ -308,6 +309,13 @@ const Navbar = () => {
                       d='M4 6h16M4 12h16m-7 6h7'
                     />
                   </svg>
+                  ) : (
+                    <img
+                    src={user?.picture}
+                    alt='user image'
+                    className='rounded-full h-8 w-8 object-cover'
+                  />
+                  )}
                 </button>
               </div>
             </div>
