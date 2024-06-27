@@ -78,17 +78,22 @@ const Navbar = () => {
                     {/* Espacios adicionales aquí para links visibles siempre excepto en móvil */}
                     <Link
                       to='/'
-                      className='text-gray-200 px-3 py-2 rounded-md text-sm font-medium'>
+                      className='text-gray-200 px-3 py-2 rounded-md text-sm font-medium hover:underline'>
                       Home
                     </Link>
                     <Link
+                      to='/recursos-educativos'
+                      className='text-gray-200 px-3 py-2 rounded-md text-sm font-medium hover:underline'>
+                      Plataforma Educativa
+                    </Link>
+                    <Link
                       to='/about'
-                      className='text-gray-200 px-3 py-2 rounded-md text-sm font-medium'>
+                      className='text-gray-200 px-3 py-2 rounded-md text-sm font-medium hover:underline'>
                       Acerca de Nosotros
                     </Link>
                     <Link
                       to='/contact'
-                      className='text-gray-200 px-3 py-2 rounded-md text-sm font-medium'>
+                      className='text-gray-200 px-3 py-2 rounded-md text-sm font-medium hover:underline'>
                       Contactar
                     </Link>
                     <button
@@ -96,7 +101,7 @@ const Navbar = () => {
                         e.stopPropagation();
                         toggleDropdown();
                       }}
-                      className='text-gray-200 px-3 py-2 rounded-md text-sm font-medium relative dropdown-container'>
+                      className='text-gray-200 px-3 py-2 rounded-md text-sm font-medium relative dropdown-container hover:underline'>
                       Ferias y Eventos
                     </button>
                     {isDropdownOpen && (
