@@ -428,6 +428,7 @@ const Navbar = () => {
 
             {isAuthenticated && (
               <>
+                <div className="w-full border-b border-gray-200 border-opacity-25"></div>
                 <Link
                   to='/profile-panel'
                   className='text-gray-200 block px-3 py-2 rounded-md text-base
