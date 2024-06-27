@@ -31,7 +31,6 @@ import TermsAndConditions from './pages/TermsAndConditions';
 
 import FRREEPage from './pages/FRREEPage';
 
-
 function App() {
   return (
     <Router>
@@ -42,7 +41,7 @@ function App() {
           position='bottom-right'
           richColors
         />
-        <section className='min-h-[calc(100vh-220px)]'>
+        <section className='min-h-[calc(100vh-435px)]'>
           <Routes>
             <Route
               path='/'
@@ -89,8 +88,8 @@ function App() {
               element={<Objetivos />}
             />
             <Route
-            path='/erasmus-cofinanciado'
-            element={<ErasmusCofinanciado />}
+              path='/erasmus-cofinanciado'
+              element={<ErasmusCofinanciado />}
             />
             <Route
               path='/about'
