@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 
-import { useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import clsx from 'clsx';
 
 import { useModal } from '../hooks/use-modal-store';
@@ -20,9 +20,23 @@ const Navbar = () => {
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
-  const toggleDropdown = () => {
-    setIsDropdownOpen(!isDropdownOpen);
-  };
+  const toggleDropdown = useCallback(() => {
+    setIsDropdownOpen((prevIsDropdownOpen) => !prevIsDropdownOpen);
+  }, [setIsDropdownOpen]);
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (isDropdownOpen && !event.target.closest('.dropdown-container')) {
+        toggleDropdown(false);
+      }
+    };
+    if (isDropdownOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+    }
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [isDropdownOpen, toggleDropdown]);
   return (
     <>
       <nav
@@ -78,15 +92,21 @@ const Navbar = () => {
                       Contactar
                     </Link>
                     <button
-                      onClick={toggleDropdown}
-                      className='text-gray-200 px-3 py-2 rounded-md text-sm font-medium relative'>
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        toggleDropdown();
+                      }}
+                      className='text-gray-200 px-3 py-2 rounded-md text-sm font-medium relative dropdown-container'>
                       Ferias y Eventos
                     </button>
                     {isDropdownOpen && (
-                      <ul className='absolute bg-white shadow-md rounded-md mt-2 py-1 w-48 text-gray-700 top-[86px] -right-4'>
+                      <ul
+                        className='absolute bg-white shadow-md 
+                      rounded-md mt-2 py-1 w-48 text-gray-700 top-[86px] -right-4 dropdown-container'>
                         <li
                           className='px-4 py-2 hover:bg-gray-100'
-                          onClick={() => {
+                          onClick={(e) => {
+                            e.stopPropagation();
                             navigate('/FRREE');
                             toggleDropdown();
                           }}>
@@ -94,7 +114,8 @@ const Navbar = () => {
                         </li>
                         <li
                           className='px-4 py-2 hover:bg-gray-100'
-                          onClick={() => {
+                          onClick={(e) => {
+                            e.stopPropagation();
                             navigate('/objetivos');
                             toggleDropdown();
                           }}>
@@ -102,7 +123,8 @@ const Navbar = () => {
                         </li>
                         <li
                           className='px-4 py-2 hover:bg-gray-100'
-                          onClick={() => {
+                          onClick={(e) => {
+                            e.stopPropagation();
                             navigate('/');
                             toggleDropdown();
                           }}>
@@ -110,7 +132,8 @@ const Navbar = () => {
                         </li>
                         <li
                           className='px-4 py-2 hover:bg-gray-100'
-                          onClick={() => {
+                          onClick={(e) => {
+                            e.stopPropagation();
                             navigate('/colaboradores');
                             toggleDropdown();
                           }}>
@@ -118,7 +141,8 @@ const Navbar = () => {
                         </li>
                         <li
                           className='px-4 py-2 hover:bg-gray-100'
-                          onClick={() => {
+                          onClick={(e) => {
+                            e.stopPropagation();
                             navigate('/patrocinadores');
                             toggleDropdown();
                           }}>
@@ -126,7 +150,8 @@ const Navbar = () => {
                         </li>
                         <li
                           className='px-4 py-2 hover:bg-gray-100'
-                          onClick={() => {
+                          onClick={(e) => {
+                            e.stopPropagation();
                             navigate('/inscripciones');
                             toggleDropdown();
                           }}>
@@ -165,15 +190,21 @@ const Navbar = () => {
                       Contactar
                     </Link>
                     <button
-                      onClick={toggleDropdown}
-                      className='text-gray-200 px-3 py-2 rounded-md text-sm font-medium relative'>
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        toggleDropdown();
+                      }}
+                      className='text-gray-200 px-3 py-2 rounded-md text-sm font-medium relative dropdown-container'>
                       Ferias y Eventos
                     </button>
                     {isDropdownOpen && (
-                      <ul className='absolute bg-white shadow-md rounded-md mt-2 py-1 w-48 text-gray-700 top-[86px] -right-4'>
+                      <ul
+                        className='absolute bg-white shadow-md 
+                      rounded-md mt-2 py-1 w-48 text-gray-700 top-[86px] -right-4 dropdown-container'>
                         <li
                           className='px-4 py-2 hover:bg-gray-100'
-                          onClick={() => {
+                          onClick={(e) => {
+                            e.stopPropagation();
                             navigate('/FRREE');
                             toggleDropdown();
                           }}>
@@ -181,7 +212,8 @@ const Navbar = () => {
                         </li>
                         <li
                           className='px-4 py-2 hover:bg-gray-100'
-                          onClick={() => {
+                          onClick={(e) => {
+                            e.stopPropagation();
                             navigate('/objetivos');
                             toggleDropdown();
                           }}>
@@ -189,7 +221,8 @@ const Navbar = () => {
                         </li>
                         <li
                           className='px-4 py-2 hover:bg-gray-100'
-                          onClick={() => {
+                          onClick={(e) => {
+                            e.stopPropagation();
                             navigate('/');
                             toggleDropdown();
                           }}>
@@ -197,7 +230,8 @@ const Navbar = () => {
                         </li>
                         <li
                           className='px-4 py-2 hover:bg-gray-100'
-                          onClick={() => {
+                          onClick={(e) => {
+                            e.stopPropagation();
                             navigate('/colaboradores');
                             toggleDropdown();
                           }}>
@@ -205,7 +239,8 @@ const Navbar = () => {
                         </li>
                         <li
                           className='px-4 py-2 hover:bg-gray-100'
-                          onClick={() => {
+                          onClick={(e) => {
+                            e.stopPropagation();
                             navigate('/patrocinadores');
                             toggleDropdown();
                           }}>
@@ -213,7 +248,8 @@ const Navbar = () => {
                         </li>
                         <li
                           className='px-4 py-2 hover:bg-gray-100'
-                          onClick={() => {
+                          onClick={(e) => {
+                            e.stopPropagation();
                             navigate('/inscripciones');
                             toggleDropdown();
                           }}>
@@ -295,15 +331,19 @@ const Navbar = () => {
               Contactar
             </Link>
             <button
-              onClick={toggleDropdown}
-              className='text-gray-200 px-3 py-2 rounded-md text-base font-base font-medium'>
+              onClick={(e) => {
+                e.stopPropagation();
+                toggleDropdown();
+              }}
+              className='text-gray-200 px-3 py-2 rounded-md text-base font-base font-medium dropdown-container'>
               Ferias y Eventos
             </button>
             {isDropdownOpen && (
-              <ul className='absolute bg-indigo-600 shadow-md rounded-md mt-2 py-1 w-48'>
+              <ul className='absolute bg-indigo-600 shadow-md rounded-md mt-2 py-1 w-48 dropdown-container'>
                 <li
-                  className='px-4 py-2 hover:bg-gray-100 text-gray-200'
-                  onClick={() => {
+                  className='px-4 py-2 hover:bg-gray-100 text-gray-200 hover:text-gray-700'
+                  onClick={(e) => {
+                    e.stopPropagation();
                     toggleMenu();
                     toggleDropdown();
                     navigate('/FRREE');
@@ -311,8 +351,9 @@ const Navbar = () => {
                   FRREE
                 </li>
                 <li
-                  className='px-4 py-2 hover:bg-gray-100 text-gray-200'
-                  onClick={() => {
+                  className='px-4 py-2 hover:bg-gray-100 text-gray-200 hover:text-gray-700'
+                  onClick={(e) => {
+                    e.stopPropagation();
                     toggleMenu();
                     toggleDropdown();
                     navigate('/objetivos');
@@ -320,8 +361,9 @@ const Navbar = () => {
                   Objetivos
                 </li>
                 <li
-                  className='px-4 py-2 hover:bg-gray-100 text-gray-200'
-                  onClick={() => {
+                  className='px-4 py-2 hover:bg-gray-100 text-gray-200 hover:text-gray-700'
+                  onClick={(e) => {
+                    e.stopPropagation();
                     toggleMenu();
                     toggleDropdown();
                     navigate('/');
@@ -329,8 +371,9 @@ const Navbar = () => {
                   Programa eventos
                 </li>
                 <li
-                  className='px-4 py-2 hover:bg-gray-100 text-gray-200'
-                  onClick={() => {
+                  className='px-4 py-2 hover:bg-gray-100 text-gray-200 hover:text-gray-700'
+                  onClick={(e) => {
+                    e.stopPropagation();
                     toggleMenu();
                     toggleDropdown();
                     navigate('/colaboradores');
@@ -338,8 +381,9 @@ const Navbar = () => {
                   Colaboradores
                 </li>
                 <li
-                  className='px-4 py-2 hover:bg-gray-100 text-gray-200'
-                  onClick={() => {
+                  className='px-4 py-2 hover:bg-gray-100 text-gray-200 hover:text-gray-700'
+                  onClick={(e) => {
+                    e.stopPropagation();
                     toggleMenu();
                     toggleDropdown();
                     navigate('/patrocinadores');
@@ -347,8 +391,9 @@ const Navbar = () => {
                   Patrocinadores
                 </li>
                 <li
-                  className='px-4 py-2 hover:bg-gray-100 text-gray-200'
-                  onClick={() => {
+                  className='px-4 py-2 hover:bg-gray-100 text-gray-200 hover:text-gray-700'
+                  onClick={(e) => {
+                    e.stopPropagation();
                     toggleMenu();
                     toggleDropdown();
                     navigate('/inscripciones');
