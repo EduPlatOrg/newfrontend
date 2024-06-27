@@ -95,7 +95,7 @@ const UserButton = () => {
           <button className='py-1 px-3 my-1 text-gray-700 rounded-md w-full text-start hover:text-white hover:bg-[#0e2235] '>
             User Panel
           </button>
-          {user.isAdmin && (
+          {user.isBoss && (
             <Link to='/admin-panel'>
               <button className='py-1 px-3 my-1 text-gray-700 rounded-md w-full text-start hover:text-white hover:bg-[#0e2235] '>
                 <p>Admin Panel</p>
