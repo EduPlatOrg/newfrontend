@@ -41,12 +41,12 @@ const EditSocialModal = ({ isOpen, onClose, social, index }) => {
       const response = await editUserById(user?._id, { social: newSocialData });
       console.log(response, 'response');
       if (response.status !== 200) {
-        toast.error('Error al editar o añadir el puesto de trabajo');
+        toast.error('Error al editar o añadir Red Social');
         return;
       }
       setUser((prev) => ({ ...prev, social: newSocialData }));
       onClose();
-      toast.success('Puesto de trabajo cambiado o añadido con éxito');
+      toast.success('Red Social cambiada o añadida con éxito');
     } catch (error) {
       console.log(error);
       toast.error('Algo salió mal, por favor intenta de nuevo.');
@@ -69,7 +69,7 @@ const EditSocialModal = ({ isOpen, onClose, social, index }) => {
               </div>
             ))}
           <h2 className='mt-4 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900'>
-            Añade un Puesto de Trabajo
+            Añade tus Redes Sociales
           </h2>
         </div>
 
