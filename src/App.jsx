@@ -41,7 +41,7 @@ function App() {
           position='bottom-right'
           richColors
         />
-        <section className='min-h-[calc(100vh-435px)]'>
+        <section className='min-h-[calc(100vh-340px)]'>
           <Routes>
             <Route
               path='/'

@@ -2,7 +2,7 @@ import NavbarLinks from '../components/NavbarLinks';
 
 const ErasmusCofinanciado = () => {
   return (
-    <div className='w-full flex flex-col items-center bg-gray-200 flex-grow min-h-[calc(100vh-435px)] '>
+    <div className='w-full flex flex-col items-center bg-gray-200 flex-grow min-h-[calc(100vh-340px)] '>
       {/* Navbar */}
       <div className='w-screen  md:w-4/5 '>
         <NavbarLinks />
