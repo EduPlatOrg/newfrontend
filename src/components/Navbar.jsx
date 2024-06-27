@@ -185,6 +185,11 @@ const Navbar = () => {
                       Home
                     </Link>
                     <Link
+                      to='/recursos-educativos'
+                      className='text-gray-200 px-3 py-2 rounded-md text-sm font-medium hover:underline'>
+                      Plataforma Educativa
+                    </Link>
+                    <Link
                       to='/about'
                       className='text-gray-200 px-3 py-2 rounded-md text-sm font-medium'>
                       Acerca de Nosotros
