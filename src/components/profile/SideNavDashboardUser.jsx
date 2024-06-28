@@ -7,12 +7,14 @@ import {
 import { NavLink } from 'react-router-dom';
 
 import { PiNotepad } from 'react-icons/pi';
+import { MdOutlineEventAvailable } from 'react-icons/md';
 
 import ToolTip from '../ToolTip';
 
 const navlinks = [
   { name: 'Dashboard', icon: MdDashboard, link: '' },
   { name: 'Mis Recursos', icon: PiNotepad, link: 'my-recources' },
+  { name: 'Mis Eventos', icon: MdOutlineEventAvailable, link: 'my-events' },
 ];
 const SideNavDashbordUser = () => {
   const [open, setOpen] = useState(false);

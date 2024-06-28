@@ -30,6 +30,7 @@ import QuieroColaborarPage from './pages/QuieroColaborarPage';
 import TermsAndConditions from './pages/TermsAndConditions';
 
 import FRREEPage from './pages/FRREEPage';
+import CreateEvent from './components/admin/CreateEvent';
 
 function App() {
   return (
@@ -117,6 +118,10 @@ function App() {
               <Route
                 index
                 element={<MainDashboard />}
+              />
+              <Route
+                path='create-event'
+                element={<CreateEvent />}
               />
               <Route
                 path='all-users'

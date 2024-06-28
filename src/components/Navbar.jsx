@@ -292,36 +292,41 @@ const Navbar = () => {
             </div>
             <div className='flex items-center'>
               <div className='flex-shrink-0'>
-                <button
-                  onClick={toggleMenu}
-                  className='inline-flex items-center justify-center p-2 rounded-md
+                {!isAuthenticated ? (
+                  <button
+                    onClick={toggleMenu}
+                    className='inline-flex items-center justify-center p-2 rounded-md
                    focus:outline-none 
                  focus:ring-2 focus:ring-inset focus:ring-gray-500 md:hidden'>
-                  <span className='sr-only'>Open main menu</span>
-                  {/* Icono de menú hamburguesa */}
-                  {!isAuthenticated ? (
-                  <svg
-                    className='block h-6 w-6 text-gray-200'
-                    xmlns='http://www.w3.org/2000/svg'
-                    fill='none'
-                    viewBox='0 0 24 24'
-                    stroke='currentColor'
-                    aria-hidden='true'>
-                    <path
-                      strokeLinecap='round'
-                      strokeLinejoin='round'
-                      strokeWidth='2'
-                      d='M4 6h16M4 12h16m-7 6h7'
-                    />
-                  </svg>
-                  ) : (
+                    <span className='sr-only'>Open main menu</span>
+                    {/* Icono de menú hamburguesa */}
+
+                    <svg
+                      className='block h-6 w-6 text-gray-200'
+                      xmlns='http://www.w3.org/2000/svg'
+                      fill='none'
+                      viewBox='0 0 24 24'
+                      stroke='currentColor'
+                      aria-hidden='true'>
+                      <path
+                        strokeLinecap='round'
+                        strokeLinejoin='round'
+                        strokeWidth='2'
+                        d='M4 6h16M4 12h16m-7 6h7'
+                      />
+                    </svg>
+                  </button>
+                ) : (
+                  <button
+                    onClick={toggleMenu}
+                    className='h-8 w-8 rounded-full bg-white'>
                     <img
-                    src={user?.picture}
-                    alt='user image'
-                    className='rounded-full h-8 w-8 object-cover'
-                  />
-                  )}
-                </button>
+                      src={user?.picture}
+                      alt='user image'
+                      className='rounded-full h-8 w-8 object-cover'
+                    />
+                  </button>
+                )}
               </div>
             </div>
           </div>
@@ -341,6 +346,11 @@ const Navbar = () => {
               className='text-gray-200 block px-3 py-2 rounded-md text-base font-medium'
               onClick={toggleMenu}>
               Acerca de Nosotros
+            </Link>
+            <Link
+              to='/recursos-educativos'
+              className='text-gray-200 block px-3 py-2 rounded-md text-base font-medium'>
+              Plataforma Educativa
             </Link>
             <Link
               to='/contact'
@@ -420,7 +430,7 @@ const Navbar = () => {
                 </li>
               </ul>
             )}
-            <div className="w-full border-b border-gray-200 border-opacity-25"></div>
+            <div className='w-full border-b border-gray-200 border-opacity-25'></div>
 
             {!isAuthenticated && (
               <>
