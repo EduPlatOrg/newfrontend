@@ -3,6 +3,7 @@ import LoginModal from '../components/LoginModal';
 import RegisterModal from '../components/RegisterModal';
 import ForgotPasswordModal from '../components/ForgotPassword';
 import QuieroColaborarModal from '../components/QuieroColaborarModal';
+import DeleteEventModal from '../components/admin/DeleteEventModal';
 
 export const ModalProvider = () => {
   const [isMounted, setIsMounted] = useState(false);
@@ -20,6 +21,7 @@ export const ModalProvider = () => {
       <RegisterModal />
       <ForgotPasswordModal />
       <QuieroColaborarModal />
+      <DeleteEventModal />
     </>
   );
 };

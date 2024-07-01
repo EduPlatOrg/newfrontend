@@ -176,6 +176,7 @@ const ContactPage = () => {
                   <Loader2
                     className='animate-spin'
                     size={20}
+                    PreviewImagesModal
                   />
                   Enviando...{' '}
                 </div>
