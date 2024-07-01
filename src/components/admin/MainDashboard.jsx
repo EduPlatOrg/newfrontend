@@ -10,7 +10,7 @@ const MainDashboard = () => {
 
   useEffect(() => {
     fetchEvents();
-  }, [events]);
+  }, [fetchEvents]);
 
   return (
     <div className='flex flex-col w-full items-center p-2 '>
