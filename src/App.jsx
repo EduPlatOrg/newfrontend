@@ -28,6 +28,7 @@ import ProfilePanelPage from './pages/ProfilePanelPage';
 import QuienesSomosPage from './pages/QuienesSomosPage';
 import QuieroColaborarPage from './pages/QuieroColaborarPage';
 import TermsAndConditions from './pages/TermsAndConditions';
+import ProgramaEventos from './pages/ProgramaEventos';
 
 import FRREEPage from './pages/FRREEPage';
 import CreateEvent from './components/admin/CreateEvent';
@@ -75,6 +76,10 @@ function App() {
             <Route
               path='/recursos-educativos'
               element={<RecursosEducativos />}
+            />
+            <Route
+              path='/programa-eventos'
+              element={<ProgramaEventos />}
             />
             <Route
               path='/faq'

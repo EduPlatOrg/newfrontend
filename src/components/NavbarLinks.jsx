@@ -35,7 +35,7 @@ const NavbarLinks = () => {
             </Link>
 
             <Link
-              to='/'
+              to='/programa-eventos'
               className={linksClassNames}>
               Programa Eventos
               <br />
@@ -117,6 +117,7 @@ const NavbarLinks = () => {
             <br />
             (Fechas)
           </Link>
+
           <Link
             to='/'
             className={linksClassNames}>
