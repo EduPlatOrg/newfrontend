@@ -233,7 +233,7 @@ const Navbar = () => {
                           className='px-4 py-2 hover:bg-gray-100'
                           onClick={(e) => {
                             e.stopPropagation();
-                            navigate('/');
+                            navigate('/programa-eventos');
                             toggleDropdown();
                           }}>
                           Programa Eventos

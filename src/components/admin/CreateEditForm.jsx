@@ -12,6 +12,7 @@ import { createEventRequest, editEventRequest } from '../../api/events';
 import { useNavigate } from 'react-router-dom';
 import { formatInTimeZone } from 'date-fns-tz';
 
+
 const CreateEditForm = ({ event }) => {
   const [loading, setLoading] = useState(false);
   const [mainImage, setMainImage] = useState('');
