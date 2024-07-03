@@ -34,7 +34,7 @@ const CreateEditForm = ({ event }) => {
   console.log(event);
 
   useEffect(() => {
-    if (event._id) {
+    if (event?._id) {
       setMainImage(event?.mainImage);
       setImages(event?.images);
 

@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { UserProvider } from './context/UserContext';
 import { ModalProvider } from './providers/modal-provider';
 import { Toaster } from 'sonner';
+import { RecourcesProvider } from './context/RecourcesContext';
 
 import AdminManageEvents from './components/admin/AdminManageEvents';
 import AdminManageResources from './components/admin/AdminManageResources';
@@ -32,118 +33,126 @@ import ProgramaEventos from './pages/ProgramaEventos';
 
 import FRREEPage from './pages/FRREEPage';
 import CreateEvent from './components/admin/CreateEvent';
+import CreateNewResource from './components/profile/CreateNewResource';
 
 function App() {
   return (
     <Router>
       <UserProvider>
-        <Navbar />
-        <ModalProvider />
-        <Toaster
-          position='bottom-right'
-          richColors
-        />
-        <section className='min-h-[calc(100vh-340px)]'>
-          <Routes>
-            <Route
-              path='/'
-              element={<HomePage />}
-            />
-            <Route
-              path='/colaborar-form'
-              element={<QuieroColaborarPage />}
-            />
-            <Route
-              path='/terms-and-conditions'
-              element={<TermsAndConditions />}
-            />
-            <Route
-              path='/como-colaborar'
-              element={<ComoColaborar />}
-            />
-            <Route
-              path='/colaboradores'
-              element={<Colaboradores />}
-            />
-            <Route
-              path='/FRREE'
-              element={<FRREEPage />}
-            />
-            <Route
-              path='/contact'
-              element={<ContactPage />}
-            />
-            <Route
-              path='/recursos-educativos'
-              element={<RecursosEducativos />}
-            />
-            <Route
+        <RecourcesProvider>
+          <Navbar />
+          <ModalProvider />
+          <Toaster
+            position='bottom-right'
+            richColors
+          />
+          <section className='min-h-[calc(100vh-340px)]'>
+            <Routes>
+              <Route
+                path='/'
+                element={<HomePage />}
+              />
+              <Route
+                path='/colaborar-form'
+                element={<QuieroColaborarPage />}
+              />
+              <Route
+                path='/terms-and-conditions'
+                element={<TermsAndConditions />}
+              />
+                    <Route
               path='/programa-eventos'
               element={<ProgramaEventos />}
             />
-            <Route
-              path='/faq'
-              element={<FAQ />}
-            />
-            <Route
-              path='/patrocinadores'
-              element={<Patrocinadores />}
-            />
-            <Route
-              path='/objetivos'
-              element={<Objetivos />}
-            />
-            <Route
-              path='/erasmus-cofinanciado'
-              element={<ErasmusCofinanciado />}
-            />
-            <Route
-              path='/about'
-              element={<QuienesSomosPage />}
-            />
-            <Route
-              path='/verify/:token'
-              element={<VerifyEmailPage />}
-            />
-            <Route
-              path='/profile-panel'
-              element={<ProfilePanelPage />}>
               <Route
-                index
-                element={<MyProfileDashboard />}
+                path='/como-colaborar'
+                element={<ComoColaborar />}
               />
               <Route
-                path='my-recources'
-                element={<MyResources />}
-              />
-            </Route>{' '}
-            <Route
-              path='/admin-panel'
-              element={<AdminPanelPage />}>
-              <Route
-                index
-                element={<MainDashboard />}
+                path='/colaboradores'
+                element={<Colaboradores />}
+
               />
               <Route
-                path='create-event'
-                element={<CreateEvent />}
+                path='/FRREE'
+                element={<FRREEPage />}
               />
               <Route
-                path='all-users'
-                element={<AdminUserManagment />}
+                path='/contact'
+                element={<ContactPage />}
               />
               <Route
-                path='admin-all-resources'
-                element={<AdminManageResources />}
+                path='/recursos-educativos'
+                element={<RecursosEducativos />}
               />
               <Route
-                path='all-events'
-                element={<AdminManageEvents />}
+                path='/faq'
+                element={<FAQ />}
               />
-            </Route>
-          </Routes>
-        </section>
-        <Footer />
+              <Route
+                path='/patrocinadores'
+                element={<Patrocinadores />}
+              />
+              <Route
+                path='/objetivos'
+                element={<Objetivos />}
+              />
+              <Route
+                path='/erasmus-cofinanciado'
+                element={<ErasmusCofinanciado />}
+              />
+              <Route
+                path='/about'
+                element={<QuienesSomosPage />}
+              />
+              <Route
+                path='/verify/:token'
+                element={<VerifyEmailPage />}
+              />
+              <Route
+                path='/profile-panel'
+                element={<ProfilePanelPage />}>
+                <Route
+                  index
+                  element={<MyProfileDashboard />}
+                />
+                <Route
+                  path='my-recources'
+                  element={<MyResources />}
+                />
+                <Route
+                  path='my-recources/new-recource'
+                  element={<CreateNewResource />}
+                />
+              </Route>{' '}
+              <Route
+                path='/admin-panel'
+                element={<AdminPanelPage />}>
+                <Route
+                  index
+                  element={<MainDashboard />}
+                />
+                <Route
+                  path='create-event'
+                  element={<CreateEvent />}
+                />
+                <Route
+                  path='all-users'
+                  element={<AdminUserManagment />}
+                />
+                <Route
+                  path='admin-all-resources'
+                  element={<AdminManageResources />}
+                />
+                <Route
+                  path='all-events'
+                  element={<AdminManageEvents />}
+                />
+              </Route>
+            </Routes>
+          </section>
+          <Footer />
+        </RecourcesProvider>
       </UserProvider>{' '}
     </Router>
   );
