@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import useEventsStore from '../hooks/use-events-store';
 
 import Loader from '../components/Loader';
+import { Link } from 'react-router-dom';
 
 const ProgramaEventos = () => {
   const { fetchEvents, events } = useEventsStore();
@@ -16,7 +17,7 @@ const ProgramaEventos = () => {
 
   return (
     <div className='container'>
-      <div className='flex flex-col gap-4'>
+      <div className='flex flex-col gap-4 mt-4'>
         {events.map((event) => (
           <div
             key={event._id}
@@ -41,9 +42,11 @@ const ProgramaEventos = () => {
                   {new Date(event.endDate).toLocaleDateString()}
                 </span>
                 <br />
-                <button className='mt-4 px-4 py-1 bg-gray-200 rounded-lg'>
-                  Más info
-                </button>
+                <Link to={`/programa-eventos/${event._id}`}>
+                  <button className='mt-4 px-4 py-1 bg-gray-200 rounded-lg'>
+                    Más info
+                  </button>
+                </Link>
               </div>
             </div>
           </div>
