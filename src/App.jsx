@@ -34,6 +34,7 @@ import ProgramaEventos from './pages/ProgramaEventos';
 import FRREEPage from './pages/FRREEPage';
 import CreateEvent from './components/admin/CreateEvent';
 import CreateNewResource from './components/profile/CreateNewResource';
+import EventsDetails from './components/EventsDetails';
 
 function App() {
   return (
@@ -60,10 +61,14 @@ function App() {
                 path='/terms-and-conditions'
                 element={<TermsAndConditions />}
               />
-                    <Route
-              path='/programa-eventos'
-              element={<ProgramaEventos />}
-            />
+              <Route
+                path='/programa-eventos'
+                element={<ProgramaEventos />}
+              />
+              <Route
+                path='/programa-eventos/:id'
+                element={<EventsDetails />}
+              />
               <Route
                 path='/como-colaborar'
                 element={<ComoColaborar />}
@@ -71,7 +76,6 @@ function App() {
               <Route
                 path='/colaboradores'
                 element={<Colaboradores />}
-
               />
               <Route
                 path='/FRREE'
