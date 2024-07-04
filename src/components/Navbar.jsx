@@ -41,7 +41,7 @@ const Navbar = () => {
     <>
       <nav
         className='w-full md:flex items-center justify-between p-3 gap-3 bg-indigo-500 border-b-2 border-gray-300 hidden  
-      sticky top-0 right-0 z-30 '>
+      sticky top-0 right-0 z-50 '>
         <div className='flex flex-col items-center justify-center z-20'>
           <Link to='/'>
             <div className='flex items-center justify-center gap-3'>
