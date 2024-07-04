@@ -3,7 +3,7 @@ import { RxCross1 } from 'react-icons/rx';
 import { Link } from 'react-router-dom';
 
 const MyOwnRecources = ({ recources }) => {
-  console.log(recources);
+  if (recources) console.log(recources);
   return (
     <>
       {recources ? (
