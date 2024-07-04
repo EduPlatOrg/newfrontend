@@ -67,7 +67,7 @@ const MyOwnRecources = ({ recources }) => {
                     )}
                   </p>
                 </div>
-                <div className='flex flex-col gap-2 w-[200px] md:w-[100px] self-end'>
+                <div className='flex flex-col gap-2 w-[200px] md:w-[100px] md:self-end'>
                   <Link
                     to={`/profile-panel/my-recources/new-recource?id=${recource._id}`}
                     className='flex w-full  md:items-end justify-center  md:justify-end h-full self-end'>
