@@ -3,6 +3,7 @@ import useEventsStore from '../hooks/use-events-store';
 
 import Loader from '../components/Loader';
 import { Link } from 'react-router-dom';
+import NavbarLinks from '../components/NavbarLinks';
 
 const ProgramaEventos = () => {
   const { fetchEvents, events } = useEventsStore();
@@ -16,7 +17,21 @@ const ProgramaEventos = () => {
   }
 
   return (
-    <div className='container'>
+    <div className='container'> 
+      
+      <div className='w-full bg-blue-100 '> {/* TODO: Styles*/}
+        <img
+        className='object-contain h-28 md:h-48 w-full'
+        src='/images/Eduplat-feria.webp'
+        alt=''
+        />
+      </div>
+
+      {/* Navbar */} 
+      <div className='w-screen  md:w-4/5 '> {/* TODO: Styles*/}
+        <NavbarLinks />
+      </div>
+
       <div className='flex flex-col gap-4 mt-4'>
         {events.map((event) => (
           <div
