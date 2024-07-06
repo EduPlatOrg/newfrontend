@@ -3,7 +3,7 @@ import { useCallback, useEffect, useState } from 'react';
 import Dropzone from 'react-dropzone';
 import { useForm } from 'react-hook-form';
 import { LiaCloudUploadAltSolid } from 'react-icons/lia';
-import { useRecources } from '../../context/RecourcesContext';
+import { useResources } from '../../context/ResourcesContext';
 import { toast } from 'sonner';
 
 import { Loader2 } from 'lucide-react';
@@ -16,7 +16,7 @@ import CreateSocialsResourcesModal from './CreateSocialsResourcesModal';
 import { FaSquareXTwitter } from 'react-icons/fa6';
 import { FaFacebookSquare, FaLinkedin } from 'react-icons/fa';
 
-const CreateEditRecourceForm = ({ recource }) => {
+const CreateEditResourceForm = ({ resource }) => {
   const [loading, setLoading] = useState(false);
   const [mainImage, setMainImage] = useState('');
 
@@ -26,7 +26,7 @@ const CreateEditRecourceForm = ({ recource }) => {
   const [social, setSocial] = useState([]);
   const [pdfLoading, setPdfLoading] = useState(false);
   const { user } = useUser();
-  const { createNewRecource, editRecource } = useRecources();
+  const { createNewResource, editResource } = useResources();
   const navigate = useNavigate();
   const {
     register,
@@ -37,35 +37,35 @@ const CreateEditRecourceForm = ({ recource }) => {
   } = useForm();
 
   useEffect(() => {
-    if (recource?._id) {
-      setMainImage(recource?.image);
-      setSocial(recource?.autor?.socials);
-      setPdf(recource?.pdfDocument);
-      setValue('title', recource?.title);
-      setValue('description', recource?.description);
-      setValue('youtubeUrl', recource?.youtubeUrl);
+    if (resource?._id) {
+      setMainImage(resource?.image);
+      setSocial(resource?.autor?.socials);
+      setPdf(resource?.pdfDocument);
+      setValue('title', resource?.title);
+      setValue('description', resource?.description);
+      setValue('youtubeUrl', resource?.youtubeUrl);
 
-      setValue('externalLink', recource?.externalLink);
+      setValue('externalLink', resource?.externalLink);
       setValue(
         'discipline',
-        Array.isArray(recource?.discipline)
-          ? recource.discipline.join(',')
-          : recource?.discipline
+        Array.isArray(resource?.discipline)
+          ? resource.discipline.join(',')
+          : resource?.discipline
       );
       setValue(
         'subDicipline',
-        Array.isArray(recource?.subDicipline)
-          ? recource.subDicipline.join(',')
-          : recource?.subDicipline
+        Array.isArray(resource?.subDicipline)
+          ? resource.subDicipline.join(',')
+          : resource?.subDicipline
       );
-      setValue('language', recource?.language);
-      setValue('media', recource?.media);
-      setValue('user', recource?.user);
-      setValue('licence', recource?.licence);
-      setValue('level', recource?.level);
-      setValue('autorName', recource?.autor?.autorName);
+      setValue('language', resource?.language);
+      setValue('media', resource?.media);
+      setValue('user', resource?.user);
+      setValue('licence', resource?.licence);
+      setValue('level', resource?.level);
+      setValue('autorName', resource?.autor?.autorName);
     }
-  }, [recource, setValue]);
+  }, [resource, setValue]);
 
   const handleImage = async (files) => {
     console.log(files, '<-- files');
@@ -99,8 +99,8 @@ const CreateEditRecourceForm = ({ recource }) => {
     console.log(data, '<-- data');
     data.discipline = data.discipline.split(',');
     data.subDicipline = data.subDicipline.split(',');
-    if (!recource?._id) {
-      const newRecource = {
+    if (!resource?._id) {
+      const newResource = {
         ...data,
         autor: {
           autorName: data.autorName,
@@ -110,13 +110,13 @@ const CreateEditRecourceForm = ({ recource }) => {
         pdfDocument: pdf,
         creatorId: user?._id,
       };
-      console.log(newRecource, '<-- newEvent');
+      console.log(newResource, '<-- newEvent');
       try {
-        const response = await createNewRecource(newRecource);
+        const response = await createNewResource(newResource);
 
         if (response === 200) {
           toast.success('Evento creado correctamente');
-          navigate('/profile-panel/my-recources');
+          navigate('/profile-panel/my-resources');
           reset();
         }
       } catch (error) {
@@ -125,7 +125,7 @@ const CreateEditRecourceForm = ({ recource }) => {
       }
     } else {
       // Edit Event
-      const editedRecource = {
+      const editedResource = {
         ...data,
         autor: {
           autorName: data.autorName,
@@ -134,13 +134,13 @@ const CreateEditRecourceForm = ({ recource }) => {
         image: mainImage,
         pdfDocument: pdf,
       };
-      console.log(editedRecource, '<-- editedRecource');
+      console.log(editedResource, '<-- editedResource');
 
       try {
-        const response = await editRecource(recource._id, editedRecource);
+        const response = await editResource(resource._id, editedResource);
         if (response === 200) {
           toast.success('Evento editado correctamente');
-          navigate('/profile-panel/my-recources');
+          navigate('/profile-panel/my-resources');
           reset();
         }
       } catch (error) {
@@ -166,7 +166,7 @@ const CreateEditRecourceForm = ({ recource }) => {
       )}
       <div className='w-full flex flex-col items-center justify-normal p-8'>
         <h1 className=' uppercase text-xl font-serif'>
-          {!recource?.id ? 'Crear nuevo recurso' : 'Editar Recurso'}
+          {!resource?.id ? 'Crear nuevo recurso' : 'Editar Recurso'}
         </h1>
         <form
           onSubmit={onSubmit}
@@ -417,7 +417,7 @@ const CreateEditRecourceForm = ({ recource }) => {
               {...register('subDicipline', { required: true })}
             />
           </div>
-          <div>
+          {/* <div>
             <div className='flex items-center justify-between w-full'>
               <label
                 htmlFor='language'
@@ -445,6 +445,25 @@ const CreateEditRecourceForm = ({ recource }) => {
             {errors.language && (
               <span className='text-red-500'>This field is Requiered</span>
             )}
+          </div> */}
+          <div className='mt-2 relative'>
+            <select
+              {...register('language', { required: true })}
+              id='language'
+              name='language'
+              required
+              className='block w-full rounded-md border-0 py-1.5
+               text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 
+               focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 p-2'>
+              <option value=''>Selecciona una opción</option>
+              <option value='es'>🇪🇸 Español</option>
+              <option value='it'>🇮🇹 Italiano</option>
+              <option value='pt'>🇵🇹 Portugués</option>
+              <option value='en'>🇬🇧 Inglés</option>
+              <option value='fr'>🇫🇷 Francés</option>
+              <option value='de'>🇩🇪 Alemán</option>
+              <option value='other'>🌍 Otros</option>
+            </select>
           </div>
           <div>
             <div className='flex items-center justify-between w-full'>
@@ -721,7 +740,7 @@ const CreateEditRecourceForm = ({ recource }) => {
                 />
                 Working...
               </div>
-            ) : recource?._id ? (
+            ) : resource?._id ? (
               'Editar Recurso'
             ) : (
               'Crear Recurso'
@@ -733,4 +752,4 @@ const CreateEditRecourceForm = ({ recource }) => {
   );
 };
 
-export default CreateEditRecourceForm;
+export default CreateEditResourceForm;

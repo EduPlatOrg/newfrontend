@@ -2,7 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { UserProvider } from './context/UserContext';
 import { ModalProvider } from './providers/modal-provider';
 import { Toaster } from 'sonner';
-import { RecourcesProvider } from './context/RecourcesContext';
+import { ResourcesProvider } from './context/ResourcesContext';
 
 import AdminManageEvents from './components/admin/AdminManageEvents';
 import AdminManageResources from './components/admin/AdminManageResources';
@@ -40,7 +40,7 @@ function App() {
   return (
     <Router>
       <UserProvider>
-        <RecourcesProvider>
+        <ResourcesProvider>
           <Navbar />
           <ModalProvider />
           <Toaster
@@ -121,11 +121,11 @@ function App() {
                   element={<MyProfileDashboard />}
                 />
                 <Route
-                  path='my-recources'
+                  path='my-resources'
                   element={<MyResources />}
                 />
                 <Route
-                  path='my-recources/new-recource'
+                  path='my-resources/new-resource'
                   element={<CreateNewResource />}
                 />
               </Route>{' '}
@@ -156,7 +156,7 @@ function App() {
             </Routes>
           </section>
           <Footer />
-        </RecourcesProvider>
+        </ResourcesProvider>
       </UserProvider>{' '}
     </Router>
   );
