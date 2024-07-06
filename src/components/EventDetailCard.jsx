@@ -48,7 +48,6 @@ const EventDetailCard = ({ event }) => {
           </button>
         </Link>
       </div>
-
     </div>
   );
 };
