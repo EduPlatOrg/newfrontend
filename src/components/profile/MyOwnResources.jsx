@@ -2,29 +2,29 @@ import { Check } from 'lucide-react';
 import { RxCross1 } from 'react-icons/rx';
 import { Link } from 'react-router-dom';
 
-const MyOwnRecources = ({ recources }) => {
-  if (recources) console.log(recources);
+const MyOwnResources = ({ resources }) => {
+  if (resources) console.log(resources);
   return (
     <>
-      {recources ? (
+      {resources ? (
         <div className='container md:divide-y-4'>
-          {recources.length > 0 &&
-            recources.map((recource) => (
+          {resources.length > 0 &&
+            resources.map((resource) => (
               <div
                 className='flex md:flex-row flex-col md:items-start items-center gap-2 w-full mb-10 min-h-1 flex-grow '
-                key={recource._id}>
+                key={resource._id}>
                 <div className=''>
                   <img
-                    src={recource.image}
+                    src={resource.image}
                     alt='Imagen del Recurso'
                     className='max-w-[200px]'
                   />
                 </div>
                 <div className='flex flex-col md:items-start items-center gap-2 leading-6 w-full'>
-                  <h3 className='text-md font-serif'>{recource.title}</h3>
+                  <h3 className='text-md font-serif'>{resource.title}</h3>
                   <p className='text-xs gap-2'>
                     Disciplina:{' '}
-                    {recource.discipline.map((dis, index) => (
+                    {resource.discipline.map((dis, index) => (
                       <span key={index}>
                         <em>{dis}</em>
                       </span>
@@ -32,7 +32,7 @@ const MyOwnRecources = ({ recources }) => {
                   </p>
                   <p className='text-xs gap-2'>
                     Sub-disciplina:{' '}
-                    {recource.subDicipline.map((dis, index) => (
+                    {resource.subDicipline.map((dis, index) => (
                       <span key={index}>
                         <em>{dis}</em>
                       </span>
@@ -40,7 +40,7 @@ const MyOwnRecources = ({ recources }) => {
                   </p>
                   <p className='flex items-center gap-2 text-xs'>
                     Contiene PDF:{' '}
-                    {recource.pdfDocument !== undefined ? (
+                    {resource.pdfDocument !== undefined ? (
                       <Check
                         className='text-green-500'
                         size={18}
@@ -54,7 +54,7 @@ const MyOwnRecources = ({ recources }) => {
                   </p>
                   <p className='flex items-center gap-2 text-xs'>
                     Contiene Link externo:{' '}
-                    {recource.externalLink !== undefined ? (
+                    {resource.externalLink !== undefined ? (
                       <Check
                         className='text-green-500'
                         size={18}
@@ -69,7 +69,7 @@ const MyOwnRecources = ({ recources }) => {
                 </div>
                 <div className='flex flex-col gap-2 w-[200px] md:w-[100px] md:self-end'>
                   <Link
-                    to={`/profile-panel/my-recources/new-recource?id=${recource._id}`}
+                    to={`/profile-panel/my-resources/new-resource?id=${resource._id}`}
                     className='flex w-full  md:items-end justify-center  md:justify-end h-full self-end'>
                     <button
                       className='bg-[#0e2235] text-white py-2 px-3 
@@ -78,7 +78,7 @@ const MyOwnRecources = ({ recources }) => {
                     </button>
                   </Link>
                   <Link
-                    to={`/recursos-educativos/${recource._id}`}
+                    to={`/recursos-educativos/${resource._id}`}
                     className='flex w-full  md:items-end justify-center  md:justify-end h-full self-end'>
                     <button
                       className='bg-[#0e2235] text-white py-2 px-3 
@@ -97,4 +97,4 @@ const MyOwnRecources = ({ recources }) => {
   );
 };
 
-export default MyOwnRecources;
+export default MyOwnResources;
