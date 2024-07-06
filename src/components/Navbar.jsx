@@ -40,7 +40,7 @@ const Navbar = () => {
   return (
     <>
       <nav
-        className='w-full md:flex items-center justify-between p-3 gap-3 bg-indigo-500 border-b-2 border-gray-300 hidden  
+        className='w-full lg:flex items-center justify-between p-3 gap-3 bg-indigo-500 border-b-2 border-gray-300 hidden  
       sticky top-0 right-0 z-50 '>
         <div className='flex flex-col items-center justify-center z-20'>
           <Link to='/'>
@@ -274,7 +274,7 @@ const Navbar = () => {
           </div>
         </div>
       </nav>
-      <nav className='w-full bg-indigo-500 border-b-2 border-gray-300 md:hidden block sticky top-0 right-0 z-30'>
+      <nav className='w-full bg-indigo-500 border-b-2 border-gray-300 lg:hidden block sticky top-0 right-0 z-30'>
         <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-20'>
           <div className='flex justify-between h-16'>
             <div className='flex'>
@@ -297,7 +297,7 @@ const Navbar = () => {
                     onClick={toggleMenu}
                     className='inline-flex items-center justify-center p-2 rounded-md
                    focus:outline-none 
-                 focus:ring-2 focus:ring-inset focus:ring-gray-500 md:hidden'>
+                 focus:ring-2 focus:ring-inset focus:ring-gray-500 lg:hidden'>
                     <span className='sr-only'>Open main menu</span>
                     {/* Icono de menú hamburguesa */}
 
@@ -333,7 +333,7 @@ const Navbar = () => {
         </div>
 
         {/* Menú desplegable móvil */}
-        <div className={clsx(`md:hidden`, isOpen ? 'block' : 'hidden')}>
+        <div className={clsx(`lg:hidden`, isOpen ? 'block' : 'hidden')}>
           <div className='px-2 pt-2 pb-3 space-y-1 z-20'>
             <Link
               to='/'

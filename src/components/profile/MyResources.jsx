@@ -3,24 +3,24 @@ import { Link } from 'react-router-dom';
 
 import clsx from 'clsx';
 
-import MyOwnRecources from './MyOwnRecources';
+import MyOwnResources from './MyOwnResources';
 import { useUser } from '../../context/UserContext';
-import { useRecources } from '../../context/RecourcesContext';
+import { useResources } from '../../context/ResourcesContext';
 
 const MyResources = () => {
   const [showFilters, setShowFilters] = useState(false);
-  const [filteredRecources, setFilteredRecources] = useState([]);
+  const [filteredResources, setFilteredResources] = useState([]);
   const { user } = useUser();
-  const { getOwnRecources } = useRecources();
+  const { getOwnResources } = useResources();
 
   useEffect(() => {
     if (user && user._id) {
-      const fetchOwnRecources = async () => {
-        const response = await getOwnRecources(user._id);
+      const fetchOwnResources = async () => {
+        const response = await getOwnResources(user._id);
         console.log(response);
-        setFilteredRecources(response.edusources);
+        setFilteredResources(response.edusources);
       };
-      fetchOwnRecources();
+      fetchOwnResources();
     }
   }, [user]);
 
@@ -35,7 +35,7 @@ const MyResources = () => {
           className='bg-[#0e2235] text-white py-2 px-3 flex items-center gap-3 rounded-md w-full md:w-fit  text-md cursor-pointer'>
           {showFilters ? 'Ocultar Filtros' : 'Mostrar Filtros'}
         </p>
-        <Link to='/profile-panel/my-recources/new-recource'>
+        <Link to='/profile-panel/my-resources/new-resource'>
           <button
             className='bg-[#0e2235] text-white 
             py-2 px-3 flex items-center gap-3 rounded-md w-full md:w-fit self-end text-md whitespace-nowrap'>
@@ -74,7 +74,7 @@ const MyResources = () => {
       )}
 
       <div className={clsx('w-full pl-8 mt-8')}>
-        <MyOwnRecources recources={filteredRecources} />
+        <MyOwnResources resources={filteredResources} />
       </div>
     </div>
   );

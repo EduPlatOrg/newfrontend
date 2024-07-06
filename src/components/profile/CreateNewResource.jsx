@@ -2,34 +2,34 @@ import { useState, useEffect, Suspense } from 'react';
 
 import Loader from '../Loader';
 import { useSearchParams } from 'react-router-dom';
-import CreateEditRecourceForm from './CreateEditRecourceForm';
-import { getRecourceByIdRequest } from '../../api/recources';
+import CreateEditResourceForm from './CreateEditResourceForm';
+import { getResourceByIdRequest } from '../../api/resources';
 const CreateNewResource = () => {
-  const [recource, setRecource] = useState(null);
+  const [resource, setResource] = useState(null);
   const [searchParams] = useSearchParams();
   const id = searchParams.get('id'); // Ahora accedes correctamente a 'id'
   console.log(id);
 
   useEffect(() => {
     async function fetchEvent() {
-      const recourceData = await getRecourceByIdRequest(id);
+      const resourceData = await getResourceByIdRequest(id);
 
-      setRecource(recourceData?.data?.edusource);
+      setResource(resourceData?.data?.edusource);
     }
     if (id) {
       fetchEvent();
     } else {
-      setRecource({});
+      setResource({});
     }
   }, [id]); // El array vacío asegura que esto se ejecute solo una vez, al montar el componente.
 
-  if (!recource) {
+  if (!resource) {
     return <Loader />;
   }
 
   return (
     <Suspense fallback={<Loader />}>
-      <CreateEditRecourceForm recource={recource} />
+      <CreateEditResourceForm resource={resource} />
     </Suspense>
   );
 };

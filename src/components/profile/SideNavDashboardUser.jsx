@@ -13,7 +13,7 @@ import ToolTip from '../ToolTip';
 
 const navlinks = [
   { name: 'Dashboard', icon: MdDashboard, link: '' },
-  { name: 'Mis Recursos', icon: PiNotepad, link: 'my-recources' },
+  { name: 'Mis Recursos', icon: PiNotepad, link: 'my-resources' },
   { name: 'Mis Eventos', icon: MdOutlineEventAvailable, link: 'my-events' },
 ];
 const SideNavDashbordUser = () => {
