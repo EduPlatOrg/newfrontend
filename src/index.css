@@ -131,3 +131,26 @@ section {
 .slideIn {
   animation: slideIn 1s ease-out forwards;
 }
+
+.VIpgJd-ZVi9od-l4eHX-hSRGPd {
+  display: none;
+}
+.skiptranslate {
+  display: flex !important;
+  flex-direction: row !important;
+  justify-content: center !important;
+  align-items: center !important;
+  gap: 10px !important;
+  color: black !important;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+#goog-gt-tt {
+  display: none !important;
+}
+
+#google_translate_element select {
+  color: black !important;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  border-radius: 10px !important;
+  padding: 5px !important;
+}
