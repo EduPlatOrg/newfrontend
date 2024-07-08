@@ -25,6 +25,43 @@ const Navbar = () => {
   }, [setIsDropdownOpen]);
 
   useEffect(() => {
+    // Función para inicializar Google Translate
+    const googleTranslateElementInit = () => {
+      new window.google.translate.TranslateElement(
+        {
+          pageLanguage: 'en',
+          autoDisplay: false,
+        },
+        'google_translate_element'
+      );
+    };
+
+    // Verifica si el script ya fue agregado
+    const scriptId = 'google-translate-script';
+    let addScript = document.getElementById(scriptId);
+
+    // Si el script no existe, crea uno nuevo y lo agrega
+    addScript = document.createElement('script');
+    addScript.id = scriptId; // Asigna un ID para identificarlo más tarde
+    addScript.setAttribute(
+      'src',
+      '//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit'
+    );
+    document.body.appendChild(addScript);
+
+    // Asigna la función de inicialización al objeto window
+    window.googleTranslateElementInit = googleTranslateElementInit;
+
+    // Limpieza: elimina el script al desmontar el componente
+    return () => {
+      const existingScript = document.getElementById(scriptId);
+      if (existingScript) {
+        document.body.removeChild(existingScript);
+      }
+    };
+  }, []);
+
+  useEffect(() => {
     const handleClickOutside = (event) => {
       if (isDropdownOpen && !event.target.closest('.dropdown-container')) {
         toggleDropdown(false);
@@ -42,7 +79,7 @@ const Navbar = () => {
       <nav
         className='w-full lg:flex items-center justify-between p-3 gap-3 bg-indigo-500 border-b-2 border-gray-300 hidden  
       sticky top-0 right-0 z-50 '>
-        <div className='flex flex-col items-center justify-center z-20'>
+        <div className='flex  items-center justify-center z-20'>
           <Link to='/'>
             <div className='flex items-center justify-center gap-3'>
               <img
@@ -72,7 +109,7 @@ const Navbar = () => {
                       SignUp
                     </p>
                   </button>
-                </div>
+                </div>{' '}
                 <div className='text-gray-200'>
                   <div className='hidden  md:flex w-full items-center justify-end'>
                     {/* Espacios adicionales aquí para links visibles siempre excepto en móvil */}
@@ -170,7 +207,6 @@ const Navbar = () => {
             ) : (
               <div className='flex flex-col w-full  '>
                 <div className='flex items-center gap-2 justify-end'>
-                  {' '}
                   <p className='text-sm text-gray-200'>
                     Bienvenido: <em> {user?.firstname}</em>
                   </p>
@@ -475,6 +511,17 @@ const Navbar = () => {
           </div>
         </div>
       </nav>
+      <div className='w-full flex justify-start items-center bg-indigo-500 pl-10 '>
+        <div
+          className=''
+          id='google_translate_element'></div>
+
+        <img
+          src='https://www.gstatic.com/images/branding/googlelogo/1x/googlelogo_color_42x16dp.png'
+          alt='google'
+          className='h-4 '
+        />
+      </div>
     </>
   );
 };

@@ -4,6 +4,7 @@ import ShareSocials from '../components/ShareSocials';
 import ConectButtons from '../components/ConectButtons';
 import Promotores from '../components/Promotores';
 import { useEffect } from 'react';
+import { Trans } from 'react-i18next';
 
 const HomePage = () => {
   useEffect(() => {
@@ -34,12 +35,14 @@ const HomePage = () => {
         <span className='font-bold text-3xl md:text-4xl lg:text-5xl'>
           lat.org
         </span>{' '}
-        <span className='font-ligth text-3xl md:text-4xl lg:text-5xl'>
-          es la <span className='text-sky-500 font-bold'>Plataforma</span>{' '}
-          <span className='text-orange-300 font-bold '>Educativa</span> donde
-          estudiantes, familias, escuelas, profesores y otros profesionales de
-          la educación pueden colaborar compartiendo recursos.
-        </span>
+        <Trans i18nKey='homePage.title'>
+          <span className='font-ligth text-3xl md:text-4xl lg:text-5xl'>
+            es la <span className='text-sky-500 font-bold'>Plataforma</span>{' '}
+            <span className='text-orange-300 font-bold '>Educativa</span> donde
+            estudiantes, familias, escuelas, profesores y otros profesionales de
+            la educación pueden colaborar compartiendo recursos.
+          </span>
+        </Trans>
       </div>
       <div className='w-full flex h-[350px] '>
         <div className='w-full absolute flex h-[350px]'>
