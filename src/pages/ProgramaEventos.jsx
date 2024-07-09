@@ -37,7 +37,7 @@ const ProgramaEventos = () => {
           {nextEvents.map((event) => (
           <div
             key={event._id}
-            className='flex flex-col md:flex-row p-4 bg-green-200 shadow-md rounded-md border border-gray-200'>
+            className='flex flex-col md:flex-row p-4 shadow-md rounded-md border border-gray-200'>
             <div className='md:w-1/4'>
               <img
                 src={event.mainImage}
@@ -75,7 +75,7 @@ const ProgramaEventos = () => {
         {pastEvents.map((event) => (
           <div
             key={event._id}
-            className='flex flex-col md:flex-row p-4  bg-red-200 shadow-md rounded-md border border-gray-200 mb-8'>
+            className='flex flex-col md:flex-row p-4 shadow-md rounded-md border border-gray-200 mb-8'>
             <div className='md:w-1/6'>
               <img
                 src={event.mainImage}
