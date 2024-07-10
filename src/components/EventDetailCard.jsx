@@ -20,6 +20,9 @@ const EventDetailCard = ({ event }) => {
         <p className="text-gray-500">{event.price}</p>
         <p className="text-gray-500">{event.category}</p>
         <p className="text-gray-500">{event.language}</p>
+        <p className="text-gray-500">{new Date(event.startDate).toLocaleDateString()}</p>
+        <p className="text-gray-500">{new Date(event.endDate).toLocaleDateString()}</p>
+        <img src={event.mainImage} alt="Main Event" className="w-full h-auto my-4" />
       </div>
 
       <div className="mb-6 relative w-full overflow-hidden aspect-square">
