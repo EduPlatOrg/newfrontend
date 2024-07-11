@@ -167,7 +167,7 @@ const Navbar = () => {
                           className='px-4 py-2 hover:bg-gray-100'
                           onClick={(e) => {
                             e.stopPropagation();
-                            navigate('/');
+                            navigate('/programa-eventos');
                             toggleDropdown();
                           }}>
                           Programa Eventos
@@ -430,7 +430,7 @@ const Navbar = () => {
                     e.stopPropagation();
                     toggleMenu();
                     toggleDropdown();
-                    navigate('/');
+                    navigate('/programa-eventos');
                   }}>
                   Programa eventos
                 </li>
@@ -496,6 +496,16 @@ const Navbar = () => {
                   {' '}
                   User Panel
                 </Link>
+                {user.isBoss && (
+                  <Link
+                    to='/admin-panel'
+                    className='text-gray-200 block px-3 py-2 rounded-md text-base
+                  font-medium'
+                    onClick={() => setIsOpen(!isOpen)}>
+                    {' '}
+                    Admin Panel
+                  </Link>
+                )}
 
                 <button
                   onClick={() => {

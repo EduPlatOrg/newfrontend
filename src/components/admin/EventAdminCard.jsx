@@ -21,7 +21,9 @@ const EventAdminCard = ({ eventsData = [] }) => {
                 alt='Event main Image'
                 className=' mt-2 mb-2'
               />
-              <p className='text-sm text-gray-600'>{event.description}</p>
+              <p className='text-sm text-gray-600 line-clamp-6'>
+                {event.description}
+              </p>
               <a
                 href={event.youtubeUrl}
                 className='flex items-center whitespace-nowrap gap-2 text-xs text-blue-500 mt-2'
@@ -126,7 +128,7 @@ const EventAdminCard = ({ eventsData = [] }) => {
               </div>
             </div>
             <div className='flex items-center justify-end gap-2 mt-4'>
-              <Link to={`/admin-panel/create-event?id=${event.id}`}>
+              <Link to={`/admin-panel/create-event?id=${event._id}`}>
                 <button className='text-xs text-white bg-gray-700 px-2 py-1 rounded-md'>
                   Edit
                 </button>
