@@ -12,7 +12,6 @@ import { createEventRequest, editEventRequest } from '../../api/events';
 import { useNavigate } from 'react-router-dom';
 import { formatInTimeZone } from 'date-fns-tz';
 
-
 const CreateEditForm = ({ event }) => {
   const [loading, setLoading] = useState(false);
   const [mainImage, setMainImage] = useState('');
@@ -116,7 +115,20 @@ const CreateEditForm = ({ event }) => {
   const onSubmit = handleSubmit(async (data) => {
     setLoading(true);
     if (!event?._id) {
-      const newEvent = { ...data, mainImage, images, pdfDocument: pdf };
+      const newEvent = {
+        ...data,
+        mainImage,
+        images,
+        pdfDocument: pdf,
+        address: {
+          streetaddress: data.streetaddress,
+          city: data.city,
+          state: data.state,
+          postalCode: data.postalCode,
+          country: data.country,
+        },
+      };
+      console.log(newEvent);
       try {
         const response = await createEventRequest(newEvent);
         if (response.status === 200) {
@@ -130,7 +142,20 @@ const CreateEditForm = ({ event }) => {
       }
     } else {
       // Edit Event
-      const editEvent = { ...data, mainImage, images, pdfDocument: pdf };
+      const editEvent = {
+        ...data,
+        mainImage,
+        images,
+        pdfDocument: pdf,
+        address: {
+          streetaddress: data.streetaddress,
+          city: data.city,
+          state: data.state,
+          postalCode: data.postalCode,
+          country: data.country,
+        },
+      };
+      console.log(editEvent);
       try {
         const response = await editEventRequest(event._id, editEvent);
         if (response.status === 200) {

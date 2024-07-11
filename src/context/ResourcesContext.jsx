@@ -32,7 +32,7 @@ export const ResourcesProvider = ({ children }) => {
     const fetchResources = async () => {
       const response = await getAllResources();
 
-      setResources(response.edusources);
+      setResources(response);
     };
     fetchResources();
     if (user && user._id) {

@@ -7,10 +7,32 @@ import EventAdminCard from './EventAdminCard';
 const MainDashboard = () => {
   const [showFilters, setShowFilters] = useState(false);
   const { events, fetchEvents } = useEventStore();
-
+  const [filteredEvents, setFilteredEvents] = useState(events);
+  console.log(events);
   useEffect(() => {
     fetchEvents();
   }, [fetchEvents]);
+
+  const handleSortByDate = () => {
+    const sorted = events.sort((a, b) => {
+      return new Date(a.startDate) - new Date(b.startDate);
+    });
+    setFilteredEvents(sorted);
+  };
+  const handleSerachByName = (e) => {
+    e.preventDefault();
+    if (e.target.value.length <= 3) return;
+    const filtered = events.filter((event) =>
+      event.title.toLowerCase().includes(e.target.value.toLowerCase())
+    );
+    setFilteredEvents(filtered);
+  };
+  const handleFilterOldEvents = () => {
+    const filtered = events.filter((event) => {
+      return new Date(event.startDate) > new Date();
+    });
+    setFilteredEvents(filtered);
+  };
 
   return (
     <div className='flex flex-col w-full items-center p-2 '>
@@ -36,22 +58,22 @@ const MainDashboard = () => {
           <div className='flex md:flex-row flex-col items-center gap-2 justify-center w-full mb-2'>
             <input
               type='text'
+              onChange={handleSerachByName}
               placeholder='Buscar por nombre'
               className='md:w-[50%] w-full p-2 rounded-md border border-gray-700'
-              onChange={() => {}}
             />
           </div>
           <div className='flex md:flex-row flex-col items-center gap-2 justify-center w-full'>
             <button
+              onClick={handleSortByDate}
               className='bg-[#0e2235] text-white 
             py-2 px-3 flex items-center gap-3 rounded-md w-full md:w-fit self-end text-md'>
               Ordenar por fecha
             </button>
 
-            <button className='bg-[#0e2235] text-white py-2 px-3 flex items-center gap-3 rounded-md w-full md:w-fit self-end text-md'>
-              Fecha de Creacion
-            </button>
-            <button className='bg-[#0e2235] text-white py-2 px-3 flex items-center gap-3 rounded-md w-full md:w-fit self-end text-md'>
+            <button
+              className='bg-[#0e2235] text-white py-2 px-3 flex items-center gap-3 rounded-md w-full md:w-fit self-end text-md'
+              onClick={handleFilterOldEvents}>
               Ocultar eventos pasados
             </button>
             <button className='bg-[#0e2235] text-white py-2 px-3 flex items-center gap-3 rounded-md w-full md:w-fit self-end text-md'>
@@ -62,7 +84,7 @@ const MainDashboard = () => {
       )}
 
       <div className={clsx('w-full pl-8 mt-8')}>
-        <EventAdminCard eventsData={events} />
+        <EventAdminCard eventsData={filteredEvents} />
       </div>
     </div>
   );

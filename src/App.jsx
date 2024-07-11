@@ -15,7 +15,6 @@ import Navbar from './components/Navbar';
 import VerifyEmailPage from './components/VerifyEmailPage';
 
 import { FAQ } from './pages/FAQ';
-import { RecursosEducativos } from './pages/RecursosEducativos';
 import AdminPanelPage from './pages/AdminPanelPage';
 import Colaboradores from './pages/Colaboradores';
 import ComoColaborar from './pages/ComoColaborar';
@@ -35,6 +34,9 @@ import FRREEPage from './pages/FRREEPage';
 import CreateEvent from './components/admin/CreateEvent';
 import CreateNewResource from './components/profile/CreateNewResource';
 import EventsDetails from './components/EventsDetails';
+import EventInscription from './components/EventInscription';
+import RecursosEducativos2 from './pages/RecursosEducativos2';
+import ResourceDetail from './components/ResourceDetail';
 
 function App() {
   return (
@@ -66,6 +68,10 @@ function App() {
                 element={<ProgramaEventos />}
               />
               <Route
+                path='/programa-eventos/incripciones/:id'
+                element={<EventInscription />}
+              />
+              <Route
                 path='/programa-eventos/:id'
                 element={<EventsDetails />}
               />
@@ -87,7 +93,11 @@ function App() {
               />
               <Route
                 path='/recursos-educativos'
-                element={<RecursosEducativos />}
+                element={<RecursosEducativos2 />}
+              />
+              <Route
+                path='/recursos-educativos/:id'
+                element={<ResourceDetail />}
               />
               <Route
                 path='/faq'

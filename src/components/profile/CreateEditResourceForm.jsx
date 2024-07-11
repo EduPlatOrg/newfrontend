@@ -44,14 +44,10 @@ const CreateEditResourceForm = ({ resource }) => {
       setValue('title', resource?.title);
       setValue('description', resource?.description);
       setValue('youtubeUrl', resource?.youtubeUrl);
-
       setValue('externalLink', resource?.externalLink);
-      setValue(
-        'discipline',
-        Array.isArray(resource?.discipline)
-          ? resource.discipline.join(',')
-          : resource?.discipline
-      );
+      setValue('range', resource?.range[1]);
+      setValue('discipline', resource?.discipline);
+
       setValue(
         'subDicipline',
         Array.isArray(resource?.subDicipline)
@@ -97,7 +93,8 @@ const CreateEditResourceForm = ({ resource }) => {
   const onSubmit = handleSubmit(async (data) => {
     setLoading(true);
     console.log(data, '<-- data');
-    data.discipline = data.discipline.split(',');
+    data.range = [data.range - 1, data.range, data.range + 1];
+
     data.subDicipline = data.subDicipline.split(',');
     if (!resource?._id) {
       const newResource = {
@@ -329,7 +326,7 @@ const CreateEditResourceForm = ({ resource }) => {
               </Dropzone>
             </div>
           </div>
-          <div className='flex flex-col items-start justify-center mb-1'>
+          <div className='flex flex-col items-start justify-center mb-1 gap-2'>
             <label
               htmlFor='youtubeUrl'
               className='flex items-center gap-1 text-sm font-medium leading-6 text-gray-900 '>
@@ -350,7 +347,7 @@ const CreateEditResourceForm = ({ resource }) => {
             />
             {errors.youtubeUrl && <span>This field is required</span>}
           </div>
-          <div className='flex flex-col items-start justify-center mb-1'>
+          <div className='flex flex-col items-start justify-center mb-1 gap-2'>
             <label
               htmlFor='externalLink'
               className='flex items-center gap-1 text-sm font-medium leading-6 text-gray-900 '>
@@ -374,30 +371,37 @@ const CreateEditResourceForm = ({ resource }) => {
           <div className='flex items-center gap-2 flex-wrap'>
             <label
               htmlFor='discipline'
-              className=' whitespace-nowrap'>
+              className=' whitespace-nowrap block text-sm font-medium leading-6 text-gray-900'>
               Disciplina:{' '}
-              <em className='text-xs'>
-                (Separar por comas las diferentes diciplinas si aplica)
-              </em>
             </label>
-            <input
-              type='text'
+            <select
+              {...register('discipline', { required: true })}
               id='discipline'
               name='discipline'
-              placeholder='Biologia, Quimica, Fisica, etc.'
-              className='block w-full rounded-md border-0 
-              py-1.5 text-gray-900 shadow-sm ring-1 
-              ring-inset ring-gray-300
-              placeholder:text-gray-400 
-              focus:ring-2 focus:ring-inset
-              focus:ring-indigo-600 sm:text-sm sm:leading-6 p-2'
-              {...register('discipline', { required: true })}
-            />
+              required
+              className='block w-full rounded-md border-0 py-1.5
+               text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 
+               focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 p-2'>
+              <option value=''>Selecciona una disciplina</option>
+              <option value='artes'>Artes</option>
+              <option value='tics'>
+                Informatica Tecnologia (TICS TEPS TRICS)
+              </option>
+              <option value='lengua'>Lenguas (Idiomas-Literatura)</option>
+              <option value='matematicas'>Matemáticas</option>
+              <option value='ciencias-naturales'>Ciencias Naturales</option>
+              <option value='ciencias-sociales'>Ciencias Sociales</option>
+              <option value='salud'>
+                Salud–NB Educación Física. Educación mental
+              </option>
+              <option value='psicopedagogia'>Psicopedagogía</option>
+              <option value='otras'>Otras Categorías</option>
+            </select>
           </div>
           <div className='flex items-center gap-2 flex-wrap'>
             <label
               htmlFor='subDiscipline'
-              className=' whitespace-nowrap'>
+              className=' whitespace-nowrap block text-sm font-medium leading-6 text-gray-900'>
               Sub-disciplina:{' '}
               <em className='text-xs'>
                 (Separar por comas las diferentes sub-diciplinas si aplica)
@@ -417,36 +421,13 @@ const CreateEditResourceForm = ({ resource }) => {
               {...register('subDicipline', { required: true })}
             />
           </div>
-          {/* <div>
-            <div className='flex items-center justify-between w-full'>
-              <label
-                htmlFor='language'
-                className='block text-sm font-medium leading-6 text-gray-900'>
-                Lenguaje:
-              </label>
 
-              <div className='text-sm'></div>
-            </div>
-            <div className='mt-2 relative'>
-              <input
-                {...register('language', { required: true })}
-                id='language'
-                name='language'
-                type='text'
-                placeholder='Español, Ingles, Frances, etc.'
-                className='block w-full rounded-md 
-                  border-0 py-1.5 text-gray-900 
-                  shadow-sm ring-1 ring-inset
-                   ring-gray-300
-                    placeholder:text-gray-400 focus:ring-2 focus:ring-inset
-                     focus:ring-indigo-600 sm:text-sm sm:leading-6 p-2'
-              />
-            </div>
-            {errors.language && (
-              <span className='text-red-500'>This field is Requiered</span>
-            )}
-          </div> */}
-          <div className='mt-2 relative'>
+          <div className='flex items-center gap-2 flex-wrap'>
+            <label
+              htmlFor='language'
+              className=' whitespace-nowrap block text-sm font-medium leading-6 text-gray-900'>
+              Idioma del Recurso:{' '}
+            </label>
             <select
               {...register('language', { required: true })}
               id='language'
@@ -465,6 +446,37 @@ const CreateEditResourceForm = ({ resource }) => {
               <option value='other'>🌍 Otros</option>
             </select>
           </div>
+          <div className='flex items-center gap-2 flex-wrap'>
+            <label
+              htmlFor='range'
+              className=' whitespace-nowrap block text-sm font-medium leading-6 text-gray-900'>
+              Rango de edad del Recurso:{' '}
+            </label>
+            <input
+              type='number'
+              id='range'
+              name='range'
+              min={1}
+              max={18}
+              required
+              placeholder='1-18'
+              className='block w-full rounded-md border-0 
+              py-1.5 text-gray-900 shadow-sm ring-1 
+              ring-inset ring-gray-300
+              placeholder:text-gray-400 
+              focus:ring-2 focus:ring-inset
+              focus:ring-indigo-600 sm:text-sm sm:leading-6 p-2'
+              {...register('range', {
+                required: true,
+                min: 1,
+                max: 18,
+                valueAsNumber: true,
+              })}
+            />
+          </div>
+          {errors.range && (
+            <span className='text-red-500'>This field is Requiered</span>
+          )}
           <div>
             <div className='flex items-center justify-between w-full'>
               <label
@@ -476,20 +488,19 @@ const CreateEditResourceForm = ({ resource }) => {
               <div className='text-sm'></div>
             </div>
             <div className='mt-2 relative'>
-              <input
+              <select
                 {...register('level', { required: true })}
                 id='level'
                 name='level'
-                type='text'
                 required
-                placeholder='Para que nivel es este recurso? (Basico, Intermedio, Avanzado)'
-                className='block w-full rounded-md 
-                  border-0 py-1.5 text-gray-900 
-                  shadow-sm ring-1 ring-inset
-                   ring-gray-300
-                    placeholder:text-gray-400 focus:ring-2 focus:ring-inset
-                     focus:ring-indigo-600 sm:text-sm sm:leading-6 p-2'
-              />
+                className='block w-full rounded-md border-0 py-1.5
+               text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 
+               focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 p-2'>
+                <option value=''>Selecciona un nivel</option>
+                <option value='basico'>Basico</option>
+                <option value='intermedio'>Intermedio</option>
+                <option value='avanzado'>Avanzado</option>
+              </select>
             </div>
             {errors.level && (
               <span className='text-red-500'>This field is Requiered</span>
