@@ -5,7 +5,7 @@ import { Toaster } from 'sonner';
 import { ResourcesProvider } from './context/ResourcesContext';
 
 import AdminManageEvents from './components/admin/AdminManageEvents';
-import AdminManageResources from './components/admin/AdminManageResources';
+
 import AdminUserManagment from './components/admin/AdminUserManagment';
 import Footer from './components/Footer';
 import MainDashboard from './components/admin/MainDashboard';
@@ -156,7 +156,7 @@ function App() {
                 />
                 <Route
                   path='admin-all-resources'
-                  element={<AdminManageResources />}
+                  element={<RecursosEducativos2 />}
                 />
                 <Route
                   path='all-events'

@@ -1,14 +1,16 @@
 import { Link } from 'react-router-dom';
 import Loader from './Loader';
+import { useUser } from '../context/UserContext';
 
 const ResourcesCard = ({ resources }) => {
+  const { user } = useUser();
   if (!resources) return <Loader />;
   console.log(resources);
   return (
     <>
       {resources.map((resource) => (
         <div
-          className='h-64 w-64 flex flex-col justify-between p-2 rounded-lg gap-1'
+          className='min-h-fit w-64 flex flex-col justify-between p-2 rounded-lg gap-1'
           key={resource._id}>
           <h3 className='text-center mb-2 font-bold'>{resource.title}</h3>
           <div className='h-36 bg-gray-200 rounded-lg'>
@@ -30,7 +32,7 @@ const ResourcesCard = ({ resources }) => {
           </div>
           <p className='text-xs font-medium'>
             <strong>Disciplina: </strong>
-            {resource.discipline[0]}
+            {resource.discipline}
           </p>
           {resource.subDicipline && (
             <p className='text-xs font-medium'>
@@ -38,12 +40,26 @@ const ResourcesCard = ({ resources }) => {
               {resource?.subDicipline.join(', ')}
             </p>
           )}
-          <div className='flex justify-end mt-auto'>
+          <div className='flex justify-end mt-auto gap-2 '>
             <Link
               to={`/recursos-educativos/${resource._id}`}
               className='bg-gray-300 py-0.5 px-2 rounded-sm text-xs font-bold'>
               Ver más
             </Link>
+            {user.isBoss && (
+              <>
+                <Link
+                  to={`/recursos-educativos/${resource._id}`}
+                  className='bg-gray-300 py-0.5 px-2 rounded-sm text-xs font-bold'>
+                  Eliminar
+                </Link>
+                <Link
+                  to={`/profile-panel/my-resources/new-resource?id=${resource._id}`}
+                  className='bg-gray-300 py-0.5 px-2 rounded-sm text-xs font-bold'>
+                  Editar
+                </Link>
+              </>
+            )}
           </div>
         </div>
       ))}
