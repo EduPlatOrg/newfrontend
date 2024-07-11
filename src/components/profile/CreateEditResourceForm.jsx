@@ -45,7 +45,7 @@ const CreateEditResourceForm = ({ resource }) => {
       setValue('description', resource?.description);
       setValue('youtubeUrl', resource?.youtubeUrl);
       setValue('externalLink', resource?.externalLink);
-      setValue('range', resource?.range[1]);
+      // setValue('range', resource?.range[1]);
       setValue('discipline', resource?.discipline);
 
       setValue(

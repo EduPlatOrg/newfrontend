@@ -24,11 +24,9 @@ const MyOwnResources = ({ resources }) => {
                   <h3 className='text-md font-serif'>{resource.title}</h3>
                   <p className='text-xs gap-2'>
                     Disciplina:{' '}
-                    {resource.discipline.map((dis, index) => (
-                      <span key={index}>
-                        <em>{dis}</em>
-                      </span>
-                    ))}
+                    <span>
+                      <em>{resource.discipline}</em>
+                    </span>
                   </p>
                   <p className='text-xs gap-2'>
                     Sub-disciplina:{' '}

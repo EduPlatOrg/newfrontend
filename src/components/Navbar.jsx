@@ -384,6 +384,7 @@ const Navbar = () => {
               Acerca de Nosotros
             </Link>
             <Link
+              onClick={toggleMenu}
               to='/recursos-educativos'
               className='text-gray-200 block px-3 py-2 rounded-md text-base font-medium'>
               Plataforma Educativa
