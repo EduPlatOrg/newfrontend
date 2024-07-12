@@ -61,7 +61,7 @@ const RecursosEducativos2 = () => {
   useEffect(() => {
     let search = '';
     if (language) {
-      search += `language=${language}&`;
+      search += `lang=${language}&`;
     }
     if (discipline) {
       search += `discipline=${discipline}&`;
@@ -152,14 +152,14 @@ const RecursosEducativos2 = () => {
             <div className='flex w-full flex-col md:flex-row items-center justify-around gap-1'>
               <div className='flex items-center gap-2 flex-wrap w-full'>
                 <label
-                  htmlFor='language'
+                  htmlFor='lang'
                   className=' whitespace-nowrap block text-sm font-medium leading-6 text-gray-900'>
                   Idioma del Recurso:{' '}
                 </label>
                 <select
                   onChange={(e) => setLanguage(e.target.value)}
-                  id='language'
-                  name='language'
+                  id='lang'
+                  name='lang'
                   required
                   className='block w-full rounded-md border-0 
                text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 
