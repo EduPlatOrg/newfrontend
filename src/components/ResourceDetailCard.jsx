@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { Rating } from 'react-simple-star-rating';
-import { logOutRequest } from '../api/user';
 import clsx from 'clsx';
 import { useUser } from '../context/UserContext';
 
