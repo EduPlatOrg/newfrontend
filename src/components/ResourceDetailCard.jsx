@@ -1,6 +1,11 @@
 import { useState } from 'react';
+import { Rating } from 'react-simple-star-rating';
+import { logOutRequest } from '../api/user';
+import clsx from 'clsx';
+import { useUser } from '../context/UserContext';
 
 const ResourceDetailCard = ({ resource }) => {
+  const { user } = useUser();
   const {
     title,
     description,
@@ -11,50 +16,26 @@ const ResourceDetailCard = ({ resource }) => {
     discipline,
     subDicipline,
   } = resource;
-  const [rating, setRating] = useState(0);
+  const [rating, setRating] = useState(4);
   const [mostrarComentarios, setMostrarComentarios] = useState(false);
   const [ratingComment, setRatingComment] = useState('');
+  const tooltipArray = ['Malo', 'Regular', 'Bueno', 'Muy bueno', 'Excelente'];
 
   const handleRating = (index) => {
-    {
-      /* TODO: Cambiar mensajes */
-    }
+    console.log(index);
     setRating(index);
-    switch (index) {
-      case 1:
-        setRatingComment('Mal recurso');
-        break;
-      case 2:
-        setRatingComment('Recurso Regular ');
-        break;
-      case 3:
-        setRatingComment('Buen recurso');
-        break;
-      case 4:
-        setRatingComment('Muy buen recurso');
-        break;
-      case 5:
-        setRatingComment('Excelente recurso');
-        break;
-      default:
-        setRatingComment('');
-    }
   };
 
-  {
-    /* TODO: Funcion submit para enviar comentario y valoración*/
-  }
-
-  const Star = ({ selected = false, onClick = () => {} }) => (
-    <span
-      className={`cursor-pointer text-3xl ${
-        selected ? 'text-yellow-500' : 'text-gray-300'
-      }`}
-      onClick={onClick}>
-      {' '}
-      ★
-    </span>
-  );
+  const handleValoration = () => {
+    console.log(rating, ratingComment);
+    const newValoration = {
+      rating,
+      comment: ratingComment,
+      userId: user?._id,
+      eventId: resource._id,
+    };
+    console.log(newValoration);
+  };
 
   return (
     <div className='bg-white shadow-md rounded-lg overflow-hidden m-4'>
@@ -82,33 +63,54 @@ const ResourceDetailCard = ({ resource }) => {
         </h3>
         <div className='mb-4'>
           <textarea
+            onChange={(e) => setRatingComment(e.target.value)}
             className='w-full p-2 text-gray-700 border rounded-lg focus:outline-none'
             rows='4'
             placeholder='Deja tu comentario...'></textarea>
         </div>
-        <div className='flex justify-between items-center mb-4'>
-          <div>
-            {[1, 2, 3, 4, 5].map((index) => (
-              <Star
-                key={index}
-                selected={index <= rating}
-                onClick={() => handleRating(index)}
+        {user && (
+          <div className='flex justify-between items-center mb-4'>
+            <div className='flex items-center justify-between gap-2'>
+              <Rating
+                SVGclassName={`inline-block`}
+                onClick={handleRating}
+                initialValue={rating}
+                transition
+                size={25}
+                showTooltip
+                tooltipArray={tooltipArray}
+                tooltipClassName={clsx(
+                  'text-xs p-1 px-2',
+                  rating === 0 && 'hidden',
+                  rating === 1 && 'bg-red-500',
+                  rating === 2 && 'bg-yellow-500',
+                  rating === 3 && 'bg-green-500',
+                  rating === 4 && 'bg-green-500',
+                  rating === 5 && 'bg-green-500'
+                )}
               />
-            ))}
+              <button
+                onClick={() => setRating(0)}
+                type='button'
+                className='p-1 mr-10 text-xs bg-black text-white px-2 rounded-md'>
+                Reset stars
+              </button>
+            </div>
+            <button
+              className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded text-xs'
+              onClick={handleValoration}>
+              Enviar
+            </button>
           </div>
-          <button className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'>
-            Enviar
-          </button>
-        </div>
-        {ratingComment && <div className='mt-2 mb-4'>{ratingComment}</div>}
+        )}
       </div>
 
       {/* Ver más / menos */}
-      <div className='ver-mas-container bg-red-500'>
+      <div className=' flex items-center justify-end py-4'>
         {' '}
         {/* TODO: Quitar bg */}
         <button
-          className='ver-mas-btn'
+          className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded text-xs mr-4'
           onClick={() => setMostrarComentarios(!mostrarComentarios)}>
           {mostrarComentarios ? 'Ocultar comentarios' : 'Ver comentarios'}
         </button>
