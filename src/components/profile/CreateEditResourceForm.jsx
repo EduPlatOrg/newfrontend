@@ -54,7 +54,7 @@ const CreateEditResourceForm = ({ resource }) => {
           ? resource.subDicipline.join(',')
           : resource?.subDicipline
       );
-      setValue('language', resource?.language);
+      setValue('lang', resource?.lang);
       setValue('media', resource?.media);
       setValue('user', resource?.user);
       setValue('licence', resource?.licence);
@@ -424,14 +424,14 @@ const CreateEditResourceForm = ({ resource }) => {
 
           <div className='flex items-center gap-2 flex-wrap'>
             <label
-              htmlFor='language'
+              htmlFor='lang'
               className=' whitespace-nowrap block text-sm font-medium leading-6 text-gray-900'>
               Idioma del Recurso:{' '}
             </label>
             <select
-              {...register('language', { required: true })}
-              id='language'
-              name='language'
+              {...register('lang', { required: true })}
+              id='lang'
+              name='lang'
               required
               className='block w-full rounded-md border-0 py-1.5
                text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 
