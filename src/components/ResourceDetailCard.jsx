@@ -19,6 +19,8 @@ const ResourceDetailCard = ({ resource }) => {
   const [mostrarComentarios, setMostrarComentarios] = useState(false);
   const [ratingComment, setRatingComment] = useState('');
   const tooltipArray = ['Malo', 'Regular', 'Bueno', 'Muy bueno', 'Excelente'];
+  const [showComments, setShowComments] = useState(false);
+
 
   const handleRating = (index) => {
     console.log(index);
@@ -38,25 +40,19 @@ const ResourceDetailCard = ({ resource }) => {
 
   return (
     <div className='bg-white shadow-md rounded-lg overflow-hidden m-4'>
-      <div className='p-4'>
-        <h2 className='font-bold text-2xl md:text-4xl my-4'>{title}</h2>
-        <img
-          src={image}
-          alt='Resource'
-          className='w-96 h-auto my-4'
-        />
-        <p className='text-black text-xl md:text-2xl my-4'>{description}</p>
-        <p className='text-black text-xl my-2'>Autor: {author}</p>
-        <p className='text-black text-xl my-2'>Publicado: {publishDate}</p>
-        <p className='text-black text-xl my-2'>Nivel: {level}</p>
-        <p className='text-black text-xl my-2'>Disciplina: {discipline}</p>
-        <p className='text-black text-xl mt-2 mb-4'>
-          Subdisciplina: {subDicipline}
-        </p>
+      <div className="bg-white p-6 rounded-lg shadow-lg max-w-6xl mx-auto my-8">
+        <h2 className="font-bold text-2xl md:text-4xl text-gray-800 mb-6 text-center">{title}</h2>
+        <img src={image} alt="Resource" className="w-full md:w-3/4 h-auto mx-auto rounded-lg mb-6" />
+        <p className="text-gray-700 text-lg md:text-xl mb-4">{description}</p>
+        <p className="text-gray-600 text-lg md:text-xl mb-2"><strong>Autor:</strong> {author}</p>
+        <p className="text-gray-600 text-lg md:text-xl mb-2"><strong>Publicado:</strong> {publishDate}</p>
+        <p className="text-gray-600 text-lg md:text-xl mb-2"><strong>Nivel:</strong> {level}</p>
+        <p className="text-gray-600 text-lg md:text-xl mb-2"><strong>Disciplina:</strong> {discipline}</p>
+        <p className="text-gray-600 text-lg md:text-xl mt-2 mb-4"><strong>Subdisciplina:</strong> {subDicipline}</p>
       </div>
 
       {/* Comentarios y valoraciones */}
-      <div className='bg-gray-100 p-4'>
+      <div className="bg-gray-100 p-6 rounded-lg shadow-lg max-w-6xl mx-auto my-8">
         <h3 className='text-lg font-semibold mb-4'>
           Deja tu comentario y valoración
         </h3>
@@ -105,14 +101,17 @@ const ResourceDetailCard = ({ resource }) => {
       </div>
 
       {/* Ver más / menos */}
-      <div className=' flex items-center justify-end py-4'>
+      <div className='flex items-center justify-center py-2 px-2'>
         {' '}
         {/* TODO: Quitar bg */}
-        <button
-          className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded text-xs mr-4'
-          onClick={() => setMostrarComentarios(!mostrarComentarios)}>
-          {mostrarComentarios ? 'Ocultar comentarios' : 'Ver comentarios'}
-        </button>
+        <button className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded' onClick={() => setShowComments(!showComments)}>
+        {showComments ? 'Ocultar Comentarios' : 'Mostrar Comentarios'}
+      </button>
+      {showComments && (
+        <div>
+          {/* Comentarios */}
+        </div>      
+    )}
       </div>
     </div>
   );
