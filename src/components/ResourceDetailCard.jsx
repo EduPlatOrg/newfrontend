@@ -11,12 +11,20 @@ const ResourceDetailCard = ({ resource }) => {
     title,
     description,
     autor,
-    publishDate,
+    creatorId,
+    date: publishDate,
     image,
     level,
     discipline,
     subDicipline,
+    language,
+    externalLink,
+    pdfDocument,
+    valorationsAverage,
+    autor: { socials } = {}
   } = resource;
+  
+  
   const [rating, setRating] = useState(4);
 
   const [ratingComment, setRatingComment] = useState('');
@@ -45,28 +53,78 @@ const ResourceDetailCard = ({ resource }) => {
         <h2 className='font-bold text-2xl md:text-4xl text-gray-800 mb-6 text-center'>
           {title}
         </h2>
-        <img
-          src={image}
-          alt='Resource'
-          className='w-full md:w-3/4 h-auto mx-auto rounded-lg mb-6'
-        />
-        <p className='text-gray-700 text-lg md:text-xl mb-4'>{description}</p>
-        <p className='text-gray-600 text-lg md:text-xl mb-2'>
-          <strong>Autor:</strong> {autor?.autorName}
-        </p>
-        <p className='text-gray-600 text-lg md:text-xl mb-2'>
-          <strong>Publicado:</strong> {publishDate}
-        </p>
-        <p className='text-gray-600 text-lg md:text-xl mb-2'>
-          <strong>Nivel:</strong> {level}
-        </p>
-        <p className='text-gray-600 text-lg md:text-xl mb-2'>
-          <strong>Disciplina:</strong> {discipline}
-        </p>
-        <p className='text-gray-600 text-lg md:text-xl mt-2 mb-4'>
-          <strong>Subdisciplina:</strong> {subDicipline}
-        </p>
+        {image && (
+          <img
+            src={image}
+            alt='Resource'
+            className='w-full md:w-3/4 h-auto mx-auto rounded-lg mb-6'
+          />
+        )}
+        {description && (
+          <p className='text-gray-700 text-lg md:text-xl mb-4'>{description}</p>
+        )}
+        {autor?.autorName && (
+          <p className='text-gray-600 text-lg md:text-xl mb-2'>
+            <strong>Autor:</strong> {autor.autorName}
+          </p>
+        )}
+        {creatorId && (
+          <p className='text-gray-700 text-lg md:text-xl mb-4'>
+            <strong>Página del creador:</strong> <a href={`http://www.eduplat.org/public-profile/${creatorId}`} className="text-blue-600 underline" target="_blank" rel="noopener noreferrer">Página creador</a>
+          </p>
+        )}
+        {publishDate && (
+          <p className='text-gray-600 text-lg md:text-xl mb-2'>
+            <strong>Publicado:</strong> {new Date(publishDate).toLocaleDateString()}
+          </p>
+        )}
+        {level && (
+          <p className='text-gray-600 text-lg md:text-xl mb-2'>
+            <strong>Nivel:</strong> {level}
+          </p>
+        )}
+        {discipline && discipline.length > 0 && (
+          <p className='text-gray-600 text-lg md:text-xl mb-2'>
+            <strong>Disciplina:</strong> {discipline.join(', ')}
+          </p>
+        )}
+        {subDicipline && subDicipline.length > 0 && (
+          <p className='text-gray-600 text-lg md:text-xl mb-2'>
+            <strong>Subdisciplina:</strong> {subDicipline.join(', ')}
+          </p>
+        )}
+        {language && (
+          <p className='text-gray-600 text-lg md:text-xl mb-2'>
+            <strong>Lenguaje:</strong> {language}
+          </p>
+        )}
+        {externalLink && (
+          <p className='text-gray-600 text-lg md:text-xl mb-2'>
+            <strong>Link externo:</strong> <a href={externalLink} className="text-blue-600 underline" target="_blank" rel="noopener noreferrer">{externalLink}</a>
+          </p>
+        )}
+        {pdfDocument && (
+          <p className='text-gray-600 text-lg md:text-xl mb-2'>
+            <strong>PDF Documento:</strong> <a href={pdfDocument} className="text-blue-600 underline" target="_blank" rel="noopener noreferrer">Ver documento</a>
+          </p>
+        )}
+        {valorationsAverage && (
+          <p className='text-gray-600 text-lg md:text-xl mb-2'>
+            <strong>Media de Valoraciones:</strong> {`${valorationsAverage.average}/5 - ${valorationsAverage.votes} evaluaciones`}
+          </p>
+        )}
+        {socials && socials.length > 0 && (
+          <p className='text-gray-600 text-lg md:text-xl mb-2'>
+            <strong>Sociales:</strong> 
+            {socials.map((social, index) => (
+              <span key={index} className="block">
+                {social.media}: {social.user}
+              </span>
+            ))}
+          </p>
+        )}
       </div>
+
 
       {/* Comentarios y valoraciones */}
       {user && user !== null && (
