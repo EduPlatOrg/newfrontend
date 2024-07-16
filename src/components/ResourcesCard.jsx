@@ -46,7 +46,7 @@ const ResourcesCard = ({ resources }) => {
               className='bg-gray-300 py-0.5 px-2 rounded-sm text-xs font-bold'>
               Ver más
             </Link>
-            {user.isBoss && (
+            {user?.isBoss && (
               <>
                 <Link
                   to={`/recursos-educativos/${resource._id}`}
