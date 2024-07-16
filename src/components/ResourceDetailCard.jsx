@@ -6,6 +6,7 @@ import { useUser } from '../context/UserContext';
 const ResourceDetailCard = ({ resource }) => {
   console.log(resource);
   const { user } = useUser();
+  console.log(user);
   const {
     title,
     description,
@@ -68,18 +69,19 @@ const ResourceDetailCard = ({ resource }) => {
       </div>
 
       {/* Comentarios y valoraciones */}
-      <div className='bg-gray-100 p-6 rounded-lg shadow-lg max-w-6xl mx-auto my-8'>
-        <h3 className='text-lg font-semibold mb-4'>
-          Deja tu comentario y valoración
-        </h3>
-        <div className='mb-4'>
-          <textarea
-            onChange={(e) => setRatingComment(e.target.value)}
-            className='w-full p-2 text-gray-700 border rounded-lg focus:outline-none'
-            rows='4'
-            placeholder='Deja tu comentario...'></textarea>
-        </div>
-        {user && (
+      {user && user !== null && (
+        <div className='bg-gray-100 p-6 rounded-lg shadow-lg max-w-6xl mx-auto my-8'>
+          <h3 className='text-lg font-semibold mb-4'>
+            Deja tu comentario y valoración
+          </h3>
+          <div className='mb-4'>
+            <textarea
+              onChange={(e) => setRatingComment(e.target.value)}
+              className='w-full p-2 text-gray-700 border rounded-lg focus:outline-none'
+              rows='4'
+              placeholder='Deja tu comentario...'></textarea>
+          </div>
+
           <div className='flex justify-between items-center mb-4'>
             <div className='flex items-center justify-between gap-2'>
               <Rating
@@ -113,8 +115,8 @@ const ResourceDetailCard = ({ resource }) => {
               Enviar
             </button>
           </div>
-        )}
-      </div>
+        </div>
+      )}
 
       {/* Ver más / menos */}
       <div className='flex items-center justify-center py-2 px-2'>
