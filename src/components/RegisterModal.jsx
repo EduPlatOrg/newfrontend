@@ -1,8 +1,8 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useForm } from 'react-hook-form';
 
-import { Link, useNavigate } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+import { useState } from 'react';
 
 import { IoEyeOffOutline, IoEyeOutline } from 'react-icons/io5';
 import { Modal } from '../components/Modal';
@@ -28,10 +28,9 @@ const RegisterModal = () => {
   } = useForm();
   const {
     errors: formsErrors,
-    isAuthenticated,
+
     registerUserRequest,
   } = useUser();
-  const navigate = useNavigate();
 
   const onSubmit = handleSubmit(async (data) => {
     console.log(data, 'data');
@@ -42,10 +41,6 @@ const RegisterModal = () => {
       reset();
     }
   });
-
-  useEffect(() => {
-    if (isAuthenticated) navigate('/');
-  }, [isAuthenticated]);
 
   const handleChange = (e) => {
     e.preventDefault();

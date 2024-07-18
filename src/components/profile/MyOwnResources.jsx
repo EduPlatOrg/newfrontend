@@ -17,7 +17,7 @@ const MyOwnResources = ({ resources }) => {
                   <img
                     src={resource.image}
                     alt='Imagen del Recurso'
-                    className='max-w-[200px]'
+                    className='max-w-[200px] max-h-[120px] rounded-md min-w-[200px] object-contain'
                   />
                 </div>
                 <div className='flex flex-col md:items-start items-center gap-2 leading-6 w-full'>

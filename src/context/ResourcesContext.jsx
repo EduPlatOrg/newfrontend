@@ -24,6 +24,7 @@ export const useResources = () => {
 
 export const ResourcesProvider = ({ children }) => {
   const { user } = useUser();
+  console.log(user);
   const [resources, setResources] = useState([]);
   const [currentResource, setCurrentResource] = useState(null);
   const [myResources, setMyResources] = useState([]);
@@ -31,12 +32,12 @@ export const ResourcesProvider = ({ children }) => {
   useEffect(() => {
     const fetchResources = async () => {
       const response = await getAllResources();
-
+      console.log(response);
       setResources(response);
     };
     fetchResources();
-    if (user && user._id) {
-      getOwnResources(user._id);
+    if (user) {
+      getOwnResources();
     }
   }, []);
 
@@ -68,8 +69,10 @@ export const ResourcesProvider = ({ children }) => {
     try {
       const response = await createResourceRequest(resource);
       if (response.status === 200) {
-        setResources([...resources, response.data.edusource]);
-        setMyResources([...myResources, response.data.edusource]);
+        await getAllResources();
+        if (user && user._id) {
+          getOwnResources(user._id);
+        }
       }
       return response.status;
     } catch (error) {
@@ -92,9 +95,10 @@ export const ResourcesProvider = ({ children }) => {
     }
   };
 
-  const getOwnResources = async (id) => {
+  const getOwnResources = async (page) => {
     try {
-      const response = await getOwnResourcesRequest(id);
+      const response = await getOwnResourcesRequest(page);
+      console.log(response);
       if (response.status === 200) {
         setMyResources(response.data.edusources);
       }

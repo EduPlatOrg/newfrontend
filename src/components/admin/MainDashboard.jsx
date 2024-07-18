@@ -7,10 +7,11 @@ import EventAdminCard from './EventAdminCard';
 const MainDashboard = () => {
   const [showFilters, setShowFilters] = useState(false);
   const { events, fetchEvents } = useEventStore();
-  const [filteredEvents, setFilteredEvents] = useState(events);
+  const [filteredEvents, setFilteredEvents] = useState();
   console.log(events);
   useEffect(() => {
     fetchEvents();
+    // Paso 3: Establecer filteredEvents después de cargar events
   }, [fetchEvents]);
 
   const handleSortByDate = () => {
@@ -76,7 +77,9 @@ const MainDashboard = () => {
               onClick={handleFilterOldEvents}>
               Ocultar eventos pasados
             </button>
-            <button className='bg-[#0e2235] text-white py-2 px-3 flex items-center gap-3 rounded-md w-full md:w-fit self-end text-md'>
+            <button
+              className='bg-[#0e2235] text-white py-2 px-3 flex items-center gap-3 rounded-md w-full md:w-fit self-end text-md'
+              onClick={() => setFilteredEvents(null)}>
               Quitar Filtros
             </button>
           </div>
@@ -84,7 +87,7 @@ const MainDashboard = () => {
       )}
 
       <div className={clsx('w-full pl-8 mt-8')}>
-        <EventAdminCard eventsData={filteredEvents} />
+        <EventAdminCard eventsData={filteredEvents ? filteredEvents : events} />
       </div>
     </div>
   );

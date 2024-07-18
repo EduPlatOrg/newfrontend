@@ -88,20 +88,20 @@ const EditSocialModal = ({ isOpen, onClose, social, index }) => {
                 <div className='text-sm'></div>
               </div>
               <div className='mt-2 relative'>
-                <input
+                <select
                   {...register('media', { required: true })}
                   id='media'
                   name='media'
-                  type='text'
-                  required
-                  placeholder='Facebook, Twitter, Instagram, etc.'
-                  className='block w-full rounded-md 
-                  border-0 py-1.5 text-gray-900 
-                  shadow-sm ring-1 ring-inset
-                   ring-gray-300
-                    placeholder:text-gray-400 focus:ring-2 focus:ring-inset
-                     focus:ring-indigo-600 sm:text-sm sm:leading-6 p-2'
-                />
+                  className='block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset
+                   ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 p-2'
+                  required>
+                  <option value=''>Selecciona una opción</option>
+                  <option value='Facebook'>Facebook</option>
+                  <option value='Instagram'>Instagram</option>
+                  <option value='Twitter'>Twitter</option>
+                  <option value='Linkedin'>Linkedin</option>
+                  <option value='Telegram'>Telegram</option>
+                </select>
               </div>
               {errors.media && (
                 <span className='text-red-500'>Password is Requiered</span>

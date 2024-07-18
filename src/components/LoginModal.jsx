@@ -1,8 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useForm } from 'react-hook-form';
 
-import { useNavigate } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 import { IoEyeOffOutline, IoEyeOutline } from 'react-icons/io5';
 import { Modal } from '../components/Modal';
@@ -21,8 +20,7 @@ const LoginModal = () => {
     reset,
     formState: { errors },
   } = useForm();
-  const { loginUserRequest, errors: formsErrors, isAuthenticated } = useUser();
-  const navigate = useNavigate();
+  const { loginUserRequest, errors: formsErrors } = useUser();
 
   const onSubmitLogin = handleSubmit((data) => {
     loginUserRequest(data);
@@ -30,9 +28,9 @@ const LoginModal = () => {
     onClose();
   });
 
-  useEffect(() => {
-    if (isAuthenticated) navigate('/');
-  }, [isAuthenticated]);
+  // useEffect(() => {
+  //   if (isAuthenticated) navigate('/');
+  // }, [isAuthenticated]);
 
   return (
     <Modal

@@ -1,9 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useForm } from 'react-hook-form';
 
-import { useNavigate } from 'react-router-dom';
-import { useEffect } from 'react';
-
 import { Modal } from './Modal';
 import { useModal } from '../hooks/use-modal-store';
 import { toast } from 'sonner';
@@ -19,12 +16,7 @@ const ForgotPasswordModal = () => {
     reset,
     formState: { errors },
   } = useForm();
-  const { errors: formsErrors, isAuthenticated, resetPassword } = useUser();
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    if (isAuthenticated) navigate('/');
-  }, [isAuthenticated]);
+  const { errors: formsErrors, resetPassword } = useUser();
 
   const handleChangePassword = handleSubmit(async (data) => {
     console.log(data, 'data');
