@@ -35,6 +35,7 @@ export const UserProvider = ({ children }) => {
   const navigate = useNavigate();
 
   useEffect(() => {
+    sessionStorage.setItem('preLoginUrl', window.location.pathname);
     const logWithToken = async () => {
       const response = await logInWithTokenRequest();
       console.log(
@@ -44,7 +45,9 @@ export const UserProvider = ({ children }) => {
       if (response.status === 200) {
         setUser(response.data);
         setIsAuthenticated(true);
-
+        const preLoginUrl = sessionStorage.getItem('preLoginUrl');
+        console.log(preLoginUrl, '<-- preLoginUrl');
+        navigate(preLoginUrl);
         await getAllUsers();
       }
     };
@@ -84,6 +87,7 @@ export const UserProvider = ({ children }) => {
   };
 
   const loginUserRequest = async (data) => {
+    sessionStorage.setItem('preLoginUrl', window.location.pathname);
     try {
       const userToLogIn = {
         ...data,
@@ -99,6 +103,8 @@ export const UserProvider = ({ children }) => {
 
       setUser(userToLogin);
       setIsAuthenticated(true);
+      const preLoginUrl = sessionStorage.getItem('preLoginUrl');
+      navigate(preLoginUrl);
       await getAllUsers();
     } catch (error) {
       console.log(error, '<-- error en loginUserRequest');

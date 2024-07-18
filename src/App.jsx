@@ -37,6 +37,7 @@ import EventsDetails from './components/EventsDetails';
 import EventInscription from './components/EventInscription';
 import RecursosEducativos2 from './pages/RecursosEducativos2';
 import ResourceDetail from './components/ResourceDetail';
+import PublicProfile from './pages/PublicProfile';
 
 function App() {
   return (
@@ -114,6 +115,10 @@ function App() {
               <Route
                 path='/erasmus-cofinanciado'
                 element={<ErasmusCofinanciado />}
+              />
+              <Route
+                path='/public-profile/:id'
+                element={<PublicProfile />}
               />
               <Route
                 path='/about'

@@ -7,12 +7,11 @@ const ResourcesCard = ({ resources }) => {
   if (!resources) return <Loader />;
   console.log(resources);
   return (
-    <>
+    <div className='flex flex-wrap justify-center gap-4'>
       {resources.map((resource) => (
         <div
-          className='min-h-fit w-64 flex flex-col justify-between p-2 rounded-lg gap-1'
+          className='min-h-fit w-64 flex flex-col justify-between p-2 rounded-lg gap-1 flex-grow'
           key={resource._id}>
-          <h3 className='text-center mb-2 font-bold'>{resource.title}</h3>
           <div className='h-36 bg-gray-200 rounded-lg'>
             <img
               src={resource.image}
@@ -20,6 +19,7 @@ const ResourcesCard = ({ resources }) => {
               className='w-full h-36 object-cover rounded-lg'
             />
           </div>
+          <h3 className='text-center mb-2 font-bold'>{resource.title}</h3>
           <div className='flex justify-between w-full items-center'>
             <p className='text-xs font-medium mt-2 '>
               <strong>Edades entre: </strong>
@@ -40,7 +40,7 @@ const ResourcesCard = ({ resources }) => {
               {resource?.subDicipline.join(', ')}
             </p>
           )}
-          <div className='flex justify-end mt-auto gap-2 '>
+          <div className='flex justify-end mt-3 gap-2 '>
             <Link
               to={`/recursos-educativos/${resource._id}`}
               className='bg-gray-300 py-0.5 px-2 rounded-sm text-xs font-bold'>
@@ -63,7 +63,7 @@ const ResourcesCard = ({ resources }) => {
           </div>
         </div>
       ))}
-    </>
+    </div>
   );
 };
 

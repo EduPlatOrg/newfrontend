@@ -14,5 +14,5 @@ export const editResourceRequest = (id, data) =>
 export const deleteResourceRequest = (id) =>
   axios.delete(`/edusource/deleteEdusource/${id}`);
 
-export const getOwnResourcesRequest = (id) =>
-  axios.get(`/edusource/all?creatorId=${id}`);
+export const getOwnResourcesRequest = (page) =>
+  axios.get(`/edusource/ownResources?page=${page}`);

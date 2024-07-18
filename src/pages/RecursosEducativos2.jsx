@@ -28,7 +28,6 @@ const RecursosEducativos2 = () => {
   const [autor, setAutor] = useState(null);
   const [level, setLevel] = useState(null);
   const [range, setRange] = useState(null);
-  const [valorations, setValorations] = useState(null);
 
   console.log(resources);
 
@@ -78,9 +77,7 @@ const RecursosEducativos2 = () => {
     if (range) {
       search += `range=${range}&`;
     }
-    if (valorations) {
-      search += `valorations=${valorations}&`;
-    }
+
     if (page) {
       search += `page=${page}&`;
     }
@@ -97,16 +94,7 @@ const RecursosEducativos2 = () => {
       setLoading(false);
     };
     fetchResources();
-  }, [
-    page,
-    language,
-    discipline,
-    description,
-    autor,
-    level,
-    range,
-    valorations,
-  ]);
+  }, [page, language, discipline, description, autor, level, range]);
 
   const handleResetForm = () => {
     if (formRef.current) {
@@ -116,8 +104,9 @@ const RecursosEducativos2 = () => {
 
   return (
     <div className='flex flex-col w-full items-center p-2 '>
+      {loading && <Loader />}
       <h1 className='font-cinzel text-lg md:text-4xl mb-1 mt-3'>
-        Recursos Educativos.
+        {totalResources} Recursos Educativos.
       </h1>
       <div className='flex items-center justify-center gap-4 p-2'>
         <p
