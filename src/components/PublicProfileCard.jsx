@@ -3,14 +3,12 @@ import { Rating } from 'react-simple-star-rating';
 import SocialsIconsLinks from './SocialsIconsLinks';
 import { useUser } from '../context/UserContext';
 import { useState } from 'react';
-import clsx from 'clsx';
 
 const PublicProfileCard = ({ userData }) => {
   const { user } = useUser();
   const showValorationForm = user?._id !== userData._id;
   const [rating, setRating] = useState();
   const [ratingComment, setRatingComment] = useState('');
-  const tooltipArray = ['Malo', 'Regular', 'Bueno', 'Muy bueno', 'Excelente'];
 
   const handleRating = (index) => {
     console.log(index);
@@ -48,6 +46,10 @@ const PublicProfileCard = ({ userData }) => {
           </h2>
           <p className='text-secondaryText'>
             {userData.job.position} at {userData.job.workplace}
+          </p>
+          <p>
+            <strong>Karma: </strong>
+            {userData.karma}
           </p>
         </div>
       </div>
@@ -99,7 +101,7 @@ const PublicProfileCard = ({ userData }) => {
                     {userData.social.map((social, index) => (
                       <SocialsIconsLinks
                         media={social.media}
-                        link={social.userData}
+                        link={social.user}
                         key={index}
                       />
                     ))}
@@ -184,6 +186,7 @@ const PublicProfileCard = ({ userData }) => {
                   <textarea
                     onChange={(e) => setRatingComment(e.target.value)}
                     className='w-full p-2 text-gray-700 border rounded-lg focus:outline-none resize-none'
+                    value={ratingComment}
                     rows='4'
                     placeholder='Deja tu comentario...'></textarea>
                 </div>
@@ -196,24 +199,7 @@ const PublicProfileCard = ({ userData }) => {
                       initialValue={rating}
                       transition
                       size={25}
-                      showTooltip
-                      tooltipArray={tooltipArray}
-                      tooltipClassName={clsx(
-                        'text-xs p-1 px-2',
-                        rating === 0 && 'hidden',
-                        rating === 1 && 'bg-red-500',
-                        rating === 2 && 'bg-yellow-500',
-                        rating === 3 && 'bg-green-500',
-                        rating === 4 && 'bg-green-500',
-                        rating === 5 && 'bg-green-500'
-                      )}
                     />
-                    <button
-                      onClick={() => setRating(0)}
-                      type='button'
-                      className='p-1 mr-10 text-xs bg-black text-white px-2 rounded-md'>
-                      Reset stars
-                    </button>
                   </div>
                   <button
                     className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded text-xs'

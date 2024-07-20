@@ -14,12 +14,16 @@ const SocialsIconsLinks = ({ media, link }) => {
     twitter: TwitterXIcon,
   };
   let Icon = socialMediaIcons[media];
+  const formattedLink =
+    link.startsWith('http://') || link.startsWith('https://')
+      ? link
+      : `https://${link}`;
   return (
     <>
       {Icon && link && (
         <div className='flex flex-row items-center '>
           <a
-            href={link}
+            href={formattedLink}
             target='_blank'
             rel='noopener noreferrer'>
             <Icon />

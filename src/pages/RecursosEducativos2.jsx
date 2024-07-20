@@ -241,13 +241,13 @@ const RecursosEducativos2 = () => {
         <ResourcesCard resources={filteredResources} />
       </div>
       <div className='w-full h-4 flex justify-end items-center gap-2'>
-        <div className='flex items-center gap-2'>
+        <div className='flex items-center gap-2 flex-nowrap'>
           <button
             onClick={() => handlePage('prev')}
             className='text-[#0e2235] py-2 px-3 flex items-center gap-3 rounded-md w-full md:w-fit self-end text-md'>
             <FaArrowCircleLeft />
           </button>
-          <p className='text-gray-500'>
+          <p className='text-gray-500 whitespace-nowrap text-xs md:text-[16px] '>
             {page} de {totalPages}
           </p>
           <button

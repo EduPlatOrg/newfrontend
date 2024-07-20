@@ -25,10 +25,17 @@ const ResourceDetail = () => {
   if (!resource) {
     return <Loader />;
   }
+  const updateResourceWithNewValoration = (newValoration) => {
+    // Asumiendo que tienes un estado `resource` que incluye `valorations`
+    setResource(newValoration);
+  };
 
   return (
     <Suspense fallback={<Loader />}>
-      <ResourceDetailCard resource={resource} />
+      <ResourceDetailCard
+        resource={resource}
+        onNewValoration={updateResourceWithNewValoration}
+      />
     </Suspense>
   );
 };
