@@ -39,6 +39,7 @@ import RecursosEducativos2 from './pages/RecursosEducativos2';
 import ResourceDetail from './components/ResourceDetail';
 import PublicProfile from './pages/PublicProfile';
 
+
 function App() {
   return (
     <Router>
@@ -170,6 +171,7 @@ function App() {
               </Route>
             </Routes>
           </section>
+          
           <Footer />
         </ResourcesProvider>
       </UserProvider>{' '}
