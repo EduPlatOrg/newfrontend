@@ -6,7 +6,7 @@ import { ResourcesProvider } from './context/ResourcesContext';
 
 import AdminManageEvents from './components/admin/AdminManageEvents';
 
-import AdminUserManagment from './components/admin/AdminUserManagment';
+import AdminUserManagment from './components/admin/UserCard';
 import Footer from './components/Footer';
 import MainDashboard from './components/admin/MainDashboard';
 import MyProfileDashboard from './components/profile/MyProfileDashboard';
