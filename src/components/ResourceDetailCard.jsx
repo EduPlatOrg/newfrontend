@@ -25,7 +25,6 @@ const ResourceDetailCard = ({ resource, onNewValoration }) => {
   };
 
   const handleValoration = async () => {
-    console.log(rating, ratingComment);
     if (!user || !resource) {
       console.error('User or resource is undefined');
       return;
@@ -38,12 +37,12 @@ const ResourceDetailCard = ({ resource, onNewValoration }) => {
 
     try {
       const response = await sendNewValoration(newValoration);
-      console.log(response);
+
       if (response?.data.success) {
         toast.success('Valoración enviada correctamente');
         setRating(0);
         setRatingComment('');
-        //TODO: Actualizar valoraciones para no tener que refrescar la pagina.
+
         onNewValoration(response.data.resourceValoratedWithAverage);
       }
     } catch (error) {
@@ -70,7 +69,7 @@ const ResourceDetailCard = ({ resource, onNewValoration }) => {
         </p>
 
         <p className='text-gray-600 text-[16px] md:text-xl mb-2 px-4'>
-          <strong>Autor:</strong> {resource.autor.autorName}
+          <strong>Autor:</strong> {resource.autor?.autorName}
         </p>
 
         <p className='text-gray-700 text-[16px] md:text-xl mb-4 px-4'>
@@ -192,7 +191,7 @@ const ResourceDetailCard = ({ resource, onNewValoration }) => {
       )}
 
       {/* Ver más / menos */}
-      <div className='flex items-center flex-col justify-center py-2 px-2'>
+      <div className='flex items-center flex-col justify-center py-2 px-2 md:max-w-6xl w-full mx-auto '>
         <button
           className='bg-blue-500 hover:bg-blue-700 text-xs text-white font-bold py-2 px-4 rounded mt-4 w-fit self-end'
           onClick={() => setShowComments(!showComments)}>
@@ -201,10 +200,13 @@ const ResourceDetailCard = ({ resource, onNewValoration }) => {
         {/* TODO: Quitar bg */}
         <div className='flex gap-4 items-center justify-start w-full my-2'>
           <h2 className='text-lg md:text-xl font-bold'>Comentarios</h2>
-          <p> {(resource.valorationsAverage.average || 0).toFixed(2)} </p>
+          <p className='text-xs md:text-lg'>
+            {' '}
+            {(resource?.valorationsAverage?.average || 0).toFixed(2)}{' '}
+          </p>
           <Rating
             SVGclassName={`inline-block`}
-            initialValue={resource.valorationsAverage?.average}
+            initialValue={resource?.valorationsAverage?.average}
             size={25}
             readonly={true}
             allowFraction={true}
@@ -218,16 +220,19 @@ const ResourceDetailCard = ({ resource, onNewValoration }) => {
               resource.valorationsAverage?.average === 5 && 'bg-green-500'
             )}
           />
-          <p>de {resource.valorationsAverage.votes} valoraciones</p>
+          <p className='text-xs whitespace-nowrap md:text-lg'>
+            de {resource.valorationsAverage?.votes} valoraciones
+          </p>
         </div>
         {showComments && (
           <div className='w-full flex flex-col gap-2 '>
             <div className='flex flex-wrap justify-around '>
-              {resource.valorations.map((val, index) => (
+              {resource?.valorations.map((val, index) => (
                 <ValorationCard
                   key={index}
                   valoration={val}
                   id={resource.creatorId._id}
+                  onNewValoration={onNewValoration}
                 />
               ))}
             </div>
