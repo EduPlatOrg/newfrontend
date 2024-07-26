@@ -1,14 +1,58 @@
 import { Rating } from 'react-simple-star-rating';
 import { tiempoDesde } from '../lib/utils';
 import { useUser } from '../context/UserContext';
+import DeleteValorationModal from './DeleteValorationModal';
+import { useState } from 'react';
+import { toast } from 'sonner';
+import { acceptValoration, rejectValoration } from '../api/valorations';
 
-const ValorationCard = ({ valoration, id }) => {
+const ValorationCard = ({ valoration, id, onNewValoration }) => {
   const { user } = useUser();
-  console.log(user);
-  console.log(valoration);
-  console.log(id);
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
+
+  const handleRejectValoration = async () => {
+    const response = await rejectValoration(valoration);
+    if (response.status === 200) {
+      if (response?.data.user) {
+        onNewValoration(response.data.user);
+        toast.success('Valoración rechazada correctamente');
+        return;
+      }
+      if (response?.data.resource) {
+        onNewValoration(response.data.resource);
+        toast.success('Valoración rechazada correctamente');
+        return;
+      }
+    }
+    toast.error('Error al rechazar la valoración');
+  };
+
+  const handleAcceptValoration = async () => {
+    const response = await acceptValoration(valoration);
+    if (response.status === 200) {
+      if (response?.data.user) {
+        onNewValoration(response.data.user);
+        toast.success('Valoración aceptada correctamente');
+        return;
+      }
+      if (response?.data.resource) {
+        onNewValoration(response.data.resource);
+        toast.success('Valoración aceptada correctamente');
+        return;
+      }
+    }
+    toast.error('Error al aceptar la valoración');
+  };
   return (
     <>
+      {showDeleteModal && (
+        <DeleteValorationModal
+          onNewValoration={onNewValoration}
+          isOpen={showDeleteModal}
+          onClose={() => setShowDeleteModal(false)}
+          valoration={valoration}
+        />
+      )}
       {valoration.accepted && !valoration.rejected && (
         <div className='w-full flex flex-col p-4 bg-white shadow-lg rounded-lg mt-2'>
           <div className='flex items-start justify-start gap-4 w-full'>
@@ -44,12 +88,16 @@ const ValorationCard = ({ valoration, id }) => {
           <div className='w-full flex justify-end mt-4 gap-3'>
             {user !== null &&
               (user._id === valoration.senderId._id || user.isBoss) && (
-                <button className='text-xs md:text-sm text-red-500  hover:bg-red-500 hover:text-white px-2 py-1 hover:rounded-md'>
+                <button
+                  className='text-xs md:text-sm text-red-500  hover:bg-red-500 hover:text-white px-2 py-1 hover:rounded-md'
+                  onClick={() => setShowDeleteModal(true)}>
                   Eliminar
                 </button>
               )}
             {user !== null && user._id === id && (
-              <button className='text-xs md:text-sm text-red-500  hover:bg-red-500 hover:text-white px-2 py-1 hover:rounded-md'>
+              <button
+                className='text-xs md:text-sm text-red-500  hover:bg-red-500 hover:text-white px-2 py-1 hover:rounded-md'
+                onClick={handleRejectValoration}>
                 Reject
               </button>
             )}
@@ -91,14 +139,17 @@ const ValorationCard = ({ valoration, id }) => {
           <div className='w-full flex justify-end mt-4 gap-3'>
             {user !== null &&
               (user._id === valoration.senderId._id || user.isBoss) && (
-                <button className='text-xs md:text-sm text-red-500  hover:bg-red-500 hover:text-white px-2 py-1 hover:rounded-md'>
+                <button
+                  className='text-xs md:text-sm text-red-500  hover:bg-red-500 hover:text-white px-2 py-1 hover:rounded-md'
+                  onClick={() => setShowDeleteModal(true)}>
                   Eliminar
                 </button>
               )}
             {user !== null && user._id === id && (
               <button
                 className='text-xs md:text-sm text-white hover:bg-black rounded-md bg-gray-500 hover:text-white 
-              px-2 py-1 hover:rounded-md whitespace-nowrap'>
+              px-2 py-1 hover:rounded-md whitespace-nowrap'
+                onClick={handleAcceptValoration}>
                 Aceptar Valoración
               </button>
             )}

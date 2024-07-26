@@ -9,11 +9,11 @@ const ResourceDetail = () => {
   const { id } = useParams();
   const [resource, setResource] = useState(null);
   const { getResourceById } = useResources();
-  console.log(id);
+
   useEffect(() => {
     async function fetchResource() {
       const response = await getResourceById(id);
-      console.log(response);
+
       setResource(response.edusource);
     }
     if (id) {
@@ -26,7 +26,6 @@ const ResourceDetail = () => {
     return <Loader />;
   }
   const updateResourceWithNewValoration = (newValoration) => {
-    // Asumiendo que tienes un estado `resource` que incluye `valorations`
     setResource(newValoration);
   };
 

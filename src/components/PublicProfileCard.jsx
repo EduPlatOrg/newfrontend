@@ -3,28 +3,48 @@ import { Rating } from 'react-simple-star-rating';
 import SocialsIconsLinks from './SocialsIconsLinks';
 import { useUser } from '../context/UserContext';
 import { useState } from 'react';
+import ValorationCard from './ValorationCard';
+import clsx from 'clsx';
+import { toast } from 'sonner';
+import { sendNewUserValoration } from '../api/valorations';
 
-const PublicProfileCard = ({ userData }) => {
+const PublicProfileCard = ({ userData, onNewValoration }) => {
   const { user } = useUser();
-  const showValorationForm = user?._id !== userData._id;
+  const showValorationForm = user && user?._id !== userData._id;
   const [rating, setRating] = useState();
   const [ratingComment, setRatingComment] = useState('');
+  const [showComments, setShowComments] = useState(false);
 
   const handleRating = (index) => {
-    console.log(index);
     setRating(index);
   };
-  const handleValoration = () => {
+  const handleValoration = async () => {
+    if (!user || !userData) {
+      toast.error('User or resource is undefined');
+      return;
+    }
     const newValoration = {
       rating,
       comment: ratingComment,
       userId: userData._id,
       senderId: user._id,
     };
-    console.log(newValoration);
+    try {
+      const response = await sendNewUserValoration(newValoration);
+
+      if (response?.data.success) {
+        toast.success('Valoración enviada correctamente');
+        setRating(0);
+        setRatingComment('');
+        //TODO: Actualizar valoraciones para no tener que refrescar la pagina.
+        onNewValoration(response.data.userValoratedWithAverage);
+      }
+    } catch (error) {
+      console.log(error);
+      toast.error('Error al enviar la valoración');
+    }
   };
 
-  console.log(userData);
   return (
     <div className='flex flex-col items-center justify-center  p-8 '>
       <div className='flex flex-col items-center justify-center  w-full '>
@@ -53,8 +73,8 @@ const PublicProfileCard = ({ userData }) => {
           </p>
         </div>
       </div>
-      <div className='flex flex-col justify-center items-start shadow-lg'>
-        <div className='flex flex-col justify-center items-start'>
+      <div className='flex flex-col justify-center items-start shadow-lg min-w-[80%]'>
+        <div className='flex flex-col justify-center items-start w-full'>
           <div className='bg-primaryColor text-primaryText  px-5 rounded-lg w-full'>
             <div className='mt-4 space-y-2'>
               <div>
@@ -133,7 +153,7 @@ const PublicProfileCard = ({ userData }) => {
                 {userData.edusources.map((edusource, index) => (
                   <div
                     key={index}
-                    className='flex gap-2 items-center justify-between w-full'>
+                    className='flex flex-col gap-2 items-start md:flex-row md:items-center justify-between w-full'>
                     <div className='flex items-center gap-2'>
                       <img
                         src={edusource?.image}
@@ -142,13 +162,13 @@ const PublicProfileCard = ({ userData }) => {
                       />{' '}
                       <h3 className='font-semibold'>{edusource?.title}</h3>
                     </div>
-                    <div>
+                    <div className='w-full flex justify-end'>
                       <Link
                         to={`/recursos-educativos/${edusource._id}`}
                         className='text-primaryColor text-xs bg-indigo-600 
                         px-2 py-1 rounded-md text-white 
                         hover:bg-transparent hover:border-indigo-600
-                        hover:border-2 hover:text-black font-bold'>
+                        hover:border-2 hover:text-black font-bold '>
                         Ver recurso
                       </Link>
                     </div>
@@ -177,8 +197,8 @@ const PublicProfileCard = ({ userData }) => {
                 ))}
               </div>
             </div>
-            {!showValorationForm && (
-              <div className='bg-gray-100 p-6 rounded-lg shadow-lg w-full mx-auto my-8'>
+            {showValorationForm && (
+              <div className='bg-gray-100 p-6 rounded-lg shadow-lg w-full mx-auto my-8 '>
                 <h3 className='text-lg font-semibold mb-4'>
                   Deja tu comentario y valoración
                 </h3>
@@ -211,6 +231,54 @@ const PublicProfileCard = ({ userData }) => {
             )}
           </div>
         </div>
+      </div>
+      <div className='flex items-center flex-col justify-center py-2 px-2 md:max-w-6xl w-full mx-auto '>
+        <button
+          className='bg-blue-500 hover:bg-blue-700 text-xs text-white font-bold py-2 px-4 rounded mt-4 w-fit self-end'
+          onClick={() => setShowComments(!showComments)}>
+          {showComments ? 'Ocultar Comentarios' : 'Mostrar Comentarios'}
+        </button>{' '}
+        {/* TODO: Quitar bg */}
+        <div className='flex gap-4 items-center justify-start w-full my-2'>
+          <h2 className='text-lg md:text-xl font-bold'>Comentarios</h2>
+          <p className='text-xs md:text-lg'>
+            {' '}
+            {(userData?.valorationsAverage?.average || 0).toFixed(2)}{' '}
+          </p>
+          <Rating
+            SVGclassName={`inline-block`}
+            initialValue={userData?.valorationsAverage?.average}
+            size={25}
+            readonly={true}
+            allowFraction={true}
+            tooltipClassName={clsx(
+              'text-xs p-1 px-2',
+              userData?.valorationsAverage?.average === 0 && 'hidden',
+              userData?.valorationsAverage?.average === 1 && 'bg-red-500',
+              userData?.valorationsAverage?.average === 2 && 'bg-yellow-500',
+              userData?.valorationsAverage?.average === 3 && 'bg-green-500',
+              userData?.valorationsAverage?.average === 4 && 'bg-green-500',
+              userData?.valorationsAverage?.average === 5 && 'bg-green-500'
+            )}
+          />
+          <p className='text-xs whitespace-nowrap md:text-lg'>
+            de {userData?.valorationsAverage?.votes || 0} valoraciones
+          </p>
+        </div>
+        {showComments && (
+          <div className='w-full flex flex-col gap-2 '>
+            <div className='flex flex-wrap justify-around '>
+              {userData?.valorations.map((val, index) => (
+                <ValorationCard
+                  key={index}
+                  valoration={val}
+                  id={userData?._id}
+                  onNewValoration={onNewValoration}
+                />
+              ))}
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );

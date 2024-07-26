@@ -9,11 +9,10 @@ const PublicProfile = () => {
   const { id } = useParams();
   const [user, setUser] = useState(null);
 
-  console.log(id);
   useEffect(() => {
     async function fetchUser() {
       const response = await getUserByIdRequest(id);
-      console.log(response);
+
       setUser(response.data.user);
     }
     if (id) {
@@ -26,9 +25,16 @@ const PublicProfile = () => {
     return <Loader />;
   }
 
+  const onNewValoration = (updatedUser) => {
+    setUser(updatedUser);
+  };
+
   return (
     <Suspense fallback={<Loader />}>
-      <PublicProfileCard userData={user} />
+      <PublicProfileCard
+        userData={user}
+        onNewValoration={onNewValoration}
+      />
     </Suspense>
   );
 };
