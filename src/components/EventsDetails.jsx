@@ -7,11 +7,11 @@ import EventDetailCard from './EventDetailCard';
 const EventsDetails = () => {
   const { id } = useParams();
   const [event, setEvent] = useState(null);
-  console.log(id);
+
   useEffect(() => {
     async function fetchEvent() {
       const eventData = await getEventById(id);
-      console.log(eventData.data.event);
+
       setEvent(eventData?.data.event);
     }
     if (id) {

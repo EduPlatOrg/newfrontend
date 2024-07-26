@@ -39,7 +39,7 @@ const MyResources = () => {
     if (user && user._id) {
       const fetchOwnResources = async () => {
         const response = await getOwnResources(page);
-        console.log(response);
+
         if (response.success) {
           setFilteredResources(response.edusources);
           setPage(response.metadata.page);

@@ -26,9 +26,8 @@ const ContactPage = () => {
   const onSubmit = handleSubmit(async (data) => {
     setLoading(true);
     try {
-      console.log(data);
       const response = await contactMeForm(data);
-      console.log(response);
+
       toast.success(response.data.message);
       reset();
     } catch (error) {
@@ -47,6 +46,7 @@ const ContactPage = () => {
         <img
           src='/contact-page-header.png'
           alt='contact Image'
+          className='w-full h-[300px] object-cover rounded-md'
         />
       </div>
       <div className='w-full p-0 md:p-6 lg:p-10'>

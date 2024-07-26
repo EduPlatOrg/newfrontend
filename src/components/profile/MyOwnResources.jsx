@@ -3,7 +3,6 @@ import { RxCross1 } from 'react-icons/rx';
 import { Link } from 'react-router-dom';
 
 const MyOwnResources = ({ resources }) => {
-  if (resources) console.log(resources);
   return (
     <>
       {resources ? (

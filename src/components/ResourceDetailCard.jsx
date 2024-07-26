@@ -11,7 +11,6 @@ import ValorationCard from './ValorationCard';
 
 const ResourceDetailCard = ({ resource, onNewValoration }) => {
   const { user } = useUser();
-  console.log(resource);
 
   const [rating, setRating] = useState(0);
 
@@ -20,7 +19,6 @@ const ResourceDetailCard = ({ resource, onNewValoration }) => {
   const [showComments, setShowComments] = useState(false);
 
   const handleRating = (index) => {
-    console.log(index);
     setRating(index);
   };
 

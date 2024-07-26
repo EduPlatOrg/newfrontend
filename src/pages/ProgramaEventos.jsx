@@ -18,23 +18,27 @@ const ProgramaEventos = () => {
 
   return (
     <div className='container'>
-      <div className='w-full bg-blue-100 '> {/* TODO: Styles*/}
+      <div className='w-full bg-blue-100 '>
+        {' '}
+        {/* TODO: Styles*/}
         <img
           className='object-contain h-28 md:h-48 w-full'
           src='/images/Eduplat-feria.webp'
           alt=''
         />
       </div>
-
       {/* Navbar */}
-      <div className='w-screen  md:w-4/5'> {/* TODO: Styles*/}
+      <div className='w-full '>
+        {' '}
+        {/* TODO: Styles*/}
         <NavbarLinks />
       </div>
-
       {/* nextEvents */}
       <div className='flex flex-col gap-4 mt-4'>
-          <h2 className="text-2xl font-bold text-gray-800 my-4">Eventos próximos</h2>
-          {nextEvents.map((event) => (
+        <h2 className='text-2xl font-bold text-gray-800 my-4'>
+          Eventos próximos
+        </h2>
+        {nextEvents.map((event) => (
           <div
             key={event._id}
             className='flex flex-col md:flex-row p-4 shadow-md rounded-md border border-gray-200'>
@@ -67,11 +71,13 @@ const ProgramaEventos = () => {
             </div>
           </div>
         ))}
-      </div> {/* Fin nextEvents*/}
-
+      </div>{' '}
+      {/* Fin nextEvents*/}
       {/* pastEvents */}
       <div className='flex flex-col gap-4 mt-4'>
-        <h2 className="text-2xl font-bold text-gray-800 my-4">Eventos pasados</h2>
+        <h2 className='text-2xl font-bold text-gray-800 my-4'>
+          Eventos pasados
+        </h2>
         {pastEvents.map((event) => (
           <div
             key={event._id}
@@ -91,20 +97,20 @@ const ProgramaEventos = () => {
                 {event.description}
               </p> */}
               <span className='text-xs text-gray-500 mt-4'>
-                  {new Date(event.startDate).toLocaleDateString()} -{' '}
-                  {new Date(event.endDate).toLocaleDateString()}
+                {new Date(event.startDate).toLocaleDateString()} -{' '}
+                {new Date(event.endDate).toLocaleDateString()}
               </span>
               <br />
               <Link to={`/programa-eventos/${event._id}`}>
-                  <button className='mt-1 px-4 py-1 bg-gray-200 rounded-lg'>
-                    Más info
-                  </button>
-                </Link>
+                <button className='mt-1 px-4 py-1 bg-gray-200 rounded-lg'>
+                  Más info
+                </button>
+              </Link>
             </div>
           </div>
         ))}
-      </div> {/* Fin pastEvents*/}
-
+      </div>{' '}
+      {/* Fin pastEvents*/}
     </div>
   );
 };

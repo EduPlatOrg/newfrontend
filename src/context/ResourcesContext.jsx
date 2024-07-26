@@ -24,7 +24,7 @@ export const useResources = () => {
 
 export const ResourcesProvider = ({ children }) => {
   const { user } = useUser();
-  console.log(user);
+
   const [resources, setResources] = useState([]);
   const [currentResource, setCurrentResource] = useState(null);
   const [myResources, setMyResources] = useState([]);
@@ -32,7 +32,7 @@ export const ResourcesProvider = ({ children }) => {
   useEffect(() => {
     const fetchResources = async () => {
       const response = await getAllResources();
-      console.log(response);
+
       setResources(response);
     };
     fetchResources();
@@ -98,7 +98,7 @@ export const ResourcesProvider = ({ children }) => {
   const getOwnResources = async (page) => {
     try {
       const response = await getOwnResourcesRequest(page);
-      console.log(response);
+
       if (response.status === 200) {
         setMyResources(response.data.edusources);
       }

@@ -19,7 +19,6 @@ const ForgotPasswordModal = () => {
   const { errors: formsErrors, resetPassword } = useUser();
 
   const handleChangePassword = handleSubmit(async (data) => {
-    console.log(data, 'data');
     const response = await resetPassword(data);
     if (response.status === 200) {
       reset();

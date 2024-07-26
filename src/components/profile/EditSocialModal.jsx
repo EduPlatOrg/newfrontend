@@ -25,9 +25,9 @@ const EditSocialModal = ({ isOpen, onClose, social, index }) => {
 
   const onSubmit = handleSubmit(async (data) => {
     setIsLoading(true);
-    console.log(data);
+
     let newSocialData = user?.social;
-    console.log(newSocialData, 'newSocialData');
+
     if (!index && newSocialData.length === 1 && newSocialData[0].user === '@') {
       newSocialData = [data];
     } else if (index) {
@@ -36,10 +36,9 @@ const EditSocialModal = ({ isOpen, onClose, social, index }) => {
       newSocialData.push(data);
     }
 
-    console.log(newSocialData, 'newSocialData');
     try {
       const response = await editUserById(user?._id, { social: newSocialData });
-      console.log(response, 'response');
+
       if (response.status !== 200) {
         toast.error('Error al editar o añadir Red Social');
         return;

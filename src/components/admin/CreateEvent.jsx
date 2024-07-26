@@ -12,7 +12,7 @@ function CreateEvent() {
   useEffect(() => {
     async function fetchEvent() {
       const eventData = await getEventById(id);
-      console.log(eventData.data.event);
+
       setEvent(eventData?.data.event);
     }
     if (id) {

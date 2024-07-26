@@ -33,9 +33,8 @@ const RegisterModal = () => {
   } = useUser();
 
   const onSubmit = handleSubmit(async (data) => {
-    console.log(data, 'data');
     const response = await registerUserRequest(data);
-    console.log(response, '<-- response');
+
     if (response.status === 200) {
       onClose();
       reset();
@@ -47,7 +46,6 @@ const RegisterModal = () => {
     const temp = strengthIndicator(e.target.value);
     setStrength(temp);
     setLevel(strengthColor(temp));
-    console.log(strength, level, '<-- strength, level');
   };
 
   return (

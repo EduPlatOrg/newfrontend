@@ -22,7 +22,7 @@ const CreateSocialsResourcesModal = ({
 
   const onSubmit = handleSubmit(async (data) => {
     setIsLoading(true);
-    console.log(data);
+
     setSocial(data);
     setIsLoading(false);
   });

@@ -38,15 +38,12 @@ export const UserProvider = ({ children }) => {
     sessionStorage.setItem('preLoginUrl', window.location.pathname);
     const logWithToken = async () => {
       const response = await logInWithTokenRequest();
-      console.log(
-        response.data,
-        '<-- response.data en useEffect de UserContext'
-      );
+
       if (response.status === 200) {
         setUser(response.data);
         setIsAuthenticated(true);
         const preLoginUrl = sessionStorage.getItem('preLoginUrl');
-        console.log(preLoginUrl, '<-- preLoginUrl');
+
         navigate(preLoginUrl);
         await getAllUsers();
       }
@@ -56,9 +53,7 @@ export const UserProvider = ({ children }) => {
 
   const registerUserRequest = async (data) => {
     try {
-      console.log(data);
       const response = await registerRequest(data);
-      console.log('response --->', response.data);
 
       setIsAuthenticated(false);
       return response;
@@ -71,7 +66,7 @@ export const UserProvider = ({ children }) => {
   const verifyTokenRequest = async (token) => {
     try {
       const response = sendTokenToServer(token);
-      console.log(response.data, '<-- response.data en verifyTokenRequest');
+
       return response;
     } catch (error) {
       console.log(error, '<-- error en verifyTokenRequest');
@@ -82,7 +77,7 @@ export const UserProvider = ({ children }) => {
     logOutRequest(user);
     setUser(null);
     setIsAuthenticated(false);
-    console.log('deslogueado');
+
     navigate('/');
   };
 
@@ -115,7 +110,7 @@ export const UserProvider = ({ children }) => {
   const getAllUsers = async () => {
     try {
       const response = await getAllUsersRequest();
-      console.log(response.data, '<-- response.data en getAllUsers');
+
       setAllUsers(response?.data?.allUsers);
     } catch (error) {
       console.log(error, '<-- error en getAllUsersRequest');
@@ -127,24 +122,19 @@ export const UserProvider = ({ children }) => {
     // Aqui solo hace falta enviar el newPassword
     try {
       const response = await editPasswordRequest(values);
-      console.log(response.data, 'response .data del editCurrentUser');
 
       return response;
     } catch (error) {
-      console.log(error.response.data);
       setUserError([error.response.data]);
     }
   };
 
   const resetPassword = async (email) => {
-    console.log(email, 'password, id');
     try {
       const response = await resetPasswordRequest(email);
-      console.log(response.data, 'response .data del editCurrentUser');
 
       return response;
     } catch (error) {
-      console.log(error.response.data);
       setUserError([error.response.data]);
     }
   };
@@ -152,10 +142,9 @@ export const UserProvider = ({ children }) => {
   const editUserById = async (id, data) => {
     try {
       const response = await editUserByIdRequest(id, data);
-      console.log(response.data, 'response .data del editCurrentUser');
+
       return response;
     } catch (error) {
-      console.log(error.response.data);
       setUserError([error.response.data]);
     }
   };

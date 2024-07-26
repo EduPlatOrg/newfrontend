@@ -29,8 +29,6 @@ const RecursosEducativos2 = () => {
   const [level, setLevel] = useState(null);
   const [range, setRange] = useState(null);
 
-  console.log(resources);
-
   const handleSerachByDescription = (e) => {
     e.preventDefault();
     e.target.value.length <= 3
@@ -81,13 +79,13 @@ const RecursosEducativos2 = () => {
     if (page) {
       search += `page=${page}&`;
     }
-    console.log(search);
+
     setLoading(true);
     const fetchResources = async () => {
       const { data } = await axios.get(
         `http://localhost:4000/v1/edusource/all?${search}`
       );
-      console.log(data);
+
       setFilteredResources(data.edusources);
       setTotalPages(data.metadata.totalPages);
       setTotalResources(data.metadata.totalCount);
