@@ -1,21 +1,17 @@
 import { useUser } from '../../context/UserContext';
-import { Link } from 'react-router-dom';
+
+import UserCard from './UserCard';
 
 const AdminUserManagment = () => {
   const { allUsers } = useUser();
   console.log(allUsers);
 
   return (
-    <div>
+    <div className='flex items-center justify-center flex-wrap gap-4 min-w-[80%] mt-4'>
+      
       {Array.isArray(allUsers) && allUsers.length > 0 ? (
         allUsers.map((user) => (
-          <div
-            key={user._id}
-            className='flex items-center justify-start gap-3'>
-            <Link to={`/public-profile/${user._id}`}>
-              <p>{user.username}</p>
-            </Link>
-          </div>
+          <UserCard key={user._id} user={user} />
         ))
       ) : (
         <p>No users found.</p>
