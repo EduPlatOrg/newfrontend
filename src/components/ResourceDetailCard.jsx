@@ -8,10 +8,11 @@ import { obtenerNombreIdioma } from '../lib/utils';
 import { toast } from 'sonner';
 import { sendNewValoration } from '../api/valorations';
 import ValorationCard from './ValorationCard';
+import { Loader2 } from 'lucide-react';
 
 const ResourceDetailCard = ({ resource, onNewValoration }) => {
   const { user } = useUser();
-
+  const [loading, setLoading] = useState(false);
   const [rating, setRating] = useState(0);
 
   const [ratingComment, setRatingComment] = useState('');
@@ -23,6 +24,7 @@ const ResourceDetailCard = ({ resource, onNewValoration }) => {
   };
 
   const handleValoration = async () => {
+    setLoading(true);
     if (!user || !resource) {
       console.error('User or resource is undefined');
       return;
@@ -47,6 +49,7 @@ const ResourceDetailCard = ({ resource, onNewValoration }) => {
       console.log(error);
       toast.error('Error al enviar la valoración');
     }
+    setLoading(false);
   };
 
   return (
@@ -182,7 +185,7 @@ const ResourceDetailCard = ({ resource, onNewValoration }) => {
             <button
               className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded text-xs'
               onClick={handleValoration}>
-              Enviar
+              {loading ? <Loader2 className='animate-spin' /> : 'Enviar'}
             </button>
           </div>
         </div>

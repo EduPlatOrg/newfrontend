@@ -8,10 +8,13 @@ import clsx from 'clsx';
 import { toast } from 'sonner';
 import { sendNewUserValoration } from '../api/valorations';
 
+import { Loader2 } from 'lucide-react';
+
 const PublicProfileCard = ({ userData, onNewValoration }) => {
   const { user } = useUser();
   const showValorationForm = user && user?._id !== userData._id;
   const [rating, setRating] = useState();
+  const [loading, setLoading] = useState(false);
   const [ratingComment, setRatingComment] = useState('');
   const [showComments, setShowComments] = useState(false);
 
@@ -19,6 +22,7 @@ const PublicProfileCard = ({ userData, onNewValoration }) => {
     setRating(index);
   };
   const handleValoration = async () => {
+    setLoading(true);
     if (!user || !userData) {
       toast.error('User or resource is undefined');
       return;
@@ -43,6 +47,7 @@ const PublicProfileCard = ({ userData, onNewValoration }) => {
       console.log(error);
       toast.error('Error al enviar la valoración');
     }
+    setLoading(false);
   };
 
   return (
@@ -224,7 +229,7 @@ const PublicProfileCard = ({ userData, onNewValoration }) => {
                   <button
                     className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded text-xs'
                     onClick={handleValoration}>
-                    Enviar
+                    {loading ? <Loader2 className='animate-spin' /> : 'Enviar'}
                   </button>
                 </div>
               </div>
@@ -239,7 +244,7 @@ const PublicProfileCard = ({ userData, onNewValoration }) => {
           {showComments ? 'Ocultar Comentarios' : 'Mostrar Comentarios'}
         </button>{' '}
         {/* TODO: Quitar bg */}
-        <div className='flex gap-4 items-center justify-start w-full my-2'>
+        <div className='flex gap-4 items-center justify-center md:justify-start w-full my-2'>
           <h2 className='text-lg md:text-xl font-bold'>Comentarios</h2>
           <p className='text-xs md:text-lg'>
             {' '}
