@@ -4,6 +4,7 @@ import { ModalProvider } from './providers/modal-provider';
 import { Toaster } from 'sonner';
 import { ResourcesProvider } from './context/ResourcesContext';
 
+
 import AdminUserManagment from './components/admin/AdminUserManagment';
 import Footer from './components/Footer';
 import MainDashboard from './components/admin/MainDashboard';
@@ -36,6 +37,7 @@ import EventInscription from './components/EventInscription';
 import RecursosEducativos2 from './pages/RecursosEducativos2';
 import ResourceDetail from './components/ResourceDetail';
 import PublicProfile from './pages/PublicProfile';
+
 
 function App() {
   return (
@@ -164,6 +166,7 @@ function App() {
               </Route>
             </Routes>
           </section>
+          
           <Footer />
         </ResourcesProvider>
       </UserProvider>{' '}
