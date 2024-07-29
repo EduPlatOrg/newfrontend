@@ -2,12 +2,8 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import clsx from 'clsx';
 
-// Componente con enlaces a Feria de recursos educativos: objetivos, programa, colaboradores, patrocinadores, inscripciones
-// Erasmus cofinanciado : https://eduplat.org/es/erasmus-cofinanciado/ --- http://www.erasmusplus.gob.es/ ---
-// TODO: Hay que añadir el destino correspondiente a cada enlace!!!
-
 const NavbarLinks = () => {
-  const [isOpen, setIsOpen] = useState(false); // Estado para el menú desplegable móvil
+  const [isOpen, setIsOpen] = useState(false);
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -55,12 +51,6 @@ const NavbarLinks = () => {
             </Link>
 
             <Link
-              to='/inscripciones'
-              className={linksClassNames}>
-              Inscripciones
-            </Link>
-
-            <Link
               to='/erasmus-cofinanciado'
               className={linksClassNames}>
               Erasmus-Cofinanciado
@@ -100,18 +90,18 @@ const NavbarLinks = () => {
         <div
           className={clsx(`md:hidden`, isOpen ? 'flex flex-col ' : 'hidden')}>
           <Link
-            to='/'
+            to='/FRREE'
             className={linksClassNames}>
             FREE
           </Link>
           <Link
-            to='/'
+            to='/objetivos'
             className={linksClassNames}>
             Objetivos
           </Link>
 
           <Link
-            to='/'
+            to='/programa-eventos'
             className={linksClassNames}>
             Programa Eventos
             <br />
@@ -119,25 +109,19 @@ const NavbarLinks = () => {
           </Link>
 
           <Link
-            to='/'
+            to='/colaboradores'
             className={linksClassNames}>
             Colaboradores
           </Link>
 
           <Link
-            to='/'
+            to='/patrocinadores'
             className={linksClassNames}>
             Patrocinadores
           </Link>
 
           <Link
-            to='/'
-            className={linksClassNames}>
-            Inscripciones
-          </Link>
-
-          <Link
-            to='/'
+            to='/erasmus-cofinanciado'
             className={linksClassNames}>
             Erasmus-Cofinanciado
           </Link>

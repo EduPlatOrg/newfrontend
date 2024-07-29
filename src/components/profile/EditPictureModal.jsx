@@ -10,11 +10,10 @@ import { uploadFile } from '../../api/services';
 const EditPictureModal = ({ isOpen, onClose }) => {
   const { user, setUser, editUserById } = useUser();
   const [loading, setLoading] = useState(false);
-  console.log(user, 'user');
+
   const [profilePicture, setProfilePicture] = useState(user?.picture);
 
   const handleImages = async (files) => {
-    console.log(files, '<-- files');
     setLoading(true);
     try {
       const image = await uploadFile(files[0]);
@@ -33,7 +32,7 @@ const EditPictureModal = ({ isOpen, onClose }) => {
       const response = await editUserById(user?._id, {
         picture: profilePicture,
       });
-      console.log(response, 'response');
+
       if (response.status !== 200) {
         toast.error('Error al cambiar la Imagen');
         return;
@@ -75,7 +74,6 @@ const EditPictureModal = ({ isOpen, onClose }) => {
               noClick={true}
               maxSize={20000000}
               onDrop={(acceptedFiles) => {
-                console.log(acceptedFiles, '<-- acceptedFiles');
                 handleImages(acceptedFiles);
               }}>
               {({ getRootProps, getInputProps, open }) => (

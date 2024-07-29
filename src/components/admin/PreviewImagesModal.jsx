@@ -2,7 +2,6 @@ import { MdOutlineDelete } from 'react-icons/md';
 import { Modal } from '../Modal';
 
 const EditPictureModal = ({ isOpen, onClose, images, setImages }) => {
-  console.log(images, 'images');
   return (
     <Modal
       isOpen={isOpen}

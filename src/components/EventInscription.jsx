@@ -27,7 +27,7 @@ const EventInscription = () => {
   useEffect(() => {
     const fetchEvent = async () => {
       const response = await getEventById(id);
-      console.log(response);
+
       if (response.data.success) {
         setEvent(response.data.event);
       }
@@ -42,7 +42,7 @@ const EventInscription = () => {
   }, [id, user, setValue]);
   const onSubmit = handleSubmit(async (data) => {
     setLoading(true);
-    console.log(data);
+
     try {
       const newInscription = {
         eventId: event._id,

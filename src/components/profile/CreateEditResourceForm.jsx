@@ -64,7 +64,6 @@ const CreateEditResourceForm = ({ resource }) => {
   }, [resource, setValue]);
 
   const handleImage = async (files) => {
-    console.log(files, '<-- files');
     setMainImageLoading(true);
     try {
       const image = await uploadFile(files[0]);
@@ -77,11 +76,10 @@ const CreateEditResourceForm = ({ resource }) => {
   };
 
   const handlePdf = async (file) => {
-    console.log(file, '<-- files');
     setPdfLoading(true);
     try {
       const pdf = await uploadFile(file[0]);
-      console.log(pdf, '<-- pdf');
+
       setPdf(pdf.secure_url);
     } catch (error) {
       console.log(error);
@@ -92,7 +90,7 @@ const CreateEditResourceForm = ({ resource }) => {
 
   const onSubmit = handleSubmit(async (data) => {
     setLoading(true);
-    console.log(data, '<-- data');
+
     data.range = [data.range - 1, data.range, data.range + 1];
 
     data.subDicipline = data.subDicipline.split(',');
@@ -107,7 +105,7 @@ const CreateEditResourceForm = ({ resource }) => {
         pdfDocument: pdf,
         creatorId: user?._id,
       };
-      console.log(newResource, '<-- newEvent');
+
       try {
         const response = await createNewResource(newResource);
 
@@ -131,7 +129,6 @@ const CreateEditResourceForm = ({ resource }) => {
         image: mainImage,
         pdfDocument: pdf,
       };
-      console.log(editedResource, '<-- editedResource');
 
       try {
         const response = await editResource(resource._id, editedResource);
@@ -230,7 +227,6 @@ const CreateEditResourceForm = ({ resource }) => {
                   noClick={true}
                   maxSize={20000000}
                   onDrop={(acceptedFiles) => {
-                    console.log(acceptedFiles, '<-- acceptedFiles');
                     if (
                       ![
                         'image/jpeg',
@@ -576,8 +572,6 @@ const CreateEditResourceForm = ({ resource }) => {
                       className='cursor-pointer'
                       key={index}
                       onClick={(event) => {
-                        console.log(index, '<-- index');
-                        console.log(event, '<-- event');
                         event.stopPropagation();
                         setSocial((prev) => {
                           const newState = [...prev];

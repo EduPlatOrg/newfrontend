@@ -25,7 +25,7 @@ const DeleteAddressModal = ({ isOpen, onClose, location, index }) => {
       const response = await editUserById(user?._id, {
         address: newAddressData,
       });
-      console.log(response, 'response');
+
       if (response.status !== 200) {
         toast.error('Error al Eliminar la Dirección');
         return;

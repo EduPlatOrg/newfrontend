@@ -31,16 +31,14 @@ const AddEditMailModal = ({ isOpen, onClose, email, index }) => {
     if (email === undefined) {
       newData.push(data);
     } else {
-      console.log(index);
       newData[index] = data;
     }
 
     setIsLoading(true);
-    console.log(newData, 'newData');
 
     try {
       const response = await editUserById(user?._id, { emails: newData });
-      console.log(response, 'response');
+
       if (response.status !== 200) {
         toast.error('Error al editar o añadir el puesto de trabajo');
         return;

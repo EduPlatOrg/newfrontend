@@ -2,8 +2,6 @@ import ReactPlayer from 'react-player';
 import { Link } from 'react-router-dom';
 
 const EventDetailCard = ({ event }) => {
-  //TODO: AQUI PUEDES MAQUETAR EL EVENTO COMPLETO CON TODOS SUS DATOS, HAY QUE DEJAR UN BOTON A LA PAGINA DE INSCRIPCIONES Y OTRO PARA VOLVER ATRAS.
-  console.log(event);
   return (
     <div className='max-w-6xl mx-auto  bg-white shadow-lg rounded-lg p-8'>
       <div className='my-4'>

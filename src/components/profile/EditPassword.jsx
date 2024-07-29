@@ -22,10 +22,9 @@ const EditPassword = ({ isOpen, onClose }) => {
   const password = watch('password');
 
   const onSubmit = handleSubmit(async (data) => {
-    console.log(data);
     try {
       const response = await editPassword(data.password);
-      console.log(response, 'response');
+
       if (response.status !== 200) {
         toast.error('Error al cambiar la contraseña');
         return;

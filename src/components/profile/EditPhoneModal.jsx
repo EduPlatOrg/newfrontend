@@ -30,7 +30,7 @@ const EditPhoneModal = ({ isOpen, onClose, phone }) => {
     const newFilteredPhoneData = user?.phones.filter((phone) => {
       return phone.phoneNumber !== phoneToEdit.phoneNumber;
     });
-    console.log(newFilteredPhoneData, 'newFilteredPhoneData');
+
     const newPhoneData = [
       ...newFilteredPhoneData,
       {
@@ -38,11 +38,10 @@ const EditPhoneModal = ({ isOpen, onClose, phone }) => {
         phoneDescription: data.phoneDescription,
       },
     ];
-    console.log(newPhoneData, 'newPhoneData');
 
     try {
       const response = await editUserById(user?._id, { phones: newPhoneData });
-      console.log(response, 'response');
+
       if (response.status !== 200) {
         toast.error('Error al cambiar la Telefono');
         return;
@@ -101,7 +100,6 @@ const EditPhoneModal = ({ isOpen, onClose, phone }) => {
                    focus:ring-2 focus:ring-inset
                     focus:ring-indigo-600 sm:text-sm sm:leading-6 p-2'
                   onChange={(e) => {
-                    console.log(e.target.value);
                     setPhoneDescription(e.target.value);
                   }}
                 />
@@ -131,7 +129,6 @@ const EditPhoneModal = ({ isOpen, onClose, phone }) => {
                    focus:ring-2 focus:ring-inset
                     focus:ring-indigo-600 sm:text-sm sm:leading-6 p-2'
                   onChange={(e) => {
-                    console.log(e.target.value);
                     setPhoneNumber(e.target.value);
                   }}
                 />

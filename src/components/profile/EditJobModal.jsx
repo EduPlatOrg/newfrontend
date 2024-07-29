@@ -18,10 +18,10 @@ const EditJobModal = ({ isOpen, onClose }) => {
 
   const onSubmit = handleSubmit(async (data) => {
     setIsLoading(true);
-    console.log(data);
+
     try {
       const response = await editUserById(user?._id, { job: data });
-      console.log(response, 'response');
+
       if (response.status !== 200) {
         toast.error('Error al editar o añadir el puesto de trabajo');
         return;

@@ -11,7 +11,7 @@ import { useUser } from '../context/UserContext';
 const Navbar = () => {
   //TODO: Add the name and surname of user in the navbar
   const { isAuthenticated, logOutUser, user } = useUser();
-  console.log(user, '<-- user en Navbar');
+
   const { onOpen } = useModal();
   const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false); // Estado para el menú desplegable móvil

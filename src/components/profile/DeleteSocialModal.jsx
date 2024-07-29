@@ -19,7 +19,7 @@ const DeleteSocialModal = ({ isOpen, onClose, social, index }) => {
       const response = await editUserById(user?._id, {
         social: newSocialData,
       });
-      console.log(response, 'response');
+
       if (response.status !== 200) {
         toast.error('Error al Eliminar red social');
         return;

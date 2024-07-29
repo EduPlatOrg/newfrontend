@@ -5,7 +5,7 @@ import { useUser } from '../context/UserContext';
 const ResourcesCard = ({ resources }) => {
   const { user } = useUser();
   if (!resources) return <Loader />;
-  console.log(resources);
+
   return (
     <div className='flex flex-wrap justify-center gap-4'>
       {resources.map((resource) => (

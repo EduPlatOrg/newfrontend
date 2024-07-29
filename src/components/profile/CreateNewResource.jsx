@@ -8,7 +8,6 @@ const CreateNewResource = () => {
   const [resource, setResource] = useState(null);
   const [searchParams] = useSearchParams();
   const id = searchParams.get('id'); // Ahora accedes correctamente a 'id'
-  console.log(id);
 
   useEffect(() => {
     async function fetchEvent() {

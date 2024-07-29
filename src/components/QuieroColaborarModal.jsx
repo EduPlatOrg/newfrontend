@@ -30,7 +30,7 @@ const QuieroColaborarModal = () => {
 
   const onSubmit = handleSubmit(async (data) => {
     setIsLoading(true);
-    console.log(data, 'data');
+
     const response = await colaborateForm(data);
     if (response.status === 200) {
       onClose();

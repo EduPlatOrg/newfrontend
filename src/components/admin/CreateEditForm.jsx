@@ -30,7 +30,6 @@ const CreateEditForm = ({ event }) => {
     reset,
     setValue,
   } = useForm();
-  console.log(event);
 
   useEffect(() => {
     if (event?._id) {
@@ -73,7 +72,6 @@ const CreateEditForm = ({ event }) => {
   }, [event]);
 
   const handleImage = async (files) => {
-    console.log(files, '<-- files');
     setMainImageLoading(true);
     try {
       const image = await uploadFile(files[0]);
@@ -85,7 +83,6 @@ const CreateEditForm = ({ event }) => {
     setMainImageLoading(false);
   };
   const handleImages = async (files) => {
-    console.log(files, '<-- files');
     setImagesLoading(true);
     try {
       const imagesArray = await uploadFiles(files);
@@ -99,11 +96,10 @@ const CreateEditForm = ({ event }) => {
     setImagesLoading(false);
   };
   const handlePdf = async (file) => {
-    console.log(file, '<-- files');
     setPdfLoading(true);
     try {
       const pdf = await uploadFile(file[0]);
-      console.log(pdf, '<-- pdf');
+
       setPdf(pdf.secure_url);
     } catch (error) {
       console.log(error);
@@ -128,7 +124,7 @@ const CreateEditForm = ({ event }) => {
           country: data.country,
         },
       };
-      console.log(newEvent);
+
       try {
         const response = await createEventRequest(newEvent);
         if (response.status === 200) {
@@ -155,7 +151,7 @@ const CreateEditForm = ({ event }) => {
           country: data.country,
         },
       };
-      console.log(editEvent);
+
       try {
         const response = await editEventRequest(event._id, editEvent);
         if (response.status === 200) {
@@ -249,7 +245,6 @@ const CreateEditForm = ({ event }) => {
                   noClick={true}
                   maxSize={20000000}
                   onDrop={(acceptedFiles) => {
-                    console.log(acceptedFiles, '<-- acceptedFiles');
                     if (
                       ![
                         'image/jpeg',
@@ -324,7 +319,7 @@ const CreateEditForm = ({ event }) => {
                       file.type === 'image/gif' ||
                       file.type === 'image/webp'
                   );
-                  console.log(filteredFiles, '<-- acceptedFiles');
+
                   if (filteredFiles.length > 0) {
                     handleImages(filteredFiles);
                   }

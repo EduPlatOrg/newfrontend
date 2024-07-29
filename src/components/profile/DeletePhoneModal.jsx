@@ -7,28 +7,23 @@ import { toast } from 'sonner';
 import { useUser } from '../../context/UserContext';
 
 const DeletePhoneModal = ({ isOpen, onClose, phone }) => {
-  console.log(phone, 'phone');
-
   const { user, editUserById, setUser } = useUser();
 
   const onSubmit = async () => {
     let newPhoneData = [];
     for (let i = 0; i < user.phones.length; i++) {
-      console.log(user.phones[i], 'user.phones[i]');
-      console.log(phone, 'phone');
       if (
         user.phones[i].phoneNumber !== phone.phoneNumber ||
         user.phones[i].phoneDescription !== phone.phoneDescription
       ) {
         newPhoneData.push(user.phones[i]);
       }
-      console.log(newPhoneData, 'newPhoneData');
     }
     try {
       const response = await editUserById(user?._id, {
         phones: newPhoneData,
       });
-      console.log(response, 'response');
+
       if (response.status !== 200) {
         toast.error('Error al cambiar la Telefono');
         return;

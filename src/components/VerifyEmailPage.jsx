@@ -13,7 +13,6 @@ const VerifyEmailPage = () => {
   const { onOpen } = useModal();
 
   useEffect(() => {
-    console.log(token);
     verifyTokenRequest(token);
     const interval = setInterval(() => {
       setIsLoading(false);

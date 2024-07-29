@@ -19,7 +19,7 @@ const DeleteEmailModal = ({ isOpen, onClose, email, index }) => {
       const response = await editUserById(user?._id, {
         emails: newEmailData,
       });
-      console.log(response, 'response');
+
       if (response.status !== 200) {
         toast.error('Error al Eliminar el Email');
         return;

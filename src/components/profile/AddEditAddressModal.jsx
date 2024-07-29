@@ -30,11 +30,10 @@ const AddEditAddressModal = ({ isOpen, onClose, index, location }) => {
 
   const onSubmit = handleSubmit(async (data) => {
     setIsLoading(true);
-    console.log(data);
 
     try {
       const response = await editUserById(user?._id, { address: data });
-      console.log(response, 'response');
+
       if (response.status !== 200) {
         toast.error('Error al editar o añadir la direccion');
         return;

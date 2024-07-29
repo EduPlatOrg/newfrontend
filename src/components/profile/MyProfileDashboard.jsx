@@ -51,7 +51,6 @@ const MyProfileDashboard = () => {
       navigate('/');
     }
   }, [isAuthenticated, user]);
-  console.log('user', user);
 
   const handleEditPhone = (phone) => {
     setPhoneToEdit(phone);
@@ -62,7 +61,7 @@ const MyProfileDashboard = () => {
       const response = await editUserById(user?._id, {
         publicData: newPublicData,
       });
-      console.log(response, 'response');
+
       if (response.status !== 200) {
         toast.error('Error al cambiar la visibilidad');
         return;

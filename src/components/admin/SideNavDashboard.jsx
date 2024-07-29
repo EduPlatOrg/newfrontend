@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import {
-  MdDashboard,
   MdOutlineKeyboardDoubleArrowLeft,
   MdOutlineKeyboardDoubleArrowRight,
 } from 'react-icons/md';
@@ -12,10 +11,9 @@ import { MdEditCalendar } from 'react-icons/md';
 import ToolTip from '../ToolTip';
 
 const navlinks = [
-  { name: 'Dashboard', icon: MdDashboard, link: '' },
+  { name: 'Dashboard', icon: MdEditCalendar, link: '' },
   { name: 'Recursos', icon: PiNotepad, link: 'admin-all-resources' },
   { name: 'Usuarios', icon: IoPeople, link: 'all-users' },
-  { name: 'Eventos', icon: MdEditCalendar, link: 'all-events' },
 ];
 const SideNavDashbord = () => {
   const [open, setOpen] = useState(false);
