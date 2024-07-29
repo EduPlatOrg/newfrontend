@@ -59,7 +59,7 @@ const AdminUserManagment = () => {
         </div>
       </div>
 
-      <div className='flex items-center justify-center flex-wrap gap-4 w-full'>
+      <div className='flex items-center justify-center flex-wrap gap-4 w-full '>
         {Array.isArray(sortedUsers) && sortedUsers.length > 0 ? (
           sortedUsers.map((user) => (
             <UserCard
