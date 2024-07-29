@@ -11,7 +11,7 @@ const AdminUserManagment = () => {
         allUsers.map((user) => (
           <div
             key={user._id}
-            className='flex items-center justify-start gap-3 '>
+            className='flex items-center justify-start gap-3'>
             <Link to={`/public-profile/${user._id}`}>
               <p>{user.username}</p>
             </Link>
