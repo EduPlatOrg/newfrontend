@@ -6,7 +6,6 @@ const UserCard = ({ user }) => {
 
   return (
     <div className='flex items-center gap-2 w-[520px] md:flex-row flex-col shadow-xl'>
-   
           <div className='flex items-center justify-start mr-2 p-4 min-w-fit '>
             <img
               className='rounded-full object-cover w-[70px] '
