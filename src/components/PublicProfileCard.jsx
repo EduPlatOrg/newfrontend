@@ -12,6 +12,7 @@ import { Loader2 } from 'lucide-react';
 
 const PublicProfileCard = ({ userData, onNewValoration }) => {
   const { user } = useUser();
+  console.log(userData && userData);
   const showValorationForm = user && user?._id !== userData._id;
   const [rating, setRating] = useState();
   const [loading, setLoading] = useState(false);

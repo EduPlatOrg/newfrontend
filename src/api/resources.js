@@ -16,3 +16,6 @@ export const deleteResourceRequest = (id) =>
 
 export const getOwnResourcesRequest = (page) =>
   axios.get(`/edusource/ownResources?page=${page}`);
+
+export const manageLikes = (resourceId, userId) =>
+  axios.post(`/edusource/manage-like/${resourceId}`, { userId });

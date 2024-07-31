@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 import { useNavigate } from 'react-router-dom';
 import { CiEdit } from 'react-icons/ci';
@@ -22,8 +22,10 @@ import DeleteEmailModal from './DeletEmailModal';
 import AddEditAddressModal from './AddEditAddressModal';
 import DeleteAddressModal from './DeletAddressModal';
 import EditSocialModal from './EditSocialModal';
-import { set } from 'react-hook-form';
+
 import DeleteSocialModal from './DeleteSocialModal';
+import { Loader2 } from 'lucide-react';
+import EditPictureHeaderModal from './EditPictureHeaderModal';
 
 const MyProfileDashboard = () => {
   const navigate = useNavigate();
@@ -43,6 +45,10 @@ const MyProfileDashboard = () => {
   const [editSocial, setEditSocial] = useState(false);
   const [socialToEdit, setSocialToEdit] = useState(null);
   const [deleteSocial, setDeleteSocial] = useState(false);
+  const [bio, setBio] = useState(null);
+  const [editBio, setEditBio] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [editPictureHeader, setEditPictureHeader] = useState(false);
 
   const { user, isAuthenticated, setUser, editUserById } = useUser();
 
@@ -80,6 +86,38 @@ const MyProfileDashboard = () => {
     e.preventDefault();
     setDeletePhone(true);
   };
+
+  const handleEditBio = () => {
+    setBio(user?.bio);
+    setEditBio(!editBio);
+  };
+
+  const handleBio = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+
+    try {
+      const response = await editUserById(user?._id, {
+        bio: bio,
+      });
+
+      if (response.status !== 200) {
+        toast.error('Error al cambiar la biografía');
+        return;
+      }
+      setUser((currentUser) => ({
+        ...currentUser,
+        bio: bio,
+      }));
+      toast.success('Biografía cambiada con éxito');
+    } catch (error) {
+      console.log(error);
+      toast.error('Algo salió mal');
+    }
+    setLoading(false);
+    setEditBio(false);
+    setBio(null);
+  };
   return (
     <div className='flex flex-col items-center justify-center gap-2 w-full'>
       {editPassword && (
@@ -106,6 +144,12 @@ const MyProfileDashboard = () => {
         <EditPictureModal
           isOpen={editPicture}
           onClose={() => setEditPicture(false)}
+        />
+      )}
+      {editPictureHeader && (
+        <EditPictureHeaderModal
+          isOpen={editPictureHeader}
+          onClose={() => setEditPictureHeader(false)}
         />
       )}
       {editJob && (
@@ -165,14 +209,23 @@ const MyProfileDashboard = () => {
       <>
         <div className='md:w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 w-full'>
           <div className='bg-white shadow overflow-hidden sm:rounded-lg my-6'>
-            <div className='px-4 py-5 sm:px-6'>
-              <h3 className='text-lg leading-6 font-medium text-gray-900'>
-                Información del Usuario
-              </h3>
-              <p className='mt-1 max-w-2xl text-sm text-gray-500'>
-                Detalles personales.
-              </p>
+            <div className='px-4 py-5 sm:px-6 w-full relative min-h-[130px]'>
+              <div className=' absolute px-4 py-5 sm:px-6 bg-white w-fit rounded-md z-20'>
+                <h3 className='text-lg leading-6 font-medium text-gray-900'>
+                  Información del Usuario
+                </h3>
+                <p className='mt-1 max-w-2xl text-sm text-gray-500'>
+                  Detalles personales.
+                </p>
+              </div>
+              <img
+                src={user?.palette?.pictureHeader}
+                alt='imagen publica de fondo'
+                className='absolute top-0 left-0 w-full h-full object-cover z-0'
+                onClick={() => setEditPictureHeader(true)}
+              />
             </div>
+
             <div className='border-t border-gray-200'>
               <dl>
                 <div className='bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6'>
@@ -211,6 +264,62 @@ const MyProfileDashboard = () => {
                   <dt className='text-sm font-medium text-gray-500'>Email</dt>
                   <dd className='mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2'>
                     {user?.email}
+                  </dd>
+                </div>
+                <div className='bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6'>
+                  <dt className='text-sm font-medium text-gray-500'>Karma</dt>
+                  <div className='flex items-center gap-4'>
+                    <dd className='mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2'>
+                      {user?.karma}
+                    </dd>
+                  </div>
+                </div>
+                <div className='bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6'>
+                  <dt className='text-sm font-medium text-gray-500'>
+                    Biografia
+                  </dt>
+                  <dd className='mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2'>
+                    <div className='w-full flex flex-col gap-2 relative py-5'>
+                      {editBio ? (
+                        <>
+                          <textarea
+                            rows={bio ? bio.split('\n').length + 1 : 4}
+                            className='w-full p-2 border rounded resize-none min-h-[200px]'
+                            value={bio}
+                            onChange={(e) => setBio(e.target.value)}
+                          />
+                          <div className='w-full flex items-center justify-end gap-2'>
+                            <button
+                              className='self-end py-1 px-2 bg-indigo-500 rounded-md text-white text-sm hover:bg-indigo-700'
+                              onClick={handleBio}>
+                              {loading ? (
+                                <Loader2 className='animate-spin' />
+                              ) : (
+                                'Enviar'
+                              )}
+                            </button>
+                            <button
+                              className='self-end py-1 px-2 bg-red-500 rounded-md text-white text-sm hover:bg-red-700'
+                              onClick={() => {
+                                setEditBio(false);
+                                setBio(null);
+                              }}>
+                              Cancelar
+                            </button>
+                          </div>
+                        </>
+                      ) : (
+                        <>
+                          <p>{user?.bio}</p>
+
+                          <button
+                            className='absolute -bottom-1.5 right-0'
+                            onClick={handleEditBio}>
+                            <CiEdit size={20} />
+                          </button>
+                        </>
+                      )}
+                    </div>
                   </dd>
                 </div>
                 <div className='bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6'>

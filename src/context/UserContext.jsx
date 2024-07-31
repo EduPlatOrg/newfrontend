@@ -168,7 +168,7 @@ export const UserProvider = ({ children }) => {
         editPassword,
         resetPassword,
         editUserById,
-
+        getAllUsers,
         // <-- van todas las funciones del los grupos para exportarlas
       }}>
       {children}
