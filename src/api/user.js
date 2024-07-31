@@ -25,3 +25,9 @@ export const editUserByIdRequest = (id, data) =>
   axios.patch(`/user/edit-user/${id}`, data);
 
 export const getUserByIdRequest = (id) => axios.get(`/user/getUserById/${id}`);
+
+export const banUserRequest = (id, action) =>
+  axios.patch(`/user/ban-user/${id}`, action);
+
+export const manageKarmaRequest = (data) =>
+  axios.patch(`/user/add-karma`, data);

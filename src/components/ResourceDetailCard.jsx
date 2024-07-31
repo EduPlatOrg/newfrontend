@@ -9,9 +9,11 @@ import { toast } from 'sonner';
 import { sendNewValoration } from '../api/valorations';
 import ValorationCard from './ValorationCard';
 import { Loader2 } from 'lucide-react';
+import { AiOutlineLike } from 'react-icons/ai';
+import { manageLikes } from '../api/resources';
 
 const ResourceDetailCard = ({ resource, onNewValoration }) => {
-  const { user } = useUser();
+  const { user, setUser } = useUser();
   const [loading, setLoading] = useState(false);
   const [rating, setRating] = useState(0);
 
@@ -22,7 +24,24 @@ const ResourceDetailCard = ({ resource, onNewValoration }) => {
   const handleRating = (index) => {
     setRating(index);
   };
+  const handleLike = async () => {
+    if (!user || !resource) {
+      toast.error('User or resource is undefined');
+      return;
+    }
 
+    try {
+      const response = await manageLikes(resource._id, user._id);
+      if (response?.data.success) {
+        toast.success('Like añadido correctamente');
+        setUser(response.data.user);
+        onNewValoration(response.data.resource);
+      }
+    } catch (error) {
+      console.log(error);
+      toast.error('Error al dar like');
+    }
+  };
   const handleValoration = async () => {
     setLoading(true);
     if (!user || !resource) {
@@ -58,21 +77,17 @@ const ResourceDetailCard = ({ resource, onNewValoration }) => {
         <h2 className='font-bold text-2xl md:text-4xl text-gray-800 mb-6 text-center'>
           {resource?.title}
         </h2>
-
         <img
           src={resource?.image}
           alt='Resource'
           className='w-full md:w-3/4 h-auto mx-auto rounded-lg mb-6 max-w-[500px]'
         />
-
         <p className='text-gray-700 text-[16px] md:text-xl mb-4 px-4'>
           {resource?.description}
         </p>
-
         <p className='text-gray-600 text-[16px] md:text-xl mb-2 px-4'>
           <strong>Autor:</strong> {resource.autor?.autorName}
         </p>
-
         <p className='text-gray-700 text-[16px] md:text-xl mb-4 px-4'>
           <strong>Página del creador: </strong>
           <Link
@@ -81,12 +96,10 @@ const ResourceDetailCard = ({ resource, onNewValoration }) => {
             {resource.creatorId.firstname} {resource.creatorId.lastname}
           </Link>
         </p>
-
         <p className='text-gray-600 text-[16px] md:text-xl mb-2 px-4'>
           <strong>Publicado:</strong>{' '}
           {new Date(resource?.date).toLocaleDateString()}
         </p>
-
         {resource?.level && (
           <p className='text-gray-600 text-[16px] md:text-xl mb-2 px-4'>
             <strong>Nivel:</strong> {resource.level}
@@ -131,7 +144,6 @@ const ResourceDetailCard = ({ resource, onNewValoration }) => {
             </a>
           </p>
         )}
-
         {resource?.autor?.socials && resource?.autor?.socials.length > 0 && (
           <div className='text-gray-600 text-[16px] md:text-xl mb-2 flex items-center gap-2 px-4'>
             <strong>Sociales:</strong>
@@ -142,6 +154,21 @@ const ResourceDetailCard = ({ resource, onNewValoration }) => {
                 link={social?.user}
               />
             ))}
+          </div>
+        )}
+        {user && user !== null && (
+          <div className='text-gray-600 md:text-xl mb-2 flex flex-col justify-end items-end px-4 w-full h-fit'>
+            <AiOutlineLike
+              size={25}
+              className={clsx(
+                'cursor-pointer',
+                resource?.likes.includes(user._id) && 'text-blue-500'
+              )}
+              onClick={handleLike}
+            />
+            <p className='text-[14px]'>
+              {resource?.likes > 0 ? resource?.likes?.length : 0} likes
+            </p>
           </div>
         )}
       </div>

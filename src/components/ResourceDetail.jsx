@@ -25,8 +25,8 @@ const ResourceDetail = () => {
   if (!resource) {
     return <Loader />;
   }
-  const updateResourceWithNewValoration = (newValoration) => {
-    setResource(newValoration);
+  const updateResourceWithNewValoration = (updatedResource) => {
+    setResource(updatedResource);
   };
 
   return (
