@@ -1,7 +1,7 @@
 import { RxExclamationTriangle } from 'react-icons/rx';
 import { Modal } from '../Modal';
 
-const UnBanUserModal = ({ isOpen, onClose, handleBan, user }) => {
+const UnBanUserModal = ({ isOpen, onClose, handleUnBan, user }) => {
   return (
     <Modal
       isOpen={isOpen}
@@ -28,7 +28,7 @@ const UnBanUserModal = ({ isOpen, onClose, handleBan, user }) => {
         </div>
         <div className='flex items-center justify-end mt-4 gap-4'>
           <button
-            onClick={handleBan}
+            onClick={handleUnBan}
             className='bg-red-500 py-2 px-4 rounded-lg text-neutral-100'>
             Confirmar
           </button>
