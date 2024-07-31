@@ -17,7 +17,7 @@ const UserCard = ({ user }) => {
 
   const handleBan = async () => {
     try {
-      const response = await banUserRequest(user?._id, { action: 'banUser' });
+      const response = await banUserRequest(user?._id, { isVerified: false });
       if (response.status !== 200) {
         toast.error('Error al banear al usuario');
         return;
@@ -33,7 +33,7 @@ const UserCard = ({ user }) => {
   };
   const handleUnBan = async () => {
     try {
-      const response = await banUserRequest(user?._id, { action: 'unBanUser' });
+      const response = await banUserRequest(user?._id, { isVerified: true });
       if (response.status !== 200) {
         toast.error('Error al desbanear al usuario');
         return;
@@ -44,7 +44,7 @@ const UserCard = ({ user }) => {
       console.log(error);
       toast.error('Error al desbanear al usuario');
     } finally {
-      setBanUserModal(false);
+      setUnBanUserModal(false);
     }
   };
   const handleKarma = async (karma) => {
@@ -117,24 +117,25 @@ const UserCard = ({ user }) => {
         <div className='flex flex-col items-center justify-start w-fit '>
           <Link
             to={`/public-profile/${user?._id}`}
-            className='mb-1 bg-[#3B82F6] hover:bg-blue-700 inline-block text-center py-1 px-4 text-white rounded w-full'>
+            className='mb-1  bg-indigo-500 hover:bg-indigo-700 inline-block text-center py-1 px-4 text-white rounded w-full'>
             Visitar
           </Link>
           <button
             onClick={() => setManageKarma(true)}
-            className='mb-1 bg-[#3B82F6] hover:bg-blue-700 inline-block text-center py-1 px-4 text-white rounded whitespace-nowrap w-fit'>
+            className='mb-1 bg-indigo-500 hover:bg-indigo-700 
+            inline-block text-center py-1 px-4 text-white rounded whitespace-nowrap w-fit'>
             Añadir karma
           </button>
           {user && user.isVerified ? (
             <button
               onClick={() => setBanUserModal(true)}
-              className='bg-[#F87171] hover:bg-red-700 inline-block text-center py-1 px-4 text-white rounded w-full'>
+              className='bg-red-500 hover:bg-red-700 inline-block text-center py-1 px-4 text-white rounded w-full'>
               Banear
             </button>
           ) : (
             <button
               onClick={() => setUnBanUserModal(true)}
-              className='bg-[#F87171] hover:bg-red-700 inline-block text-center py-1 px-4 text-white rounded w-full'>
+              className='bg-green-500 hover:bg-green-700 inline-block text-center py-1 px-4 text-white rounded w-full'>
               Desbanear
             </button>
           )}
