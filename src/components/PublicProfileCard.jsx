@@ -182,27 +182,7 @@ const PublicProfileCard = ({ userData, onNewValoration }) => {
                 ))}
               </div>
             </div>
-            <div className=''>
-              <h2 className='text-xl font-semibold'>Valoraciones</h2>
-              <div className=''>
-                {userData.valorations.map((val, index) => (
-                  <div
-                    key={index}
-                    className='flex gap-2 items-center'>
-                    <Rating
-                      ratingValue={val.rating}
-                      SVGclassName={`inline-block`}
-                      stars={5}
-                      size={24}
-                      transition
-                      fillColor='yellow'
-                      emptyColor='gray'
-                    />
-                    <div className=''>Description</div>
-                  </div>
-                ))}
-              </div>
-            </div>
+
             {showValorationForm && (
               <div className='bg-gray-100 p-6 rounded-lg shadow-lg w-full mx-auto my-8 '>
                 <h3 className='text-lg font-semibold mb-4'>
