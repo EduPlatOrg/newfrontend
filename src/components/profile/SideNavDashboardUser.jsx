@@ -8,13 +8,14 @@ import { NavLink } from 'react-router-dom';
 
 import { PiNotepad } from 'react-icons/pi';
 import { MdOutlineEventAvailable } from 'react-icons/md';
-
+import { FaRegCommentDots } from 'react-icons/fa';
 import ToolTip from '../ToolTip';
 
 const navlinks = [
   { name: 'Dashboard', icon: MdDashboard, link: '' },
   { name: 'Mis Recursos', icon: PiNotepad, link: 'my-resources' },
   { name: 'Mis Eventos', icon: MdOutlineEventAvailable, link: 'my-events' },
+  { name: 'Mis Comentrarios', icon: FaRegCommentDots, link: 'my-comments' },
 ];
 const SideNavDashbordUser = () => {
   const [open, setOpen] = useState(false);

@@ -31,3 +31,5 @@ export const banUserRequest = (id, action) =>
 
 export const manageKarmaRequest = (data) =>
   axios.patch(`/user/add-karma`, data);
+
+export const getOwnComments = () => axios.get('/user/get-own-comments');

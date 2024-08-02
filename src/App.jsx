@@ -37,6 +37,7 @@ import RecursosEducativos2 from './pages/RecursosEducativos2';
 import ResourceDetail from './components/ResourceDetail';
 import PublicProfile from './pages/PublicProfile';
 import MyEventsList from './components/profile/MyEventsList';
+import MyComments from './components/profile/MyComments';
 
 function App() {
   return (
@@ -145,6 +146,10 @@ function App() {
                 <Route
                   path='my-events'
                   element={<MyEventsList />}
+                />
+                <Route
+                  path='my-comments'
+                  element={<MyComments />}
                 />
               </Route>{' '}
               <Route
