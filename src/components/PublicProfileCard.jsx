@@ -182,50 +182,44 @@ const PublicProfileCard = ({ userData, onNewValoration }) => {
                 ))}
               </div>
             </div>
-
-            {showValorationForm && (
-              <div className='bg-gray-100 p-6 rounded-lg shadow-lg w-full mx-auto my-8 '>
-                <h3 className='text-lg font-semibold mb-4'>
-                  Deja tu comentario y valoración
-                </h3>
-                <div className='mb-4'>
-                  <textarea
-                    onChange={(e) => setRatingComment(e.target.value)}
-                    className='w-full p-2 text-gray-700 border rounded-lg focus:outline-none resize-none'
-                    value={ratingComment}
-                    rows='4'
-                    placeholder='Deja tu comentario...'></textarea>
-                </div>
-
-                <div className='flex justify-between items-center mb-4'>
-                  <div className='flex items-center justify-between gap-2'>
-                    <Rating
-                      SVGclassName={`inline-block`}
-                      onClick={handleRating}
-                      initialValue={rating}
-                      transition
-                      size={25}
-                    />
-                  </div>
-                  <button
-                    className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded text-xs'
-                    onClick={handleValoration}>
-                    {loading ? <Loader2 className='animate-spin' /> : 'Enviar'}
-                  </button>
-                </div>
-              </div>
-            )}
           </div>
         </div>
       </div>
+      {showValorationForm && (
+        <div className='bg-gray-100 p-6 rounded-lg shadow-lg md:w-[80%] w-full mx-auto my-8 '>
+          <h3 className='text-lg font-semibold mb-4'>
+            Deja tu comentario y valoración
+          </h3>
+          <div className='mb-4'>
+            <textarea
+              onChange={(e) => setRatingComment(e.target.value)}
+              className='w-full p-2 text-gray-700 border rounded-lg focus:outline-none resize-none'
+              value={ratingComment}
+              rows='4'
+              placeholder='Deja tu comentario...'></textarea>
+          </div>
+
+          <div className='flex justify-between items-center mb-4'>
+            <div className='flex items-center justify-between gap-2'>
+              <Rating
+                SVGclassName={`inline-block`}
+                onClick={handleRating}
+                initialValue={rating}
+                transition
+                size={25}
+              />
+            </div>
+            <button
+              className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded text-xs'
+              onClick={handleValoration}>
+              {loading ? <Loader2 className='animate-spin' /> : 'Enviar'}
+            </button>
+          </div>
+        </div>
+      )}
       <div className='flex items-center flex-col justify-center py-2 px-2 md:max-w-6xl w-full mx-auto '>
-        <button
-          className='bg-blue-500 hover:bg-blue-700 text-xs text-white font-bold py-2 px-4 rounded mt-4 w-fit self-end'
-          onClick={() => setShowComments(!showComments)}>
-          {showComments ? 'Ocultar Comentarios' : 'Mostrar Comentarios'}
-        </button>{' '}
         {/* TODO: Quitar bg */}
-        <div className='flex gap-4 items-center justify-center md:justify-start w-full my-2'>
+        <div className='flex gap-4 items-center justify-center md:justify-start w-full md:w-[80%] my-2'>
           <h2 className='text-lg md:text-xl font-bold'>Comentarios</h2>
           <p className='text-xs md:text-lg'>
             {' '}
@@ -251,8 +245,15 @@ const PublicProfileCard = ({ userData, onNewValoration }) => {
             de {userData?.valorationsAverage?.votes || 0} valoraciones
           </p>
         </div>
+        <div className='flex items-center justify-end w-full md:w-[80%]'>
+          <button
+            className='bg-blue-500 hover:bg-blue-700 text-xs text-white font-bold py-2 px-4 rounded mt-4 w-fit self-end'
+            onClick={() => setShowComments(!showComments)}>
+            {showComments ? 'Ocultar Comentarios' : 'Mostrar Comentarios'}
+          </button>{' '}
+        </div>
         {showComments && (
-          <div className='w-full flex flex-col gap-2 '>
+          <div className='w-full md:w-[80%] flex flex-col gap-2 '>
             <div className='flex flex-wrap justify-around '>
               {userData?.valorations.map((val, index) => (
                 <ValorationCard
