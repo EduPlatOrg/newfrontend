@@ -31,7 +31,8 @@ const ResourceDetailCard = ({ resource, onNewValoration }) => {
     }
 
     try {
-      const response = await manageLikes(resource._id, user._id);
+      const response = await manageLikes(resource._id);
+      console.log(response.data.resource);
       if (response?.data.success) {
         toast.success('Like añadido correctamente');
         setUser(response.data.user);
@@ -167,7 +168,7 @@ const ResourceDetailCard = ({ resource, onNewValoration }) => {
               onClick={handleLike}
             />
             <p className='text-[14px]'>
-              {resource?.likes > 0 ? resource?.likes?.length : 0} likes
+              {resource?.likes.length > 0 ? resource?.likes?.length : 0} likes
             </p>
           </div>
         )}
