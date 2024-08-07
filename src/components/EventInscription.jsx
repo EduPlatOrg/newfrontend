@@ -49,9 +49,14 @@ const EventInscription = () => {
         ...data,
       };
       const response = await createEventInscription(newInscription);
-      if (response.status === 200) {
+      if (response.data.success) {
         reset();
         toast.success('Inscripción enviada correctamente');
+        navigate('/programa-eventos');
+      }
+      if (response.data.allreadyInscribed) {
+        reset();
+        toast.error('Ya estas inscrito en este evento');
         navigate('/programa-eventos');
       }
     } catch (error) {
