@@ -27,11 +27,11 @@ const MyEventsList = () => {
   }, []);
 
   return (
-    <div className='flex flex-col items-center justify-center min-w-[80%] mt-4 border border-blue-500'>
-      <div className='w-full text-center py-4 text-xl font-bold'>
+    <div className='flex flex-col items-center justify-center min-w-[80%] mt-4'>
+      <div className='w-full text-center py-4 text-2xl font-bold'>
         Mis Eventos
       </div>
-      <div className='w-full flex flex-wrap gap-4'>
+      <div className='w-full flex flex-wrap gap-4 text-center items-center justify-center pt-4'>
         {events.length > 0 ? (
           events.map(event => (
             <EventCard key={event._id} event={event} />
