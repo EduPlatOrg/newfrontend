@@ -5,7 +5,8 @@ const useEventStore = create((set) => ({
   events: [],
   pastEvents: [],
   nextEvents: [],
-
+  currentEvent: {},
+  setCurrentEvent: (event) => set({ currentEvent: event }),
   setEvents: (events) => set({ events }),
   deleteEvent: (eventId) =>
     set((state) => ({

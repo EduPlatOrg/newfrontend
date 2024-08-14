@@ -49,7 +49,7 @@ const MainDashboard = () => {
         <Link to='/admin-panel/create-event'>
           <button
             className='bg-[#0e2235] text-white 
-            py-2 px-3 flex items-center gap-3 rounded-md w-full md:w-fit self-end text-md'>
+            py-2 px-3 flex items-center gap-3 rounded-md w-full md:w-fit self-end text-md whitespace-nowrap'>
             Crear evento
           </button>
         </Link>

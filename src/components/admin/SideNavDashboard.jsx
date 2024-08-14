@@ -7,6 +7,7 @@ import { NavLink } from 'react-router-dom';
 import { IoPeople } from 'react-icons/io5';
 import { PiNotepad } from 'react-icons/pi';
 import { MdEditCalendar } from 'react-icons/md';
+import { GoBook } from 'react-icons/go';
 
 import ToolTip from '../ToolTip';
 
@@ -14,6 +15,7 @@ const navlinks = [
   { name: 'Dashboard', icon: MdEditCalendar, link: '' },
   { name: 'Recursos', icon: PiNotepad, link: 'admin-all-resources' },
   { name: 'Usuarios', icon: IoPeople, link: 'all-users' },
+  { name: 'Inscripciones', icon: GoBook, link: 'all-inscriptions' },
 ];
 const SideNavDashbord = () => {
   const [open, setOpen] = useState(false);
