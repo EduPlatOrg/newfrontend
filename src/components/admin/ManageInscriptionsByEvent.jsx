@@ -4,12 +4,14 @@ import { getInscriptionsByEvent } from '../../api/inscriptions';
 import ManageEventsInscriptionsCard from './ManageEventsInscriptionsCard';
 
 const ManageInscriptionsByEvent = () => {
-  const [events, setEvents] = useState(null);
+  const [events, setEvents] = useState([]);
   useEffect(() => {
     async function fetchEvents() {
       const response = await getInscriptionsByEvent();
-
-      setEvents(response.data.events);
+      console.log(response.data);
+      if (response.data.success === true) {
+        setEvents(response.data.events);
+      }
     }
     fetchEvents();
   }, []);
