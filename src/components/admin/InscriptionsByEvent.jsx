@@ -24,10 +24,10 @@ const InscriptionsByEvent = () => {
     fetchEvents();
   }, [id]);
 
-  const onBookingModification = async (bookingId) => {
+  const onBookingModification = async (eventId) => {
     // ACA LA LOGICA PARA ACTUALIZAR EL ESTADO DE LAS INSCRIPCIONES
     try {
-      const response = await getInscriptionsByEventAndId(bookingId);
+      const response = await getInscriptionsByEventAndId(eventId);
       if (response.data.success === true) {
         setEvent(response.data.events.event);
         setPremiumBookings(response.data.events.premiumInscriptions);
