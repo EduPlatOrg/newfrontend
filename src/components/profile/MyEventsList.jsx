@@ -1,4 +1,5 @@
 const MyEventsList = () => {
+  // Hay que enviar a la funcion deleteInscription el id de la inscripcion a cancelar
   /*
  [1] Aca hay que recuperar todos tus eventos en los que estas Inscrito
  [2] Hay que revisar que estos sean un array para no tener problemas en el renderizado. O puedes hacerte uyn estado que ya sea una array vacio por defecto.
