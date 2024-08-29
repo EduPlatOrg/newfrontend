@@ -6,7 +6,7 @@ const ListEventInscriptions = () => {
 
   console.log(currentEvent);
   return (
-    <div className=''>
+    <div className='w-full flex flex-col items-center justify-center gap-2'>
       <h1 className='text-2xl mb-4 mt-2'> Contacts from Event</h1>
       <p className='text-sm '>
         <span className='font-bold'>Asistentes Gratuitos: </span>

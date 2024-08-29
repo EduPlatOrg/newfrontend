@@ -11,7 +11,7 @@ const InscriptionsContactCard = ({ inscription }) => {
       </p>
       <p>
         <span className='font-semibold'>Telefono: </span>{' '}
-        {inscription.user?.phone}
+        {inscription?.phones[0]?.phoneNumber}
       </p>
     </div>
   );
