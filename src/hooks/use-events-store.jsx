@@ -1,11 +1,22 @@
 import { create } from 'zustand';
-import { getAllEventsRequest } from '../api/events';
+import {
+  getAllEventsRequest,
+  getEmailsFromEventByEventId,
+} from '../api/events';
 
 const useEventStore = create((set) => ({
   events: [],
   pastEvents: [],
   nextEvents: [],
   currentEvent: {},
+  fetchEventById: async (eventId) => {
+    try {
+      const response = await getEmailsFromEventByEventId(eventId);
+      set({ currentEvent: response.data });
+    } catch (error) {
+      console.error('Error al obtener el evento:', error);
+    }
+  },
   setCurrentEvent: (event) => set({ currentEvent: event }),
   setEvents: (events) => set({ events }),
   deleteEvent: (eventId) =>

@@ -1,19 +1,23 @@
-const MyEventListDetail = ({ events }) => {
-  console.log(events);
-  // Hay que enviar a la funcion deleteInscription el id de la inscripcion a cancelar
-  /*
- [1] Aca hay que recuperar todos tus eventos en los que estas Inscrito
- [2] Hay que revisar que estos sean un array para no tener problemas en el renderizado. O puedes hacerte uyn estado que ya sea una array vacio por defecto.
-  [3] Si no hay eventos, mostrar un mensaje de que no hay eventos.
-  [4] Si hay eventos, mostrarlos en una lista. Puedes usar un componente EventCard para mostrar cada evento.
-  [5] Cada evento debe tener un boton para cancelar la inscripcion.
-  [6] Al cancelar la inscripcion, se debe hacer un request a la API para cancelar la inscripcion.
-  [7] Al cancelar la inscripcion, se debe actualizar la lista de eventos.
-  [8] Si hay un error en la cancelacion de la inscripcion, mostrar un mensaje de error.
-  */
+import EventCardWithLinks from './EventCardWithLinks';
+
+const MyEventListDetail = ({ events, handleDelete, loading }) => {
   return (
-    <div>
-      <h1>MyEventListDetail</h1>
+    <div className='w-full flex gap-4 flex-col p-8'>
+      <h1 className='w-full text-center font-bold text-xl md:text-2xl'>
+        MIS EVENTOS
+      </h1>
+      {events.length === 0 ? (
+        <p>No hay eventos</p>
+      ) : (
+        events.map((event) => (
+          <EventCardWithLinks
+            event={event}
+            key={event?._id}
+            handleDelete={handleDelete}
+            loading={loading}
+          />
+        ))
+      )}
     </div>
   );
 };

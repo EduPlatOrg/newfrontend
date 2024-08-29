@@ -40,6 +40,7 @@ import MyEventsList from './components/profile/MyEventsList';
 import MyComments from './components/profile/MyComments';
 import ManageInscriptionsByEvent from './components/admin/ManageInscriptionsByEvent';
 import InscriptionsByEvent from './components/admin/InscriptionsByEvent';
+import ListEventInscriptions from './components/admin/ListEventInscriptions';
 
 function App() {
   return (
@@ -168,6 +169,10 @@ function App() {
                 <Route
                   path='all-inscriptions'
                   element={<ManageInscriptionsByEvent />}
+                />
+                <Route
+                  path='manage-inscriptions/list/:id'
+                  element={<ListEventInscriptions />}
                 />
                 <Route
                   path='manage-inscriptions/:id'

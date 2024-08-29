@@ -2,14 +2,14 @@ import useEventStore from '../../hooks/use-events-store';
 import { Link } from 'react-router-dom';
 
 const ManageEventsInscriptionsCard = ({ events }) => {
-  const { setCurrentEvent } = useEventStore();
+  const { setCurrentEvent, fetchEventById } = useEventStore();
   console.log(events);
   return (
-    <div className='flex items-center gap-2 justify-center flex-col flex-grow p-4'>
+    <div className='flex items-center gap-2 justify-center flex-col flex-grow p-4 w-full'>
       <h1 className='text-2xl font-semibold w-full flex items-center justify-center p-4'>
         Administra las Inscripciones por evento.
       </h1>
-      <div className='flex items-center gap-2 w-full max-w-[80%] md:flex-row flex-col  flex-grow p-4'>
+      <div className='flex items-center gap-2 w-full max-w-[80%] flex-col  flex-grow p-4'>
         {events.map((event) => {
           const startDate = event.event?.startDate
             ? new Date(event.event?.startDate).toLocaleDateString()
@@ -56,13 +56,22 @@ const ManageEventsInscriptionsCard = ({ events }) => {
                   {event.onlineFreeBookingsCount}
                 </p>
               </div>
-              <Link
-                to={`/admin-panel/manage-inscriptions/${event.event?._id}`}
-                className='bg-[#0e2235] text-white 
+              <div className='flex items-center justify-center gap-3 w-full lg:w-fit self-end lg:flex-col'>
+                <Link
+                  to={`/admin-panel/manage-inscriptions/${event.event?._id}`}
+                  className='bg-[#0e2235] text-white 
             py-2 px-3 flex items-center justify-center gap-3 rounded-md w-full lg:w-fit self-end text-xs md:text-sm whitespace-nowrap'
-                onClick={() => setCurrentEvent(event)}>
-                Administrar Inscripciones
-              </Link>
+                  onClick={() => setCurrentEvent(event)}>
+                  Administrar Inscripciones
+                </Link>
+                <Link
+                  to={`/admin-panel/manage-inscriptions/list/${event.event?._id}`}
+                  className='bg-sky-500 text-white 
+            py-2 px-3 flex items-center justify-center gap-3 rounded-md w-full lg:w-full self-end text-xs md:text-sm whitespace-nowrap'
+                  onClick={() => fetchEventById(event.event?._id)}>
+                  Listar Inscripciones
+                </Link>
+              </div>
             </div>
           );
         })}
