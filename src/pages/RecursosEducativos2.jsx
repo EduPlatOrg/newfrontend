@@ -54,6 +54,7 @@ const RecursosEducativos2 = () => {
         setPage((prev) => prev - 1);
       }
     }
+    setLoading(false);
   };
   useEffect(() => {
     let search = '';
@@ -85,7 +86,8 @@ const RecursosEducativos2 = () => {
       const { data } = await axios.get(
         `http://localhost:4000/v1/edusource/all?${search}`
       );
-
+      console.log(search);
+      console.log(data);
       setFilteredResources(data.edusources);
       setTotalPages(data.metadata.totalPages);
       setTotalResources(data.metadata.totalCount);

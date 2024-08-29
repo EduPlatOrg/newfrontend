@@ -17,3 +17,5 @@ export const getInscriptionsByUser = async () =>
 
 export const deleteInscription = async (id) =>
   axios.delete(`/inscriptions/deleteInscription/${id}`);
+
+//`/inscriptions/getInscriptionsByEventId/${id}`;

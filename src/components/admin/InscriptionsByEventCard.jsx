@@ -26,6 +26,7 @@ const InscriptionsByEventCard = ({
             <BookingCard
               key={booking._id}
               booking={booking}
+              onBookingModification={onBookingModification}
             />
           ))
         ) : (

@@ -10,7 +10,7 @@ import { FaArrowAltCircleRight, FaArrowCircleLeft } from 'react-icons/fa';
 import Loader from '../Loader';
 
 const MyResources = () => {
-  const [showFilters, setShowFilters] = useState(false);
+  //const [showFilters, setShowFilters] = useState(false);
   const [filteredResources, setFilteredResources] = useState([]);
   const { user } = useUser();
   const { getOwnResources } = useResources();
@@ -54,25 +54,25 @@ const MyResources = () => {
   return (
     <>
       {loading && <Loader />}
-      <div className='flex flex-col w-full items-center p-2 '>
+      <div className='flex flex-col w-full items-center p-2'>
         <h1 className='font-cinzel text-lg md:text-4xl mb-1 mt-3'>
           Detalle de mis {totalResources && totalResources} recursos.
         </h1>
         <div className='flex items-center justify-center gap-4 p-2'>
-          <p
+          {/* <p
             onClick={() => setShowFilters(!showFilters)}
-            className='bg-[#0e2235] text-white py-2 px-3 flex items-center gap-3 rounded-md w-full md:w-fit  text-md cursor-pointer'>
+            className='bg-[#0e2235] text-white py-2 px-3 flex items-center gap-3 rounded-md w-full md:w-fit text-sm cursor-pointer'>
             {showFilters ? 'Ocultar Filtros' : 'Mostrar Filtros'}
-          </p>
+          </p> */}
           <Link to='/profile-panel/my-resources/new-resource'>
             <button
               className='bg-[#0e2235] text-white 
-            py-2 px-3 flex items-center gap-3 rounded-md w-full md:w-fit self-end text-md whitespace-nowrap'>
+            py-2 px-3 flex items-center gap-3 rounded-md w-full md:w-fit self-end text-sm whitespace-nowrap'>
               Crear recurso
             </button>
           </Link>
         </div>
-        {showFilters && (
+        {/* {showFilters && (
           <div className='flex flex-col items-center justify-center gap-2 w-full mb-2 p-2'>
             <div className='flex md:flex-row flex-col items-center gap-2 justify-center w-full mb-2'>
               <input
@@ -100,7 +100,7 @@ const MyResources = () => {
               </button>
             </div>
           </div>
-        )}
+        )} */}
 
         <div className={clsx('w-full pl-8 mt-8')}>
           <MyOwnResources resources={filteredResources} />

@@ -14,7 +14,7 @@ const InscriptionsByEvent = () => {
   useEffect(() => {
     async function fetchEvents() {
       const response = await getInscriptionsByEventAndId(id);
-
+      console.log(response);
       if (response.data.success === true) {
         setEvent(response.data.events.event);
         setPremiumBookings(response.data.events.premiumInscriptions);
@@ -26,8 +26,12 @@ const InscriptionsByEvent = () => {
 
   const onBookingModification = async (eventId) => {
     // ACA LA LOGICA PARA ACTUALIZAR EL ESTADO DE LAS INSCRIPCIONES
+    setEvent([]);
+    setPremiumBookings([]);
+    setInPersonBookings([]);
     try {
       const response = await getInscriptionsByEventAndId(eventId);
+
       if (response.data.success === true) {
         setEvent(response.data.events.event);
         setPremiumBookings(response.data.events.premiumInscriptions);

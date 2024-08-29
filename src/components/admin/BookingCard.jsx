@@ -25,10 +25,12 @@ const BookingCard = ({ booking, onBookingModification }) => {
     };
     try {
       const response = await processInscription(data);
+      console.log(response);
       if (response.data.success === true) {
-        onBookingModification(booking.eventId);
+        toast.success('Inscripcion Procesada');
+        console.log(booking.eventId);
+        await onBookingModification(booking.eventId);
       }
-      toast.success('Inscripcion Procesada');
     } catch (error) {
       console.log(error);
       toast.error('Error al procesar la inscripcion');

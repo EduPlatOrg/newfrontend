@@ -12,3 +12,6 @@ export const getAllEventsRequest = async () => axios.get('/events/all');
 
 export const deletEventRequest = async (id) =>
   axios.delete(`/events/deleteEvent/${id}`);
+
+export const getMyEventsRequest = async (id) =>
+  axios.get(`/events/myEvents/${id}`);
